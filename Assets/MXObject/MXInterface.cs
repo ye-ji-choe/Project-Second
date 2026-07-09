@@ -4,6 +4,7 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Runtime.InteropServices;
+using ActUtlType64Lib;
 using UnityEngine;
 
 public sealed class MXInterface : IDisposable

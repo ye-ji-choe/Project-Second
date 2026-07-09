@@ -83,7 +83,7 @@ PlayerSettings:
   androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -860,7 +860,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Project
-  metroPackageVersion: 
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -868,7 +868,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Project
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Unity
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -940,7 +940,7 @@ PlayerSettings:
   cloudProjectId: 3b01ab67-8a1d-473c-8957-829188f8c92f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: distributionCenter_Visuals
+  projectName: Unity
   organizationId: cyeji4869
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

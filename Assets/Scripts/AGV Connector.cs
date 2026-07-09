@@ -7,7 +7,7 @@ public class AGVConnector : MXObject
     public float feedbackTime = 0.3f;
 
     [Header("PLC Addresses")]
-    public DeviceAddress plcReadyAddress = new DeviceAddress("PLC Ready"); // 추가된 부분
+    private DeviceAddress plcReadyAddress = new DeviceAddress("PLC Ready");
     public DeviceAddress busyAddress = new DeviceAddress("BUSY 신호");
     public DeviceAddress homePositionAddress = new DeviceAddress("Home Position");
     public DeviceAddress arrivalCompleteAddress = new DeviceAddress("도착 완료");

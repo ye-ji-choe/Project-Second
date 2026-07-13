@@ -72,19 +72,25 @@ public abstract class Task : MonoBehaviour
 
     protected abstract void Program();
 
+
+
     #region 모션 큐 적재 API
 
-    protected void PTP(Target target)
+    // 기존 PTP 함수 수정 (speed 매개변수 추가, 기본값 1.0f)
+    protected void PTP(Target target, float speed = 1.0f)
     {
         if (target != null)
-            _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "PTP"));
+            _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "PTP", speed));
     }
 
-    protected void LIN(Target target)
+    // 기존 LIN 함수 수정 (speed 매개변수 추가, 기본값 1.0f)
+    protected void LIN(Target target, float speed = 1.0f)
     {
         if (target != null)
-            _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "LIN"));
+            _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "LIN", speed));
     }
+
+    // ... (기존 Move, Wait, Message, WaitUntil, DoAction, Offset 등은 그대로 유지) ...
 
     protected void Move(MotionInstruction instruction)
     {

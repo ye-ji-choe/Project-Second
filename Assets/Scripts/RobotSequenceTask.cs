@@ -11,6 +11,8 @@ public class RobotSequenceTask : Task
 
     private bool canStartSequence = false; // 커넥터가 켜줄 스위치
 
+    public float defaultSpeed;
+
     // 커넥터(Update)에서 호출하여 큐의 대기를 풀어주는 함수
     public void ResumeSequence()
     {
@@ -31,46 +33,96 @@ public class RobotSequenceTask : Task
         this.Log("로봇 시퀀스 시작");
 
         this.Log("Home 포인트로 이동 시작");
-        this.LIN(_targets[0]);
+        this.LIN(_targets[0], 5f);
         this.Wait(500);
 
         this.Log("경유지점 이동");
-        this.LIN(_targets[1]);
+        this.LIN(_targets[1], 5f);
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, -500f), 5f);
+
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, 0f), 5f);
 
         this.Log("작업 위치 1번 이동");
-        this.LIN(_targets[2]);
+        this.LIN(_targets[2], 5f);
+
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, 0f), 5f);
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, -500f), defaultSpeed);
 
 
 
 
         this.Log("Z축 50mm 상승 작업");
         // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
-        this.Offset(_targets[2], new Vector3(0, 0, 50f), 0.1f);
-
-        this.Log("X축으로 20mm, Z축으로 -10mm 진입 작업");
-        this.Offset(_targets[2], new Vector3(20f, 0, -10f), 0.2f);
+        this.Offset(_targets[3], new Vector3(0, -100f, 0f), defaultSpeed);
 
 
         this.Log("작업 위치 2번 정밀 이동");
-        this.LIN(_targets[3]);
+        this.LIN(_targets[3], defaultSpeed);
+
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[3], new Vector3(0, -100f, 0f), defaultSpeed);
+
+
+
 
         this.Log("경유지점 이동");
-        this.LIN(_targets[1]);
+        this.LIN(_targets[1], defaultSpeed);
+
+
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, -500f), defaultSpeed);
+
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, 0f), defaultSpeed);
 
         this.Log("작업 위치 1번 이동");
-        this.LIN(_targets[2]);
+        this.LIN(_targets[2], defaultSpeed);
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, 0f), defaultSpeed);
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[2], new Vector3(0, -100f, -500f), defaultSpeed);
 
         this.Log("경유지점 이동");
-        this.LIN(_targets[1]);
+        this.LIN(_targets[1], defaultSpeed);
 
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
         this.Log("작업 위치 3번 이동");
-        this.LIN(_targets[4]);
+        this.LIN(_targets[4], defaultSpeed);
+
+        this.Log("Z축 50mm 상승 작업");
+        // 새롭게 추가한 함수 사용: 타겟[2] 기준으로 Z축으로 50f 오프셋, 속도 0.1f
+        this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
 
         this.Log("경유지점 이동");
-        this.LIN(_targets[1]);
+        this.LIN(_targets[1], defaultSpeed);
 
         this.Log("Home으로 복귀");
-        this.LIN(_targets[0]);
+        this.LIN(_targets[0], defaultSpeed);
 
         this.Log("로봇 시퀀스 종료");
 

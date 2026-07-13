@@ -4058,7 +4058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: stopDistance
-      value: 0.5
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: stations.Array.size
@@ -4079,6 +4079,10 @@ PrefabInstance:
     - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_Name
       value: AGV
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13065,6 +13069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 638236598}
   doorAnimator: {fileID: 638236596}
+  magneticSensor: {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!114 &638236598
 MonoBehaviour:
@@ -15076,6 +15082,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 771183841}
   doorAnimator: {fileID: 771183837}
+  magneticSensor: {fileID: 771183834}
+  laserSensor: {fileID: 1555914902}
   doorAnimDuration: 2
 --- !u!114 &771183841
 MonoBehaviour:
@@ -24005,6 +24013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 1296875133}
   doorAnimator: {fileID: 1296875131}
+  magneticSensor: {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!114 &1296875133
 MonoBehaviour:
@@ -26257,6 +26267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StrabPressController
   connector: {fileID: 1438803811}
   Press_001Animator: {fileID: 1438803809}
+  laserSensor: {fileID: 496847066}
   Press_001AnimDuration: 2
 --- !u!114 &1438803811
 MonoBehaviour:
@@ -26274,17 +26285,17 @@ MonoBehaviour:
   PressReady:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M1171
     description: "\uD504\uB808\uC2A4 READY"
     comment: 
   AreaSensor:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: X17D
     description: "\uAD6C\uC5ED \uC13C\uC11C"
     comment: 
   HomePosition:
@@ -26295,12 +26306,12 @@ MonoBehaviour:
     address: 
     description: "\uC6D0\uC810 \uC0C1\uD0DC"
     comment: 
-  UpCommand:
+  StartCommand:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M2190
     description: "\uAE30\uB3D9 \uC2DC\uC791"
     comment: 
   laserSensorAddress:
@@ -26314,9 +26325,9 @@ MonoBehaviour:
   pressCompleteAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M1174
     description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
     comment: 
 --- !u!1 &1450962307
@@ -31273,6 +31284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 1653577924}
   doorAnimator: {fileID: 1653577922}
+  magneticSensor: {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!114 &1653577924
 MonoBehaviour:
@@ -32039,7 +32052,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1698627451
 GameObject:
   m_ObjectHideFlags: 0
@@ -33196,6 +33209,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1753514068}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1753514070}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!4 &1753514058 stripped
 Transform:
@@ -33467,6 +33483,52 @@ MonoBehaviour:
     rotation: {x: -0.001, y: 90.005, z: 180}
   connector: {fileID: 0}
   defaultSpeed: 0
+--- !u!114 &1753514070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753514066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 0}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!1 &1775495247
 GameObject:
   m_ObjectHideFlags: 0
@@ -40345,7 +40407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.10967
+      value: 20.41
       objectReference: {fileID: 0}
     - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40353,7 +40415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.9995728
+      value: 4.95
       objectReference: {fileID: 0}
     - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40410,6 +40472,10 @@ PrefabInstance:
     - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_Name
       value: AGV (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -41879,7 +41945,7 @@ Transform:
   m_GameObject: {fileID: 2131367263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.65, y: 0, z: 5}
+  m_LocalPosition: {x: 20.113, y: 0, z: 5}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44104,8 +44170,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309297218772027248}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0.21}
+  m_LocalRotation: {x: 0.044165578, y: 0.044165574, z: 0.7057262, w: 0.70572615}
+  m_LocalPosition: {x: 0.026181793, y: 0, z: 0.20836149}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50222,8 +50288,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6537469829031053823}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.5444455, y: -0.5444455, z: 0.45119742, w: -0.4511974}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52058,8 +52124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5621167023903257888}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.175, z: 0}
+  m_LocalRotation: {x: -0, y: 0.57864076, z: -0, w: 0.8155825}
+  m_LocalPosition: {x: 0, y: 0.175, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53481,8 +53547,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150218050762027886}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.87, y: 0, z: -0.000000038028908}
+  m_LocalRotation: {x: -0, y: 0.72860414, z: 0, w: 0.68493503}
+  m_LocalPosition: {x: 0.8683409, y: 0, z: -0.053703357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53562,8 +53628,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2555899928666887568}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.54, z: 0.145}
+  m_LocalRotation: {x: 0.40916085, y: 0.40916082, z: 0.57670397, w: 0.5767039}
+  m_LocalPosition: {x: 0.13685949, y: 0.54, z: 0.047900707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

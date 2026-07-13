@@ -4,60 +4,49 @@ using System;
 
 public class StrabPressConnector : MXObject
 {
-    public StrabPressController controller; // 챔버를 제어할 애니메이션/센서 컨트롤러
-    public DeviceAddress PressReady = new DeviceAddress("프레스 READY"); //프레스 레디
-    public DeviceAddress AreaSensor = new DeviceAddress("구역 센서"); //센서
-    public DeviceAddress HomePosition = new DeviceAddress("원점 상태"); // 다운 명령
-    public DeviceAddress UpCommand = new DeviceAddress("기동 시작"); // 예: 업 명령
+    public StrabPressController controller; // 컨트롤러 할당용
+
+    public DeviceAddress PressReady = new DeviceAddress("프레스 READY");
+    public DeviceAddress AreaSensor = new DeviceAddress("구역 센서");
+    public DeviceAddress HomePosition = new DeviceAddress("원점 상태");
+    public DeviceAddress StartCommand = new DeviceAddress("기동 시작"); // (수정) M2190 신호
 
     public DeviceAddress laserSensorAddress = new DeviceAddress("레이저 센서 인식");
-    public DeviceAddress pressCompleteAddress = new DeviceAddress("프레스 완료");
+    public DeviceAddress pressCompleteAddress = new DeviceAddress("프레스 완료"); // M1174 신호
 
-    // 상태 플래그
-    private bool haveToDown = false;
-    private bool haveToUp = false;
+    // Controller에서 읽어갈 수 있도록 상태 플래그를 public 프로퍼티로 선언
+    public bool HaveToStart { get; private set; } = false;
 
     private void Start()
     {
-        // PLC로부터 읽어올 데이터 구독 (프레스 내림/프레스 올림 명령)
-        if (PressReady.useDevice)
-            MXRequester.Get.AddDeviceAddress(PressReady.address, OnReceiveDown);
+        // PLC로부터 "기동 시작(M2190)" 신호가 들어오는지 구독 (가장 중요)
+        if (StartCommand.useDevice)
+            MXRequester.Get.AddDeviceAddress(StartCommand.address, OnReceiveStart);
 
-        if (AreaSensor.useDevice)
-            MXRequester.Get.AddDeviceAddress(AreaSensor.address, OnReceiveUp);
-
-        if (pressCompleteAddress.useDevice)
-            MXRequester.Get.AddDeviceAddress(pressCompleteAddress.address, OnReceiveDown);
-
-        if (HomePosition.useDevice)
-            MXRequester.Get.AddDeviceAddress(HomePosition.address, OnReceiveUp);
+        // (필요 시 프레스 레디나 원점 상태도 동일한 방식으로 구독 추가 가능)
     }
 
     // ==================================================
-    // [READ] PLC -> Unity 콜백 함수 (PLC가 유니티에 명령)
+    // [READ] PLC -> Unity 콜백 함수
     // ==================================================
-    private void OnReceiveDown(short data)
+    private void OnReceiveStart(short data)
     {
-        // 값이 1(ON)로 들어오면 문을 열어야 함
-        if (data != 0) haveToDown = true;
+        // M2190 값이 1(ON)로 들어오면 기동 시작 플래그를 true로 변경
+        HaveToStart = (data != 0);
     }
 
-    private void OnReceiveUp(short data)
-    {
-        // 값이 1(ON)로 들어오면 문을 닫아야 함
-        if (data != 0) haveToUp = true;
-    }
-
-
-    // 1. AGV가 레이저 센서에 닿았을 때 호출
+    // ==================================================
+    // [WRITE] Unity -> PLC 호출 함수
+    // ==================================================
+    // 1. 레이저 센서 감지 신호 전송
     public void SendLaserSensorSignal(short value)
     {
         if (laserSensorAddress.useDevice)
             MXRequester.Get.AddSetDeviceRequest(laserSensorAddress.address, value);
     }
 
-    // 2. 프레스 작업 완료 시 호출
-    public void SendChamberCompleteSignal(short value)
+    // 2. 프레스 작업 완료 신호 전송 (함수명 직관적으로 변경)
+    public void SendPressCompleteSignal(short value)
     {
         if (pressCompleteAddress.useDevice)
             MXRequester.Get.AddSetDeviceRequest(pressCompleteAddress.address, value);

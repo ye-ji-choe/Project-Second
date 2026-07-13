@@ -3,34 +3,122 @@ using UnityEngine;
 
 public class ChamberController : MonoBehaviour
 {
-    public ChamberConnector connector; // 인스펙터에서 할당
-    public Animator doorAnimator;
+    public ChamberConnector connector; // 인스펙터 연결 필수
+    public Animator doorAnimator;      // 챔버 도어 모델 할당 필수
+
+    [Header("Sensors (인스펙터에서 할당)")]
+    // 두 센서가 같은 MagneticSensor 스크립트를 쓴다고 가정 (이름이 다르다면 타입을 변경하세요)
+    public MagneticSensor magneticSensor;
+    public OpticalSensor laserSensor;
 
     [Header("Animation Settings")]
-    public float doorAnimDuration = 2.0f; // 문이 완전히 열리거나 닫히는 데 걸리는 시간
+    public float doorAnimDuration = 2.0f;
 
-    // ==================================================
-    // 센서 감지부 (유니티 물리 엔진 -> 커넥터로 전달)
-    // ==================================================
+    private bool isDoorOpen = false;
 
-    // AGV가 마그네틱 센서(바깥)에 닿았을 때 센서 스크립트에서 이 함수를 호출
-    public void OnMagneticSensorTriggered()
+    private void Awake()
     {
-        Debug.Log("마그네틱 센서 감지됨 -> PLC로 신호 전송");
-        // 마그네틱 센서 ON (1) 전송. (PLC가 이 신호를 받고 도어 오픈 명령을 줄 것입니다)
-        connector.SendMagneticSensorSignal(1);
+        // 1. 마그네틱 센서 이벤트 연결
+        if (magneticSensor != null)
+        {
+            magneticSensor.onChangedDetected.AddListener(OnMagneticSensorStateChanged);
+        }
+        else
+        {
+            Debug.LogError("에러: 마그네틱 센서가 인스펙터에 할당되지 않았습니다.");
+        }
+
+        // 2. 레이저 센서 이벤트 연결 (추가된 부분)
+        if (laserSensor != null)
+        {
+            laserSensor.onChangedDetected.AddListener(OnLaserSensorStateChanged);
+        }
+        else
+        {
+            Debug.LogError("에러: 레이저 센서가 인스펙터에 할당되지 않았습니다.");
+        }
     }
 
-    // AGV가 레이저 센서(안쪽)에 닿았을 때 센서 스크립트에서 이 함수를 호출
-    public void OnLaserSensorTriggered()
+    private void OnDestroy()
     {
-        Debug.Log("레이저 센서 감지됨 -> PLC로 신호 전송");
-        // 레이저 센서 ON (1) 전송. (PLC가 이 신호를 받고 도어 클로즈 명령을 줄 것입니다)
-        connector.SendLaserSensorSignal(1);
+        // 스크립트 파괴 시 메모리 누수 방지를 위해 이벤트 연결 해제
+        if (magneticSensor != null)
+        {
+            magneticSensor.onChangedDetected.RemoveListener(OnMagneticSensorStateChanged);
+        }
+        if (laserSensor != null)
+        {
+            laserSensor.onChangedDetected.RemoveListener(OnLaserSensorStateChanged);
+        }
+    }
+
+    private void Update()
+    {
+        if (connector == null) return;
+
+        if (connector.HaveToOpenDoor && !isDoorOpen)
+        {
+            OpenDoorAnimation();
+        }
+        else if (connector.HaveToCloseDoor && isDoorOpen)
+        {
+            CloseDoorAnimation();
+        }
+    }
+
+    private void OpenDoorAnimation()
+    {
+        isDoorOpen = true;
+        Debug.Log("M2020 상태 감지됨 -> 유니티 도어 오픈 애니메이션 실행");
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetBool("IsOpen", true);
+        }
+    }
+
+    private void CloseDoorAnimation()
+    {
+        isDoorOpen = false;
+        Debug.Log("M2026 상태 감지됨 -> 유니티 도어 클로즈 애니메이션 실행");
+
+        if (doorAnimator != null)
+        {
+            doorAnimator.SetBool("IsOpen", false);
+        }
     }
 
     // ==================================================
-    // 동작 실행부 (커넥터 -> 유니티 애니메이션 실행)
+    // 마그네틱 센서 감지 콜백
     // ==================================================
+    private void OnMagneticSensorStateChanged(bool isDetected)
+    {
+        if (isDetected)
+        {
+            Debug.Log("마그네틱 센서 ON -> PLC로 1 전송");
+            connector.SendMagneticSensorSignal(1);
+        }
+        else
+        {
+            Debug.Log("마그네틱 센서 OFF -> PLC로 0 전송");
+            connector.SendMagneticSensorSignal(0);
+        }
+    }
 
+    // ==================================================
+    // 레이저 센서 감지 콜백 (추가된 부분)
+    // ==================================================
+    private void OnLaserSensorStateChanged(bool isDetected)
+    {
+        if (isDetected)
+        {
+            Debug.Log("레이저 센서 ON -> PLC로 1 전송");
+            connector.SendLaserSensorSignal(1);
+        }
+        else
+        {
+            Debug.Log("레이저 센서 OFF -> PLC로 0 전송");
+            connector.SendLaserSensorSignal(0);
+        }
+    }
 }

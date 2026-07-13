@@ -285,4 +285,9 @@ public class MXRequester : MonoBehaviour
 
         _updated = false;
     }
+
+    internal void AddSetDeviceRequest(object address, short value)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -16,11 +16,16 @@ public class AGVConnector : MXObject
     public DeviceAddress destinationAddress = new DeviceAddress("목적지 설비 번호");
 
     private bool haveToExecute;
-    private int destinationNum;
+
+    // [수정 1] 목적지 초기값을 -1(무효값)로 설정하여, PLC가 값을 주기 전에는 절대 움직이지 않도록 방어
+    private int destinationNum = -1;
+
     private bool completedArrival;
     private float remainCompletedTime;
 
+    private bool isStartSignalOn = false;
     private bool isBusy;
+
     public bool IsBusy
     {
         get => isBusy;
@@ -35,11 +40,9 @@ public class AGVConnector : MXObject
 
     private void Start()
     {
-        // 1. PLC 통신 연결 상태 구독 (로그 출력용)
         if (plcReadyAddress.useDevice)
             MXRequester.Get.AddDeviceAddress(plcReadyAddress.address, PLCReady);
 
-        // 2. 기동 및 목적지 수신
         if (startOperationAddress.useDevice)
             MXRequester.Get.AddDeviceAddress(startOperationAddress.address, StartOperation);
 
@@ -47,7 +50,6 @@ public class AGVConnector : MXObject
             MXRequester.Get.AddDeviceAddress(destinationAddress.address, SetDestination);
     }
 
-    // PLC 통신이 정상적으로 붙었는지 확인하는 함수
     private void PLCReady(short data)
     {
         if (data != 0)
@@ -58,14 +60,42 @@ public class AGVConnector : MXObject
 
     private void SetDestination(short data)
     {
-        destinationNum = data;
+        if (destinationNum != data)
+        {
+            Debug.Log($"[AGVConnector] 목적지 변경 감지: {destinationNum} -> {data}");
+            destinationNum = data;
+
+            // [수정 2] 위험 로직 제거: 
+            // 기동 신호가 유지된 상태에서 목적지가 바뀌었다고 무조건 출발하는 로직을 삭제했습니다.
+            // 이제 출발(haveToExecute = true)은 오직 StartOperation(상승 에지)에서만 결정됩니다.
+        }
     }
 
     private void StartOperation(short data)
     {
-        if (data != 0)
+        bool previousSignal = isStartSignalOn;
+        isStartSignalOn = (data != 0);
+
+        // 상승 에지(OFF -> ON) 순간에만 명확하게 기동 플래그를 세움
+        if (!previousSignal && isStartSignalOn)
         {
-            haveToExecute = true;
+            // [수정 3] 목적지 유효성 검사
+            // 내부 데이터가 -1(초기화 상태)라면 기동 신호가 들어와도 무시합니다.
+            if (destinationNum < 0)
+            {
+                Debug.LogWarning("[AGVConnector] 기동 신호가 들어왔으나 유효한 목적지 데이터가 없습니다. (오작동 방지)");
+                return;
+            }
+
+            if (!IsBusy)
+            {
+                Debug.Log($"[AGVConnector] 기동 신호 ON -> 기동 준비 완료 (최종 목적지: {destinationNum})");
+                haveToExecute = true;
+            }
+            else
+            {
+                Debug.LogWarning("[AGVConnector] 기동 신호가 들어왔으나 AGV가 이미 동작 중(Busy)입니다.");
+            }
         }
     }
 
@@ -73,9 +103,11 @@ public class AGVConnector : MXObject
     {
         if (haveToExecute)
         {
+            haveToExecute = false;
+
+            Debug.Log($"[AGVConnector] AGV Positioning 명령 하달 (최종 목적지: {destinationNum})");
             agv.Positioning(destinationNum);
             IsBusy = true;
-            haveToExecute = false;
         }
 
         if (completedArrival && remainCompletedTime < Time.time)
@@ -96,5 +128,13 @@ public class AGVConnector : MXObject
             MXRequester.Get.AddSetDeviceRequest(arrivalCompleteAddress.address, 1);
 
         IsBusy = false;
+
+        // [수정 4] 도착 완료 시 내부 목적지 메모리 강제 삭제
+        // 로봇 등 다른 설비 작업 중 노이즈나 PLC 오작동으로 기동 신호가 다시 튀어도,
+        // 목적지가 -1로 지워져 있으므로 절대 예전 위치(200)로 다시 출발하지 않습니다.
+        int arrivedDest = destinationNum;
+        destinationNum = -1;
+
+        Debug.Log($"[AGVConnector] {arrivedDest}번 도착 완료. 내부 목적지 데이터 초기화(-1) 및 Busy 해제");
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class RobotConnector : MXObject
 {
     [Header("로봇 시퀀스 연결")]
-    public RobotSequenceTask robotTask; // 유니티 인스펙터에서 SequenceTask를 끌어다 넣는 곳!
+    public RobotSequenceTask robotTask;
 
     public float feedbackTime = 0.5f;
 
@@ -19,6 +19,9 @@ public class RobotConnector : MXObject
     private int currentTaskValue;
     private bool completedCycle;
     private float remainCompletedTime;
+
+    // [추가] 기동 신호의 이전 상태를 기억할 변수
+    private bool isStartSignalOn = false;
 
     private bool isBusy;
     public bool IsBusy
@@ -44,28 +47,41 @@ public class RobotConnector : MXObject
 
     private void OnStartSignalReceived(short data)
     {
-        if (data != 0)
+        // [수정] 상승 에지 판단 로직 추가
+        bool previousSignal = isStartSignalOn;
+        isStartSignalOn = (data != 0);
+
+        // 이전에는 OFF였고, 지금 ON으로 들어온 순간에만!
+        if (!previousSignal && isStartSignalOn)
         {
-            haveToExecute = true; // 기동 신호 ON!
+            if (!IsBusy) // 로봇이 대기 상태일 때만 기동 허용
+            {
+                Debug.Log("[RobotConnector] 기동 신호 상승 에지 확인. 기동 준비!");
+                haveToExecute = true;
+            }
+            else
+            {
+                Debug.LogWarning("[RobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
+            }
         }
     }
 
     private void OnTaskValueReceived(short data)
     {
-        currentTaskValue = data; // D0 값 업데이트
+        currentTaskValue = data;
     }
 
     private void Update()
     {
-        // 핵심: 기동 신호가 들어왔고 && D0(currentTaskValue)가 1일 때만 실행
+        // 핵심: 상승 에지로 기동 플래그가 섰고 && D0가 1일 때
         if (haveToExecute && currentTaskValue == 1)
         {
-            robotTask.ResumeSequence(); // SequenceTask로 기동 명령 전달!
+            Debug.Log("[RobotConnector] 시퀀스 Task 시작 및 Busy ON");
+            robotTask.ResumeSequence();
             IsBusy = true;
-            haveToExecute = false;
+            haveToExecute = false; // 한 번 기동하면 즉시 플래그 리셋
         }
 
-        // 사이클 완료 펄스 타이머 처리
         if (completedCycle && remainCompletedTime < Time.time)
         {
             if (cycleCompleteAddress.useDevice)
@@ -75,7 +91,6 @@ public class RobotConnector : MXObject
         }
     }
 
-    // SequenceTask의 작업이 끝나면 호출될 함수
     public void OnCycleCompleted()
     {
         completedCycle = true;
@@ -85,5 +100,6 @@ public class RobotConnector : MXObject
             MXRequester.Get.AddSetDeviceRequest(cycleCompleteAddress.address, 1);
 
         IsBusy = false;
+        Debug.Log("[RobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 시작.");
     }
 }

@@ -5761,6 +5761,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 300556772}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 300556774}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!4 &300556763 stripped
 Transform:
@@ -6025,8 +6028,54 @@ MonoBehaviour:
     rotation: {x: -0.002, y: 90.004, z: 180.003}
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
-  defaultSpeed: 0
+  connector: {fileID: 300556774}
+  defaultSpeed: 2
+--- !u!114 &300556774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300556770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 300556773}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2120
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1200
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1100
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1104
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!1 &309525069
 GameObject:
   m_ObjectHideFlags: 0
@@ -11358,6 +11407,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 553966256}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 553966258}
   m_SourcePrefab: {fileID: 100100000, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
 --- !u!4 &553966254 stripped
 Transform:
@@ -11392,7 +11444,19 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 553966258}
+        m_TargetAssemblyTypeName: MXInputModule, Assembly-CSharp
+        m_MethodName: OnChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!120 &553966257
 LineRenderer:
   serializedVersion: 3
@@ -11511,6 +11575,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &553966258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553966255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e4d206f9f5a47b6c27c02104d6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
+  address:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: X9E
+    description: 
+    comment: 
+  needCallback: 0
 --- !u!1 &554021232
 GameObject:
   m_ObjectHideFlags: 0
@@ -13766,7 +13851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0e01c89d0f4dbd0478fcc16de3c59869, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5744611290168925295, guid: 0e01c89d0f4dbd0478fcc16de3c59869, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -13838,6 +13923,9 @@ MonoBehaviour:
   connector: {fileID: 680172755}
   pRESSSSSSSSSSSSSSSSAnimator: {fileID: 680172753}
   pRESSSSSSSSSSSSSSSSAnimDuration: 2
+  pressHoldTime: 10
+  isPressing: 1
+  readyPulseInterval: 0.5
 --- !u!114 &680172755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13854,13 +13942,37 @@ MonoBehaviour:
   PressReady:
     useDevice: 1
     useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M89
+    description: "\uD504\uB808\uC2A4 READY"
+    comment: 
+  laserSensorAddress:
+    useDevice: 0
+    useDoubleWord: 0
     isLocked: 0
     label: 
     address: 
-    description: "\uD504\uB808\uC2A4 READY"
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD"
+    comment: 
+  pressCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1114
+    description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
+    comment: 
+  UpCommand:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: M2130
+    description: "\uAE30\uB3D9 \uC2DC\uC791"
     comment: 
   AreaSensor:
-    useDevice: 1
+    useDevice: 0
     useDoubleWord: 0
     isLocked: 0
     label: 
@@ -13875,30 +13987,7 @@ MonoBehaviour:
     address: 
     description: "\uC6D0\uC810 \uC0C1\uD0DC"
     comment: 
-  UpCommand:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uAE30\uB3D9 \uC2DC\uC791"
-    comment: 
-  laserSensorAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD"
-    comment: 
-  pressCompleteAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
-    comment: 
+  isStartCommandReceived: 0
 --- !u!1 &689961114
 GameObject:
   m_ObjectHideFlags: 0
@@ -17472,7 +17561,7 @@ Transform:
   m_GameObject: {fileID: 944748903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.39, y: 0, z: -1.3143301}
+  m_LocalPosition: {x: -22.5, y: 0, z: -1.3143301}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20596,6 +20685,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1084931358}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084931360}
   m_SourcePrefab: {fileID: 100100000, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
 --- !u!4 &1084931356 stripped
 Transform:
@@ -20630,7 +20722,19 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1084931360}
+        m_TargetAssemblyTypeName: MXInputModule, Assembly-CSharp
+        m_MethodName: OnChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!120 &1084931359
 LineRenderer:
   serializedVersion: 3
@@ -20749,6 +20853,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1084931360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084931357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e4d206f9f5a47b6c27c02104d6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
+  address:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: X133
+    description: 
+    comment: 
+  needCallback: 0
 --- !u!1 &1094018582
 GameObject:
   m_ObjectHideFlags: 0
@@ -23362,6 +23487,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1248343613}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1248343615}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!4 &1248343603 stripped
 Transform:
@@ -23631,8 +23759,54 @@ MonoBehaviour:
     rotation: {x: -0.002, y: 90.004, z: 180.003}
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
-  defaultSpeed: 0
+  connector: {fileID: 1248343615}
+  defaultSpeed: 2
+--- !u!114 &1248343615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248343611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 1248343614}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2140
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1400
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: M1120
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1124
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!1001 &1250524439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27074,30 +27248,6 @@ MonoBehaviour:
     address: 
     description: "\uD504\uB808\uC2A4 READY"
     comment: 
-  AreaSensor:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uAD6C\uC5ED \uC13C\uC11C"
-    comment: 
-  HomePosition:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uC6D0\uC810 \uC0C1\uD0DC"
-    comment: 
-  UpCommand:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uAE30\uB3D9 \uC2DC\uC791"
-    comment: 
   laserSensorAddress:
     useDevice: 1
     useDoubleWord: 0
@@ -27114,6 +27264,31 @@ MonoBehaviour:
     address: 
     description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
     comment: 
+  UpCommand:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uAE30\uB3D9 \uC2DC\uC791"
+    comment: 
+  AreaSensor:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uAD6C\uC5ED \uC13C\uC11C"
+    comment: 
+  HomePosition:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC6D0\uC810 \uC0C1\uD0DC"
+    comment: 
+  isStartCommandReceived: 0
 --- !u!1 &1455516005
 GameObject:
   m_ObjectHideFlags: 0
@@ -42572,6 +42747,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2132347901}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2132347903}
   m_SourcePrefab: {fileID: 100100000, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
 --- !u!4 &2132347899 stripped
 Transform:
@@ -42606,7 +42784,19 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2132347903}
+        m_TargetAssemblyTypeName: MXInputModule, Assembly-CSharp
+        m_MethodName: OnChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!120 &2132347902
 LineRenderer:
   serializedVersion: 3
@@ -42725,6 +42915,27 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &2132347903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132347900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e4d206f9f5a47b6c27c02104d6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
+  address:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1119
+    description: 
+    comment: 
+  needCallback: 0
 --- !u!1 &2140234786
 GameObject:
   m_ObjectHideFlags: 0

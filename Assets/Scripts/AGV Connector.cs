@@ -129,12 +129,10 @@ public class AGVConnector : MXObject
 
         IsBusy = false;
 
-        // [수정 4] 도착 완료 시 내부 목적지 메모리 강제 삭제
-        // 로봇 등 다른 설비 작업 중 노이즈나 PLC 오작동으로 기동 신호가 다시 튀어도,
-        // 목적지가 -1로 지워져 있으므로 절대 예전 위치(200)로 다시 출발하지 않습니다.
-        int arrivedDest = destinationNum;
-        destinationNum = -1;
+        // [수정] 아래의 내부 목적지 데이터 강제 초기화(-1) 로직을 삭제합니다.
+        // AGV는 '도착 완료' 상태만 상위에 보고하며, 목적지 데이터는 PLC가 덮어씌울 때까지 유지합니다.
+        // StartOperation에 이미 상승 에지(Rising Edge) 인터락이 있으므로 오작동(재출발)하지 않습니다.
 
-        Debug.Log($"[AGVConnector] {arrivedDest}번 도착 완료. 내부 목적지 데이터 초기화(-1) 및 Busy 해제");
+        Debug.Log($"[AGVConnector] {destinationNum}번 도착 완료. 도착 신호 전송 및 Busy 해제");
     }
 }

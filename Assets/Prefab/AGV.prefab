@@ -247,14 +247,42 @@ MonoBehaviour:
   stopDistance: 0.0001
   rotationSpeed: 30
   rotationOffset: 90
-  stations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  stationMappings:
+  - plcId: 100
+    stationTransform: {fileID: 0}
+  - plcId: 200
+    stationTransform: {fileID: 0}
+  - plcId: 300
+    stationTransform: {fileID: 0}
+  - plcId: 400
+    stationTransform: {fileID: 0}
+  - plcId: 500
+    stationTransform: {fileID: 0}
+  - plcId: 600
+    stationTransform: {fileID: 0}
+  - plcId: 610
+    stationTransform: {fileID: 0}
+  - plcId: 620
+    stationTransform: {fileID: 0}
+  - plcId: 630
+    stationTransform: {fileID: 0}
+  - plcId: 601
+    stationTransform: {fileID: 0}
+  - plcId: 611
+    stationTransform: {fileID: 0}
+  - plcId: 621
+    stationTransform: {fileID: 0}
+  - plcId: 631
+    stationTransform: {fileID: 0}
+  - plcId: 602
+    stationTransform: {fileID: 0}
+  - plcId: 612
+    stationTransform: {fileID: 0}
+  - plcId: 622
+    stationTransform: {fileID: 0}
+  - plcId: 632
+    stationTransform: {fileID: 0}
+  - plcId: 700
+    stationTransform: {fileID: 0}
+  - plcId: 599
+    stationTransform: {fileID: 0}

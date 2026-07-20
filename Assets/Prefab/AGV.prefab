@@ -120,9 +120,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9133644582487972412}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.029999733, y: -0.5, z: -0.0027999878}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3413850112193003416}
@@ -147,7 +147,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 1}
+  m_Size: {x: 2.5, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!54 &5092800492673883700
 Rigidbody:
@@ -172,7 +172,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
@@ -188,21 +188,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb23587a7fe3e26408635f57bc3b443d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AGVConnector
-  controller: {fileID: 0}
+  agv: {fileID: 6977079990057299306}
+  feedbackTime: 0.3
   busyAddress:
     useDevice: 1
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X200
+    address: M1180
     description: "BUSY \uC2E0\uD638"
+    comment: 
+  homePositionAddress:
+    useDevice: 0
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: Home Position
+    comment: 
+  arrivalCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1187
+    description: "\uB3C4\uCC29 \uC644\uB8CC"
     comment: 
   startOperationAddress:
     useDevice: 1
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: Y225
+    address: M2220
     description: "\uAE30\uB3D9 \uC2DC\uC791"
     comment: 
   destinationAddress:
@@ -213,23 +230,6 @@ MonoBehaviour:
     address: D0
     description: "\uBAA9\uC801\uC9C0 \uC124\uBE44 \uBC88\uD638"
     comment: 
-  homePositionAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X206
-    description: Home Position
-    comment: 
-  arrivalCompleteAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X207
-    description: "\uB3C4\uCC29 \uC644\uB8CC"
-    comment: 
-  feedbackTime: 0.3
 --- !u!114 &6977079990057299306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AGVController
   connector: {fileID: 232678909798196509}
-  moveSpeed: 3
-  stopDistance: 0.1
-  stations: []
+  moveSpeed: 2
+  stopDistance: 0.0001
+  rotationSpeed: 30
+  rotationOffset: 90
+  stations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

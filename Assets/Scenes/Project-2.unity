@@ -13395,7 +13395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8a2ec96dc48d8a429ec9e4d5dcb6490, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.128
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d8a2ec96dc48d8a429ec9e4d5dcb6490, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24229,8 +24229,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 19.032406, y: 0.21569991, z: 4.285}
-  - {x: 19.032406, y: 0.21569991, z: 5.7149997}
+  - {x: 19.032406, y: 3.3557, z: 4.285}
+  - {x: 19.032406, y: 3.3557, z: 5.7149997}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.001

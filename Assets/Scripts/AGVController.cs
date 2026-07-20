@@ -11,8 +11,16 @@ public class AGVController : MonoBehaviour
     public float rotationSpeed = 120.0f;
     public float rotationOffset = 90.0f;
 
-    [Header("Stations (D00: 0~15)")]
-    public Transform[] stations;
+    // [수정 1] PLC ID와 목적지 Transform을 연결하는 구조체 선언
+    [System.Serializable]
+    public struct StationMapping
+    {
+        public int plcId;               // 예: 100, 200, 601, 610 등
+        public Transform stationTransform; // 해당 ID의 목적지 좌표
+    }
+
+    [Header("Stations Mapping")]
+    public StationMapping[] stationMappings; // 기존 Transform[] stations 대체
 
     [System.Serializable]
     public struct Waypoint
@@ -36,33 +44,39 @@ public class AGVController : MonoBehaviour
 
     private void Awake()
     {
-        // [수정] 2번 경로는 Positioning에서 동적으로 생성하므로 Awake에서는 삭제하여 꼬임을 방지합니다.
-        // approachPaths[2] = new Waypoint[] { }; 
-
         // 씬 시작 시, 모델이 바닥에 똑바로 서 있는 상태의 X, Z 기울기 저장
         uprightTilt = Quaternion.Euler(transform.eulerAngles.x, 0, transform.eulerAngles.z);
     }
 
     public void Positioning(int plcCommand)
     {
-        // [중요 확인] PLC에서 들어오는 원본 값과 계산된 인덱스를 로그로 확인합니다.
-        int targetIndex = plcCommand / 100;
-        Debug.Log($"[AGV] 수신된 PLC 명령: {plcCommand} -> 계산된 타겟 인덱스: {targetIndex}");
+        Debug.Log($"[AGV] 수신된 원본 PLC 명령: {plcCommand}");
 
-        if (stations == null || targetIndex < 0 || targetIndex >= stations.Length)
+        // [수정 2] 배열 인덱스 대신, plcCommand와 일치하는 plcId를 가진 매핑 데이터를 검색
+        Transform targetStation = null;
+        foreach (var mapping in stationMappings)
         {
-            Debug.LogError($"[AGV] 알 수 없는 PLC 명령 또는 인덱스 범위 초과 (인덱스: {targetIndex})");
+            if (mapping.plcId == plcCommand)
+            {
+                targetStation = mapping.stationTransform;
+                break;
+            }
+        }
+
+        if (targetStation == null)
+        {
+            Debug.LogError($"[AGV] 알 수 없는 PLC 명령입니다. 매핑되지 않은 ID: {plcCommand}");
             return;
         }
 
         currentPath.Clear();
 
         // ==========================================
-        // 2번 설비 전용 동적 경로 생성 로직
+        // [수정 3] 기존 인덱스 2번 기준이었던 동적 생성 로직을 PLC ID '200' 기준으로 변경
         // ==========================================
-        if (targetIndex == 2)
+        if (plcCommand == 200)
         {
-            Debug.Log("[AGV] 2번 설비 이동 시퀀스 작동 (동적 경로 생성)");
+            Debug.Log("[AGV] 200번 설비 이동 시퀀스 작동 (동적 경로 생성)");
 
             Vector3 currentPos = transform.position;
             Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
@@ -79,10 +93,10 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        // 2번이 아닌 다른 목적지일 경우, 딕셔너리에 정의된 사전 경로가 있다면 가져옵니다.
-        else if (approachPaths.TryGetValue(targetIndex, out Waypoint[] waypoints))
+        // 동적 경로가 아닌 경우, 딕셔너리에 정의된 사전 경로 검사 (Key값도 plcCommand 기준)
+        else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
         {
-            Debug.Log($"[AGV] {targetIndex}번 설비 사전 정의된 접근 경로 적용");
+            Debug.Log($"[AGV] {plcCommand}번 설비 사전 정의된 접근 경로 적용");
             foreach (Waypoint wp in waypoints)
             {
                 currentPath.Add(wp);
@@ -90,11 +104,11 @@ public class AGVController : MonoBehaviour
         }
         else
         {
-            Debug.Log($"[AGV] {targetIndex}번 설비는 경유지 없이 최종 목적지로 직행합니다.");
+            Debug.Log($"[AGV] {plcCommand}번 설비는 경유지 없이 최종 목적지로 직행합니다.");
         }
 
         // 최종 목적지 추가
-        currentPath.Add(new Waypoint(stations[targetIndex].position, false));
+        currentPath.Add(new Waypoint(targetStation.position, false));
 
         currentWaypointIndex = 0;
         isMoving = true;
@@ -102,6 +116,7 @@ public class AGVController : MonoBehaviour
 
     private void Update()
     {
+        // Update 문 내부의 이동 및 회전 로직은 변경할 필요가 없습니다.
         if (isMoving && currentPath.Count > 0)
         {
             Waypoint currentWaypoint = currentPath[currentWaypointIndex];
@@ -114,12 +129,10 @@ public class AGVController : MonoBehaviour
             {
                 if (currentWaypoint.isReverse)
                 {
-                    // 후진: 회전 없이 좌표만 이동
                     transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    // 전진: 조향 후 직진
                     float targetAngleY = Mathf.Atan2(dirToTarget.x, dirToTarget.z) * Mathf.Rad2Deg;
                     targetAngleY += rotationOffset;
 
@@ -139,7 +152,6 @@ public class AGVController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             }
 
-            // 도착 판정
             if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
             {
                 currentWaypointIndex++;

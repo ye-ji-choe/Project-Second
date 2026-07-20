@@ -93,6 +93,21 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
+        else if (plcCommand == 602)
+        {
+            Debug.Log("[AGV] 602번 설비 이동 시퀀스 작동 (동적 경로 생성)");
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 4f);
+
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+
+        }
         // 동적 경로가 아닌 경우, 딕셔너리에 정의된 사전 경로 검사 (Key값도 plcCommand 기준)
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
         {

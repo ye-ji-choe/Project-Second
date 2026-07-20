@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2794251410242626552}
-  - {fileID: 4781205944057668570}
+  - {fileID: 7177896574356699585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &5527242674046693854
@@ -578,7 +578,7 @@ MonoBehaviour:
   onChangedDetected:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &5030793480292942897
+--- !u!1001 &8068652027853440804
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -586,191 +586,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3309396705751229319}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
+    - target: {fileID: 517718308364411999, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+      propertyPath: m_Name
+      value: press
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: -0.14000002
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.5
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
+    - target: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -2616290413326850259, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      propertyPath: m_Name
-      value: press
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9161384963980647262}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5257407385459361308}
-    - targetCorrespondingSourceObject: {fileID: -3996773113104382248, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8584975840084860583}
-  m_SourcePrefab: {fileID: 100100000, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
---- !u!1 &961628486951404265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3996773113104382248, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-  m_PrefabInstance: {fileID: 5030793480292942897}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8584975840084860583
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961628486951404265}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9a820a6e8beb0c948a8e1c7b003dc273, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!4 &4781205944057668570 stripped
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+--- !u!4 &7177896574356699585 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-  m_PrefabInstance: {fileID: 5030793480292942897}
+  m_CorrespondingSourceObject: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+  m_PrefabInstance: {fileID: 8068652027853440804}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5265149787668969824 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2491cc4a9c86d9547bf6ea7657d7bf31, type: 3}
-  m_PrefabInstance: {fileID: 5030793480292942897}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9161384963980647262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265149787668969824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42eae9d8670bb2849bcb428bc7bb2abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrabPressConnector
-  controller: {fileID: 5257407385459361308}
-  PressReady:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: M1171
-    description: "\uD504\uB808\uC2A4 READY"
-    comment: 
-  AreaSensor:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X17D
-    description: "\uAD6C\uC5ED \uC13C\uC11C"
-    comment: 
-  HomePosition:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uC6D0\uC810 \uC0C1\uD0DC"
-    comment: 
-  StartCommand:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: M2190
-    description: "\uAE30\uB3D9 \uC2DC\uC791"
-    comment: 
-  laserSensorAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD"
-    comment: 
-  pressCompleteAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: M1174
-    description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
-    comment: 
---- !u!114 &5257407385459361308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265149787668969824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c973cde80d44e654791bdb2ed1f1e0d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StrabPressController
-  connector: {fileID: 9161384963980647262}
-  Press_001Animator: {fileID: 8584975840084860583}
-  laserSensor: {fileID: 5570925627496249917}
-  Press_001AnimDuration: 2

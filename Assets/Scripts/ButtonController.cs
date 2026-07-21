@@ -1,8 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class ButtonController : MonoBehaviour
 {
+    public UnityEvent<bool> onChangedDetected;
+    private bool hasDetected;
     [Header("버튼 설정")]
     [Tooltip("제어할 버튼의 Animator를 연결하세요.")]
     public Animator buttonAnimator;
@@ -43,5 +47,20 @@ public class ButtonController : MonoBehaviour
         buttonAnimator.SetBool("Complete", false);
 
         isRunning = false;
+    }
+
+    public bool HasDetected
+    {
+        get => hasDetected;
+
+        private set
+        {
+            //결과가 동일하면 무시
+            if (hasDetected == value)
+                return;
+            hasDetected = value;
+            //등록된 콜백 함수들에게 최신 결과를 알림
+            onChangedDetected?.Invoke(value);
+        }
     }
 }

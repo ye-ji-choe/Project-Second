@@ -7,43 +7,34 @@ public class HumanController : MonoBehaviour
     [Tooltip("제어할 사람의 Animator를 연결하세요.")]
     public Animator humanAnimator;
 
-    private bool isRunning = false;
-
     // AGV 센서에 감지되었을 때 호출할 함수
     public void OnSensorTriggered(bool isDetected)
     {
-        // 센서에 감지되었고, 현재 애니메이션 사이클이 도는 중이 아닐 때만 실행
-        if (isDetected && !isRunning)
+        // 센서에 감지되면 무조건 처음부터 다시 시작
+        if (isDetected)
         {
+            // 혹시라도 실행 중이던 이전 애니메이션 코루틴을 강제 종료
+            StopAllCoroutines();
             StartCoroutine(WorkCycleRoutine());
         }
     }
 
     private IEnumerator WorkCycleRoutine()
     {
-        isRunning = true;
+        // 1. 애니메이션을 강제로 가장 처음 상태(Idle)로 되돌림
+        humanAnimator.Play("Idle", 0, 0f);
 
-        // 1. 작업 시작 (Idle부터 시작해서 쭉 진행되도록 켬)
+        // 2. 작업 시작 신호 켜기
         humanAnimator.SetBool("isWork", true);
 
-        // 2. 애니메이터가 'Pushing' 상태에 진입할 때까지 대기
-        // (Grab -> Turn -> Turn2 -> Walk -> Work -> Turn3 -> Walk2 를 모두 지나옴)
+        // 3. 중간 과정을 거쳐 'Pushing' 상태에 진입할 때까지 대기
         yield return new WaitUntil(() => humanAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pushing"));
 
-        // 3. 'Pushing' 애니메이션이 끝날 때(상태를 벗어날 때)까지 대기
+        // 4. 'Pushing' 애니메이션을 완전히 끝마칠 때까지 대기
         yield return new WaitWhile(() => humanAnimator.GetCurrentAnimatorStateInfo(0).IsName("Pushing"));
 
-        // 4. Pushing 이후에 isWork를 꺼줌
-        // 이제 이후의 Turn4, Walk3가 진행되며 마지막 Walk3 -> Idle 복귀 조건을 만족하게 됨
+        // 5. Pushing 이후 작업 신호 끄기
+        // (이후 남은 애니메이션이 진행되며 자연스럽게 Idle로 복귀합니다)
         humanAnimator.SetBool("isWork", false);
-
-        // 5. 애니메이션이 한 사이클을 다 돌고 완전히 'Idle' 상태로 복귀할 때까지 대기
-        yield return new WaitUntil(() =>
-            humanAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") &&
-            !humanAnimator.IsInTransition(0)
-        );
-
-        // 6. 다음 AGV가 와서 다시 작동할 수 있도록 초기화
-        isRunning = false;
     }
 }

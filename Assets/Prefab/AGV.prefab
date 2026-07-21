@@ -282,7 +282,21 @@ MonoBehaviour:
     stationTransform: {fileID: 0}
   - plcId: 632
     stationTransform: {fileID: 0}
+  - plcId: 599
+    stationTransform: {fileID: 0}
   - plcId: 700
     stationTransform: {fileID: 0}
-  - plcId: 599
+  - plcId: 800
+    stationTransform: {fileID: 0}
+  - plcId: 900
+    stationTransform: {fileID: 0}
+  - plcId: 1000
+    stationTransform: {fileID: 0}
+  - plcId: 1100
+    stationTransform: {fileID: 0}
+  - plcId: 1200
+    stationTransform: {fileID: 0}
+  - plcId: 1300
+    stationTransform: {fileID: 0}
+  - plcId: 650
     stationTransform: {fileID: 0}

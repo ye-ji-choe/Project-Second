@@ -11584,6 +11584,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4670050822478112346}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2743143216711047258}
   m_SourcePrefab: {fileID: 100100000, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
 --- !u!4 &6294234966038544827 stripped
 Transform:
@@ -11737,6 +11740,27 @@ MonoBehaviour:
   onChangedDetected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2743143216711047258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634450923938798337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e4d206f9f5a47b6c27c02104d6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
+  address:
+    useDevice: 0
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: 
+    comment: 
+  needCallback: 0
 --- !u!1001 &6753604809765752958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12003,6 +12027,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4173758707954390350}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3995799404977380388}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!114 &613105743947408941 stripped
 MonoBehaviour:
@@ -12098,7 +12125,7 @@ MonoBehaviour:
     rotation: {x: -0.002, y: 90.004, z: 180.003}
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
+  connector: {fileID: 3995799404977380388}
   defaultSpeed: 0
 --- !u!114 &4173758707954390350
 MonoBehaviour:
@@ -12252,6 +12279,52 @@ MonoBehaviour:
         e33: 1
   _isValid:
     _value: 1
+--- !u!114 &3995799404977380388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774076846168766733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 4874413001135653238}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!114 &7438352507240807983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4216435756749319761, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}

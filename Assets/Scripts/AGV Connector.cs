@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AGVConnector : MXObject
 {
@@ -14,6 +15,8 @@ public class AGVConnector : MXObject
 
     public DeviceAddress startOperationAddress = new DeviceAddress("기동 시작");
     public DeviceAddress destinationAddress = new DeviceAddress("목적지 설비 번호");
+
+    public UnityEvent<bool> OnChangedBusy;
 
     private bool haveToExecute;
     private int destinationNum = -1;
@@ -33,6 +36,7 @@ public class AGVConnector : MXObject
             isBusy = value;
             if (busyAddress.useDevice)
                 MXRequester.Get.AddSetDeviceRequest(busyAddress.address, (short)(value ? 1 : 0));
+            OnChangedBusy?.Invoke(value);
         }
     }
 

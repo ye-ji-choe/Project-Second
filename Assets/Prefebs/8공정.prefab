@@ -11739,7 +11739,31 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+        m_MethodName: set_isOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2743143216711047258}
+        m_TargetAssemblyTypeName: MXInputModule, Assembly-CSharp
+        m_MethodName: OnChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2743143216711047258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11753,11 +11777,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
   address:
-    useDevice: 0
+    useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: X13B
     description: 
     comment: 
   needCallback: 0
@@ -12126,7 +12150,7 @@ MonoBehaviour:
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
   connector: {fileID: 3995799404977380388}
-  defaultSpeed: 0
+  defaultSpeed: 2
 --- !u!114 &4173758707954390350
 MonoBehaviour:
   m_ObjectHideFlags: 0

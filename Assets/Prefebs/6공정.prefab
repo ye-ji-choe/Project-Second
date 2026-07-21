@@ -560,7 +560,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2020
+    address: M2022
     description: "\uB3C4\uC5B4 \uC624\uD508 \uBA85\uB839"
     comment: 
   doorCloseCommand:
@@ -568,7 +568,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2026
+    address: M2028
     description: "\uB3C4\uC5B4 \uD074\uB85C\uC988 \uBA85\uB839"
     comment: 
   magSensorAddress:
@@ -576,7 +576,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X1C
+    address: X1E
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
   laserSensorAddress:
@@ -584,7 +584,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X45
+    address: X47
     description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
@@ -592,7 +592,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M1010
+    address: M1012
     description: "\uCC54\uBC84 \uC644\uB8CC"
     comment: 
 --- !u!114 &2633103794023401283
@@ -609,8 +609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 8057686916217099341}
   doorAnimator: {fileID: 3573463775886415237}
-  magneticSensor: {fileID: 0}
-  laserSensor: {fileID: 0}
+  magneticSensor: {fileID: 2364222234344841167}
+  laserSensor: {fileID: 2734204948262969850}
   doorAnimDuration: 2
 --- !u!4 &3211604770436048431 stripped
 Transform:
@@ -832,7 +832,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2020
+    address: M2021
     description: "\uB3C4\uC5B4 \uC624\uD508 \uBA85\uB839"
     comment: 
   doorCloseCommand:
@@ -840,7 +840,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2026
+    address: M2027
     description: "\uB3C4\uC5B4 \uD074\uB85C\uC988 \uBA85\uB839"
     comment: 
   magSensorAddress:
@@ -848,7 +848,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X1C
+    address: X1D
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
   laserSensorAddress:
@@ -856,7 +856,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X45
+    address: X46
     description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
@@ -864,7 +864,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M1010
+    address: M1011
     description: "\uCC54\uBC84 \uC644\uB8CC"
     comment: 
 --- !u!114 &1369974044969876535
@@ -881,8 +881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 7931287347535113381}
   doorAnimator: {fileID: 8629874542173501932}
-  magneticSensor: {fileID: 0}
-  laserSensor: {fileID: 0}
+  magneticSensor: {fileID: 3556498484564403452}
+  laserSensor: {fileID: 5964568716379209413}
   doorAnimDuration: 2
 --- !u!1001 &6835211078889181735
 PrefabInstance:
@@ -1193,19 +1193,7 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8550170878086568177}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &6435983884986119628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
@@ -1520,19 +1508,7 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4173555263678006819}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &7799901456799344865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
@@ -1852,19 +1828,7 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4238168945564554409}
-        m_TargetAssemblyTypeName: Door, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &8224040516459269221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2335,7 +2299,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2020
+    address: M2023
     description: "\uB3C4\uC5B4 \uC624\uD508 \uBA85\uB839"
     comment: 
   doorCloseCommand:
@@ -2343,7 +2307,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2026
+    address: M2029
     description: "\uB3C4\uC5B4 \uD074\uB85C\uC988 \uBA85\uB839"
     comment: 
   magSensorAddress:
@@ -2351,7 +2315,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X1C
+    address: X1F
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
   laserSensorAddress:
@@ -2359,7 +2323,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: X45
+    address: X48
     description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
@@ -2367,7 +2331,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M1010
+    address: M1013
     description: "\uCC54\uBC84 \uC644\uB8CC"
     comment: 
 --- !u!114 &7390037835303431917
@@ -2384,6 +2348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChamberController
   connector: {fileID: 789070618603850487}
   doorAnimator: {fileID: 7856349039044928768}
-  magneticSensor: {fileID: 0}
-  laserSensor: {fileID: 0}
+  magneticSensor: {fileID: 597751978458689468}
+  laserSensor: {fileID: 4312264596156990603}
   doorAnimDuration: 2

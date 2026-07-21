@@ -12296,33 +12296,33 @@ MonoBehaviour:
   startSignalAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M2150
     description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
     comment: 
   taskValueAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: D1500
     description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
     comment: 
   busyAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M1130
     description: "BUSY \uC2E0\uD638 (M81)"
     comment: 
   cycleCompleteAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: M1134
     description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
     comment: 
 --- !u!114 &7438352507240807983 stripped

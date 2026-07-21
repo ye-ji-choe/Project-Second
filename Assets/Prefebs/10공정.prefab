@@ -425,6 +425,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5570925627496249917}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9056437156911986384}
   m_SourcePrefab: {fileID: 100100000, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
 --- !u!4 &2752953397383582714 stripped
 Transform:
@@ -577,7 +580,40 @@ MonoBehaviour:
   redLine: {fileID: 2100000, guid: fa2b2be4e027ea1488e6ab3a22e5b499, type: 2}
   onChangedDetected:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9056437156911986384}
+        m_TargetAssemblyTypeName: MXInputModule, Assembly-CSharp
+        m_MethodName: OnChangeValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9056437156911986384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278519562314746176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a785e4d206f9f5a47b6c27c02104d6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MXInputModule
+  address:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1171
+    description: 
+    comment: 
+  needCallback: 0
 --- !u!1001 &8068652027853440804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,13 +666,111 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2134377840442327978, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+    - {fileID: 5181611108571617518, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 517718308364411999, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4640293430706135225}
+    - targetCorrespondingSourceObject: {fileID: 517718308364411999, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4366708174068243719}
   m_SourcePrefab: {fileID: 100100000, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+--- !u!95 &2360228478435768744 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5708500608027999884, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+  m_PrefabInstance: {fileID: 8068652027853440804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7177896574356699585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 893013046584590053, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
   m_PrefabInstance: {fileID: 8068652027853440804}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7554456648412455803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 517718308364411999, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+  m_PrefabInstance: {fileID: 8068652027853440804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4640293430706135225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554456648412455803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd8e55ff2b63424191c8814bc3cf581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PressConnector
+  controller: {fileID: 4366708174068243719}
+  PressReady:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1171
+    description: "\uD504\uB808\uC2A4 READY (M89)"
+    comment: 
+  laserSensorAddress:
+    useDevice: 0
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD"
+    comment: 
+  pressCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1174
+    description: "\uD504\uB808\uC2A4 \uC644\uB8CC"
+    comment: 
+  UpCommand:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2190
+    description: "\uAE30\uB3D9 \uC2DC\uC791 (M2130)"
+    comment: 
+  AreaSensor:
+    useDevice: 0
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uAD6C\uC5ED \uC13C\uC11C"
+    comment: 
+  HomePosition:
+    useDevice: 0
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC6D0\uC810 \uC0C1\uD0DC"
+    comment: 
+  isStartCommandReceived: 0
+--- !u!114 &4366708174068243719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554456648412455803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02dc075b75e2456408f3d895a462a74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PressController
+  connector: {fileID: 4640293430706135225}
+  pRESSSSSSSSSSSSSSSSAnimator: {fileID: 2360228478435768744}
+  pRESSSSSSSSSSSSSSSSAnimDuration: 2
+  pressHoldTime: 10
+  isPressing: 0
+  readyPulseInterval: 0.1

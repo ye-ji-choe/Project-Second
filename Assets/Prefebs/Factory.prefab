@@ -5996,10 +5996,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2734204948262969850, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
+      propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4258384585652233233}
+    - target: {fileID: 4312264596156990603, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
+      propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5484185558656761772}
+    - target: {fileID: 5964568716379209413, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
+      propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7645845615285487223}
     - target: {fileID: 6855826629856047643, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
       propertyPath: m_Name
       value: "6\uACF5\uC815"
       objectReference: {fileID: 0}
+    - target: {fileID: 7172513560480742402, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
+      propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4901303005825529051}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

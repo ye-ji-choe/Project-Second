@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.008, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6912258569480992745}
   m_Father: {fileID: 4025489128834880935}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5949828733107926569
@@ -90,6 +91,75 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5108123843220877802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6912258569480992745}
+  - component: {fileID: 1023497897889447079}
+  - component: {fileID: 7918436672681471321}
+  m_Layer: 0
+  m_Name: GripperArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6912258569480992745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108123843220877802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.611, z: -0.0706}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7335128968761881908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1023497897889447079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108123843220877802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7918436672681471321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108123843220877802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7448667823232be4197ea60ff79310ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GripperArea
+  triggerList: []
+  multiplier: 1
+  currentVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &8727193796081608263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1207,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3402176914422204831}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2166443580877266258}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!114 &162593031996562675 stripped
 MonoBehaviour:
@@ -1405,6 +1478,21 @@ MonoBehaviour:
     address: M1084
     description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
     comment: 
+--- !u!114 &2166443580877266258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4285642002713074641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796df57e7763f5849836da0802b8a85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GripperController
+  anim: {fileID: 0}
+  area: {fileID: 7918436672681471321}
+  isOn: 0
 --- !u!114 &5476202160480772278 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8303807180784095764, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}

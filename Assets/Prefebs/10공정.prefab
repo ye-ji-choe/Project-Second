@@ -177,7 +177,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d8a2ec96dc48d8a429ec9e4d5dcb6490, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7398f2946a39bf24fbb25b97ea1c579a, type: 2}
+      objectReference: {fileID: 2100000, guid: d559eaa2ed8cdab46b14e4dd2f81ba13, type: 2}
     - target: {fileID: 919132149155446097, guid: d8a2ec96dc48d8a429ec9e4d5dcb6490, type: 3}
       propertyPath: m_Name
       value: dcs
@@ -363,10 +363,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -397713566726945631, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4922bf9e55231546b626cc6b4bf3653, type: 2}
     - target: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_Name
       value: StopperSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 4186687630441615796, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c4922bf9e55231546b626cc6b4bf3653, type: 2}
     - target: {fileID: 5162425249069310647, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -690,6 +698,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3188458903610985083, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 27a7a9870add79c4d9eb70821ffe5672, type: 2}
+    - target: {fileID: 7806008288655487594, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     m_RemovedComponents:
     - {fileID: 2134377840442327978, guid: 545f74d5448db7941942faf452fa0e70, type: 3}
     - {fileID: 5181611108571617518, guid: 545f74d5448db7941942faf452fa0e70, type: 3}

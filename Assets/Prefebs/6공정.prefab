@@ -139,10 +139,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -397713566726945631, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_Name
       value: LaserSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 4186687630441615796, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 5162425249069310647, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -429,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 7006070089652961415, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7398f2946a39bf24fbb25b97ea1c579a, type: 2}
+      objectReference: {fileID: 2100000, guid: 237c07154f3eed242be99bf29d2ac1b3, type: 2}
     - target: {fileID: 7149589289769904270, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -696,7 +704,7 @@ PrefabInstance:
     - target: {fileID: 7006070089652961415, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7398f2946a39bf24fbb25b97ea1c579a, type: 2}
+      objectReference: {fileID: 2100000, guid: 237c07154f3eed242be99bf29d2ac1b3, type: 2}
     - target: {fileID: 7149589289769904270, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1000,10 +1008,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -397713566726945631, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_Name
       value: LaserSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 4186687630441615796, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 5162425249069310647, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1327,10 +1343,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -397713566726945631, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_Name
       value: LaserSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 4186687630441615796, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 5162425249069310647, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1654,10 +1678,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -397713566726945631, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 919132149155446097, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_Name
       value: LaserSensor
       objectReference: {fileID: 0}
+    - target: {fileID: 4186687630441615796, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 46073d4d87aacd040947a1144cdd3c0d, type: 2}
     - target: {fileID: 5162425249069310647, guid: 1def6f85be42daf48b737e4ce0ccc8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1944,7 +1976,7 @@ PrefabInstance:
     - target: {fileID: 7006070089652961415, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7398f2946a39bf24fbb25b97ea1c579a, type: 2}
+      objectReference: {fileID: 2100000, guid: 237c07154f3eed242be99bf29d2ac1b3, type: 2}
     - target: {fileID: 7149589289769904270, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2199,7 +2231,7 @@ PrefabInstance:
     - target: {fileID: 7006070089652961415, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7398f2946a39bf24fbb25b97ea1c579a, type: 2}
+      objectReference: {fileID: 2100000, guid: 237c07154f3eed242be99bf29d2ac1b3, type: 2}
     - target: {fileID: 7149589289769904270, guid: 34f0e255d2881774fac4d8ef2ff0a556, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

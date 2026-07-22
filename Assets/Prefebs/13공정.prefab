@@ -707,7 +707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6141695645067097683, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: 0
+      value: 84
       objectReference: {fileID: 0}
     - target: {fileID: 6483281720944422884, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -807,10 +807,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4882398165844630591}
+      addedObject: {fileID: 874575165683724058}
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 874575165683724058}
+      addedObject: {fileID: 1184828927070247095}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5981091450455386054}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!4 &50515202489620543 stripped
 Transform:
@@ -822,32 +825,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
   m_PrefabInstance: {fileID: 1129403211255873338}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4882398165844630591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871366220756293193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3324e91c73858f8438b0d348fcec435d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RobotSequenceTask
-  robotController: {fileID: 874575165683724058}
-  _targets:
-  - position: {x: -786.3, y: 945.4, z: 1328.9}
-    rotation: {x: 89.98, y: 0.001, z: 0}
-  - position: {x: 26.7, y: 945.4, z: 2039.6}
-    rotation: {x: 90, y: 0.001, z: 0}
-  - position: {x: 812, y: 945.4, z: 1375.7}
-    rotation: {x: 90, y: 0.001, z: 0}
-  - position: {x: -376.4, y: 485.4, z: 1428.9}
-    rotation: {x: -0.002, y: 90.004, z: 180.003}
-  - position: {x: 316.8, y: 485.4, z: 1428.9}
-    rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
-  defaultSpeed: 2
 --- !u!114 &874575165683724058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +877,7 @@ MonoBehaviour:
         _r1: -70.71
         _r2: -3.539
         _r3: -7.162
-        _r4: 0
+        _r4: 84
         _r5: 100.701
         _r6: -70.71
       _extJoint:
@@ -928,78 +905,167 @@ MonoBehaviour:
   _poseObserver:
     _flange:
       _value:
-        e00: 1
-        e01: 0.00000011601751
-        e02: -0.00000014368113
-        e03: 0.99999726
-        e10: 0.00000011901742
-        e11: -1
-        e12: -0.000000058854557
-        e13: 1.6300149
-        e20: -0.000000115551956
-        e21: 0.000000051696478
-        e22: -1
-        e23: 0.34999824
+        e00: 0.8747713
+        e01: -0.4770369
+        e02: -0.08491783
+        e03: 0.9165158
+        e10: -0.16861624
+        e11: -0.13540289
+        e12: -0.9763374
+        e13: 1.7813194
+        e20: 0.4542508
+        e21: 0.8683904
+        e22: -0.19888273
+        e23: 0.50196654
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointBase:
       _value:
-        e00: 1
-        e01: 0.00000011601751
-        e02: -0.00000014368113
-        e03: 0.99999726
-        e10: 0.00000011901742
-        e11: -1
-        e12: -0.000000058854557
-        e13: 1.6300149
-        e20: -0.000000115551956
-        e21: 0.000000051696478
-        e22: -1
-        e23: 0.34999824
+        e00: 0.8747713
+        e01: -0.4770369
+        e02: -0.08491783
+        e03: 0.9165158
+        e10: -0.16861624
+        e11: -0.13540289
+        e12: -0.9763374
+        e13: 1.7813194
+        e20: 0.4542508
+        e21: 0.8683904
+        e22: -0.19888273
+        e23: 0.50196654
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointWorld:
       _value:
-        e00: -1
-        e01: -0.00000011601751
-        e02: 0.00000014368113
-        e03: 19.000002
-        e10: 0.00000011901742
-        e11: -1
-        e12: -0.000000058854557
-        e13: 1.6300149
-        e20: 0.000000115551956
-        e21: -0.000000051696478
-        e22: 1
-        e23: 19.025002
+        e00: -0.8747713
+        e01: 0.4770369
+        e02: 0.08491783
+        e03: 19.083485
+        e10: -0.16861624
+        e11: -0.13540289
+        e12: -0.9763374
+        e13: 1.7813194
+        e20: -0.4542508
+        e21: -0.8683904
+        e22: 0.19888273
+        e23: 18.873034
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointFrame:
       _value:
-        e00: 1
-        e01: 0.00000011601751
-        e02: -0.00000014368113
-        e03: 0.9999981
-        e10: 0.00000011901742
-        e11: -1
-        e12: -0.000000058854557
-        e13: 1.6300149
-        e20: -0.000000115551956
-        e21: 0.000000051696478
-        e22: -1
-        e23: 0.34999847
+        e00: 0.8747713
+        e01: -0.4770369
+        e02: -0.08491783
+        e03: 0.91651535
+        e10: -0.16861624
+        e11: -0.13540289
+        e12: -0.9763374
+        e13: 1.7813194
+        e20: 0.4542508
+        e21: 0.8683904
+        e22: -0.19888273
+        e23: 0.5019665
         e30: 0
         e31: 0
         e32: 0
         e33: 1
   _isValid:
     _value: 1
+--- !u!114 &1184828927070247095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871366220756293193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626dd759615afe74d9e322dacf824845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScanRobotConnector
+  robotTask: {fileID: 5981091450455386054}
+  feedbackTime: 0.5
+  passProbability: 80
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2180
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1800
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M88
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1164
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
+  passAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1166
+    description: "PASS \uC2E0\uD638 (M1095)"
+    comment: 
+  ngAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1167
+    description: "NG \uC2E0\uD638 (M1096)"
+    comment: 
+--- !u!114 &5981091450455386054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871366220756293193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6058a2c8e1da82147bfe8b20f2cc12ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScanRobotSequenceTask
+  robotController: {fileID: 874575165683724058}
+  _targets:
+  - position: {x: -786.3, y: 945.4, z: 1328.9}
+    rotation: {x: 89.98, y: 0.001, z: 0}
+  - position: {x: 26.7, y: 945.4, z: 2039.6}
+    rotation: {x: 90, y: 0.001, z: 0}
+  - position: {x: 812, y: 945.4, z: 1375.7}
+    rotation: {x: 90, y: 0.001, z: 0}
+  - position: {x: 812, y: 945.4, z: 1375.7}
+    rotation: {x: 90, y: 0.001, z: 0}
+  - position: {x: 812, y: 945.4, z: 1375.7}
+    rotation: {x: 90, y: 0.001, z: 0}
+  connector: {fileID: 1184828927070247095}
+  defaultSpeed: 2
 --- !u!114 &1736653400403542883 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1708455447957109849, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
@@ -1598,7 +1664,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M175
+    address: X175
     description: 
     comment: 
   needCallback: 0

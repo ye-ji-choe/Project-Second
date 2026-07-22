@@ -315,3 +315,7 @@ MonoBehaviour:
     stationTransform: {fileID: 0}
   - plcId: 650
     stationTransform: {fileID: 0}
+  - plcId: 1500
+    stationTransform: {fileID: 0}
+  - plcId: 1400
+    stationTransform: {fileID: 0}

@@ -1072,6 +1072,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3305195455539421283}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5059069657927386761}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!114 &1052966944291439423 stripped
 MonoBehaviour:
@@ -1135,7 +1138,7 @@ MonoBehaviour:
     rotation: {x: -0.002, y: 90.004, z: 180.003}
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
+  connector: {fileID: 5059069657927386761}
   defaultSpeed: 2
 --- !u!114 &3305195455539421283
 MonoBehaviour:
@@ -1289,6 +1292,52 @@ MonoBehaviour:
         e33: 1
   _isValid:
     _value: 1
+--- !u!114 &5059069657927386761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4009592260807574557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 6198720920843774544}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2160
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1600
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1140
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1144
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!4 &4251450085168499307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089595628527412997, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
@@ -1964,6 +2013,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6574831792058500012}
+    - targetCorrespondingSourceObject: {fileID: 269024977144211827, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2736071278953093923}
   m_SourcePrefab: {fileID: 100100000, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
 --- !u!114 &75426008725571260 stripped
 MonoBehaviour:
@@ -2054,7 +2106,7 @@ MonoBehaviour:
     rotation: {x: -0.002, y: 90.004, z: 180.003}
   - position: {x: 316.8, y: 485.4, z: 1428.9}
     rotation: {x: -0.001, y: 90.005, z: 180}
-  connector: {fileID: 0}
+  connector: {fileID: 2736071278953093923}
   defaultSpeed: 2
 --- !u!114 &6574831792058500012
 MonoBehaviour:
@@ -2208,6 +2260,52 @@ MonoBehaviour:
         e33: 1
   _isValid:
     _value: 1
+--- !u!114 &2736071278953093923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6308308200026479004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b4ddf4cac64124d840b681f6e8694c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotConnector
+  robotTask: {fileID: 7585474277733898917}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2170
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1700
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M87
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1154
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
 --- !u!4 &6570573028945663978 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1089595628527412997, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}

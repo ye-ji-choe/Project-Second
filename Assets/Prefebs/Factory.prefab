@@ -6332,6 +6332,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.7071068
       objectReference: {fileID: 0}
+    - target: {fileID: 6904852827460831535, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
+      propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6284606635300964848}
     - target: {fileID: 9159694296537183065, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

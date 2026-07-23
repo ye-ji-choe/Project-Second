@@ -11750,7 +11750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.43

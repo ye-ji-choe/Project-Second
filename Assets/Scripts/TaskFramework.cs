@@ -66,31 +66,44 @@ public abstract class Task : MonoBehaviour
 
     private void Start()
     {
+        // [수정] 유니티 시작 시 자동 실행 방지
+        // 이제 오직 외부(Connector)에서 Play()를 호출할 때만 시퀀스가 시작됩니다.
+    }
+
+    // [추가] 외부에서 시퀀스를 기동/재기동할 때 호출하는 함수
+    public void Play()
+    {
+        if (_isRunning)
+        {
+            Debug.LogWarning("[Task] 시퀀스가 이미 실행 중입니다. 새로운 기동 명령을 무시합니다.");
+            return;
+        }
+
+        // 남아있는 이전 큐 초기화
+        _commandQueue.Clear();
+
+        // 명령어 큐 새로 적재 (자식 클래스의 Program 호출)
         Program();
+
+        // 큐 실행 코루틴 시작
         StartCoroutine(ExecuteQueue());
     }
 
     protected abstract void Program();
 
-
-
     #region 모션 큐 적재 API
 
-    // 기존 PTP 함수 수정 (speed 매개변수 추가, 기본값 1.0f)
     protected void PTP(Target target, float speed = 1.0f)
     {
         if (target != null)
             _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "PTP", speed));
     }
 
-    // 기존 LIN 함수 수정 (speed 매개변수 추가, 기본값 1.0f)
     protected void LIN(Target target, float speed = 1.0f)
     {
         if (target != null)
             _commandQueue.Enqueue(MotionRoutine(target.position, Quaternion.Euler(target.rotation), "LIN", speed));
     }
-
-    // ... (기존 Move, Wait, Message, WaitUntil, DoAction, Offset 등은 그대로 유지) ...
 
     protected void Move(MotionInstruction instruction)
     {
@@ -106,7 +119,6 @@ public abstract class Task : MonoBehaviour
     {
         _commandQueue.Enqueue(MessageRoutine(logType, text));
     }
-
 
     /// <summary>
     /// 지정된 조건이 true가 될 때까지 시퀀스를 일시 정지합니다.
@@ -257,7 +269,6 @@ public abstract class Task : MonoBehaviour
 
     #endregion
 
-    // TaskFramework.cs에 아래 메서드를 추가하세요
     protected void Log(string message)
     {
         _commandQueue.Enqueue(MessageRoutine(LogType.Log, message));
@@ -265,15 +276,12 @@ public abstract class Task : MonoBehaviour
 
     private IEnumerator WaitUntilRoutine(System.Func<bool> condition)
     {
-        // 유니티 내장 클래스인 WaitUntil을 사용하여 조건이 참이 될 때까지 대기
         yield return new UnityEngine.WaitUntil(condition);
     }
 
     private System.Collections.IEnumerator ActionRoutine(System.Action action)
     {
-        // 전달받은 Action(함수)을 실행
         action?.Invoke();
         yield return null;
     }
-
 }

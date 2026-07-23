@@ -20,7 +20,6 @@ public class RobotConnector : MXObject
     private bool completedCycle;
     private float remainCompletedTime;
 
-    // [추가] 기동 신호의 이전 상태를 기억할 변수
     private bool isStartSignalOn = false;
 
     private bool isBusy;
@@ -47,14 +46,12 @@ public class RobotConnector : MXObject
 
     private void OnStartSignalReceived(short data)
     {
-        // [수정] 상승 에지 판단 로직 추가
         bool previousSignal = isStartSignalOn;
         isStartSignalOn = (data != 0);
 
-        // 이전에는 OFF였고, 지금 ON으로 들어온 순간에만!
         if (!previousSignal && isStartSignalOn)
         {
-            if (!IsBusy) // 로봇이 대기 상태일 때만 기동 허용
+            if (!IsBusy)
             {
                 Debug.Log("[RobotConnector] 기동 신호 상승 에지 확인. 기동 준비!");
                 haveToExecute = true;
@@ -73,13 +70,17 @@ public class RobotConnector : MXObject
 
     private void Update()
     {
-        // 핵심: 상승 에지로 기동 플래그가 섰고 && D0가 1일 때
         if (haveToExecute && currentTaskValue == 1)
         {
             Debug.Log("[RobotConnector] 시퀀스 Task 시작 및 Busy ON");
-            robotTask.ResumeSequence();
+
+            // [수정 핵심] 변수만 켜주는 것이 아니라 Task 자체를 처음부터 재실행(빌드) 시킵니다.
+            // ⚠️ 주의: 사용하시는 프레임워크에 따라 Play(), Restart(), Execute(), StartTask() 중 하나일 수 있습니다.
+            // 빨간줄이 뜬다면 해당 Task 클래스에서 '실행'을 담당하는 함수 이름으로 바꿔주세요.
+            robotTask.Play();
+
             IsBusy = true;
-            haveToExecute = false; // 한 번 기동하면 즉시 플래그 리셋
+            haveToExecute = false;
         }
 
         if (completedCycle && remainCompletedTime < Time.time)

@@ -61,6 +61,7 @@ public class PressController : MonoBehaviour
         }
     }
 
+
     // 실제 프레스 1사이클 동작 프로세스
     private IEnumerator ExecutePressProcess()
     {
@@ -77,19 +78,21 @@ public class PressController : MonoBehaviour
         Debug.Log("[동작] 10초 경과: isPressing OFF -> 프레스 상승");
 
         yield return new WaitForSeconds(pRESSSSSSSSSSSSSSSSAnimDuration);
-        Debug.Log("[시퀀스] 프레스 1사이클 동작 완료. 완료 신호 전송.");
 
-        // 완료 신호 전송
+        // ========================================================
+        // [핵심 수정] PLC가 무조건 읽을 수 있도록 시간을 두고 펄스를 줍니다.
+        // ========================================================
+        Debug.Log("[시퀀스] 프레스 1사이클 동작 완료. 완료 신호(ON) 전송.");
         connector.SendChamberCompleteSignal(1);
 
-        // [수정 포인트 2] PLC의 기동 신호(M2130)가 확실히 OFF 될 때까지 대기 (Interlock)
-        // - 사용자나 PLC가 기동 신호를 리셋할 때까지 다음 사이클로 넘어가지 않음
-        while (connector.isStartCommandReceived)
-        {
-            yield return null;
-        }
+        // PLC의 스캔 타임을 충분히 고려하여 0.5초간 신호 유지
+        yield return new WaitForSeconds(0.5f);
 
-        // 신호가 꺼진 것을 확인한 후 상태 복귀
+        // 0.5초 뒤에 다시 0으로 리셋
+        connector.SendChamberCompleteSignal(0);
+        Debug.Log("[시퀀스] 완료 신호(OFF) 리셋.");
+
+        // 신호 리셋까지 끝난 후 상태 복귀
         isSystemReady = true;
         Debug.Log("[시퀀스] 장비 상태 초기화 완료. 다음 사이클 대기.");
     }

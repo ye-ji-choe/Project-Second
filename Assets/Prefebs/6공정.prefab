@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.7
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   triggerList: []
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   triggerList: []
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.7
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.7
@@ -1887,7 +1887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.7
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   triggerList: []
@@ -2286,7 +2286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   triggerList: []

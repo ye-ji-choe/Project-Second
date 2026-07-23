@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanController
   humanAnimator: {fileID: 5771060774351699067}
+  placer: {fileID: 0}
 --- !u!136 &5104511375395444956
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -851,7 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.43

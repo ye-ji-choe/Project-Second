@@ -761,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
   detectableLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1024
   detectableTag: 
   detectableName: 
   detectableDistance: 1.43
@@ -1928,10 +1928,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fcfc74f51616e4bae3c9e10d1db7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoverSpawner
-  controller: {fileID: 0}
-  ball: {fileID: 0}
+  triggerList: []
+  prefabs: []
   spawnPosition: {fileID: 0}
-  interval: 3
+  startSpawnTime: 3
+  spawnInterval: 2.5
+  maxCount: 0
 --- !u!4 &5686448221780383565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1447575943454959738, guid: a62f24654106d9d4899d5433e04d4801, type: 3}

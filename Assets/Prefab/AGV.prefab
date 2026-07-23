@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3413850112193003416}
   - component: {fileID: 1787846604594606141}
   - component: {fileID: 4551804735487673591}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: agv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5092800492673883700}
   - component: {fileID: 232678909798196509}
   - component: {fileID: 6977079990057299306}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: AGV
   m_TagString: Untagged
   m_Icon: {fileID: 0}

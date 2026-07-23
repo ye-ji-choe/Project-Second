@@ -315,19 +315,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2795767633170279029}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &767246311993494813
 GameObject:
@@ -875,19 +863,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3615092191067031561}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &1760865746074792937
 GameObject:
@@ -1131,19 +1107,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5856338972480128474}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &2024925419938741908
 GameObject:
@@ -1229,19 +1193,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3881940259077522667}
-        m_TargetAssemblyTypeName: MagneticSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &2113139253113642876
 GameObject:
@@ -1865,19 +1817,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3290461212510527492}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &2997711038066363140
 GameObject:
@@ -2232,6 +2172,7 @@ Transform:
   - {fileID: 1191242313221666948}
   - {fileID: 1652046571321695347}
   - {fileID: 7743836702244714242}
+  - {fileID: 1965892855411101419}
   - {fileID: 3554366518414429051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3052,19 +2993,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4363152165461081371}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5269826459638797763
 GameObject:
@@ -3453,19 +3382,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2115477690600387736}
-        m_TargetAssemblyTypeName: MagneticSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5738871101178168856
 GameObject:
@@ -3551,19 +3468,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7505176471612164744}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &5761701985527874622
 GameObject:
@@ -4186,19 +4091,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8281445198756079632}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &7113781337078373078
 GameObject:
@@ -4436,19 +4329,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9032831777430847495}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &7691222755396602604
 GameObject:
@@ -4632,19 +4513,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1910967775364995449}
-        m_TargetAssemblyTypeName: MagneticSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &7955510604080612968
 GameObject:
@@ -4881,19 +4750,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2615240113323769816}
-        m_TargetAssemblyTypeName: MagneticSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &8230295216953191557
 GameObject:
@@ -4979,19 +4836,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 945258535149801994}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &8233124521793029606
 GameObject:
@@ -5229,19 +5074,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4676950587631640085}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &8649995999264485346
 GameObject:
@@ -5402,19 +5235,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7850251559934777163}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &9001119006367760903
 GameObject:
@@ -5651,19 +5472,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5155102710499061056}
-        m_TargetAssemblyTypeName: OpticalSensor, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &9212964820298640531
 GameObject:
@@ -5807,17 +5616,200 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3309396705751229319, guid: 8381fe6c8a90d9d43a538fd574d433c6, type: 3}
   m_PrefabInstance: {fileID: 776164833282987901}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5155102710499061056 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5570925627496249917, guid: 8381fe6c8a90d9d43a538fd574d433c6, type: 3}
-  m_PrefabInstance: {fileID: 776164833282987901}
+--- !u!1001 &778163794050145115
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6213216511884826847}
+    m_Modifications:
+    - target: {fileID: 232678909798196509, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: busyAddress.address
+      value: M1190
+      objectReference: {fileID: 0}
+    - target: {fileID: 232678909798196509, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: destinationAddress.address
+      value: D1
+      objectReference: {fileID: 0}
+    - target: {fileID: 232678909798196509, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: startOperationAddress.address
+      value: M2228
+      objectReference: {fileID: 0}
+    - target: {fileID: 232678909798196509, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: arrivalCompleteAddress.address
+      value: M1197
+      objectReference: {fileID: 0}
+    - target: {fileID: 232678909798196509, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: OnChangedBusy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3011948705219784476}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.291
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[0].stationTransform
+      value: 
+      objectReference: {fileID: 5718981349453749066}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[1].stationTransform
+      value: 
+      objectReference: {fileID: 601810262280586014}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[2].stationTransform
+      value: 
+      objectReference: {fileID: 955888120290604097}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[3].stationTransform
+      value: 
+      objectReference: {fileID: 2480229894301938792}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[4].stationTransform
+      value: 
+      objectReference: {fileID: 2322742912773060846}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[5].stationTransform
+      value: 
+      objectReference: {fileID: 3436448281509774203}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[6].stationTransform
+      value: 
+      objectReference: {fileID: 5938373711256125400}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[7].stationTransform
+      value: 
+      objectReference: {fileID: 3234563391682025674}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[8].stationTransform
+      value: 
+      objectReference: {fileID: 1030126852976769347}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[9].stationTransform
+      value: 
+      objectReference: {fileID: 2282789206819022287}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[10].stationTransform
+      value: 
+      objectReference: {fileID: 6547673229859578442}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[11].stationTransform
+      value: 
+      objectReference: {fileID: 4219540843199766835}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[12].stationTransform
+      value: 
+      objectReference: {fileID: 4704235287778812272}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[13].stationTransform
+      value: 
+      objectReference: {fileID: 3110011292107993074}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[14].stationTransform
+      value: 
+      objectReference: {fileID: 1849592151875934097}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[15].stationTransform
+      value: 
+      objectReference: {fileID: 776273842116670094}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[16].stationTransform
+      value: 
+      objectReference: {fileID: 610779947019119113}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[17].stationTransform
+      value: 
+      objectReference: {fileID: 7750697634842445959}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[18].stationTransform
+      value: 
+      objectReference: {fileID: 2968693110412982010}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[19].stationTransform
+      value: 
+      objectReference: {fileID: 8538493613650581386}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[20].stationTransform
+      value: 
+      objectReference: {fileID: 1987565187649660756}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[21].stationTransform
+      value: 
+      objectReference: {fileID: 7735331024933460487}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[22].stationTransform
+      value: 
+      objectReference: {fileID: 6418531256108949702}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[23].stationTransform
+      value: 
+      objectReference: {fileID: 7189580867623246065}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[24].stationTransform
+      value: 
+      objectReference: {fileID: 566738828136716486}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[25].stationTransform
+      value: 
+      objectReference: {fileID: 1350980118597862309}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[26].stationTransform
+      value: 
+      objectReference: {fileID: 6420754124972989193}
+    - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: stationMappings.Array.data[27].stationTransform
+      value: 
+      objectReference: {fileID: 8274083821057238812}
+    - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+      propertyPath: m_Name
+      value: AGV2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+--- !u!4 &1965892855411101419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1262370172990920112, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
+  m_PrefabInstance: {fileID: 778163794050145115}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!1001 &786517429719977968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5884,17 +5876,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1901189735731246964, guid: 0334647913dbf2b49bf2d8f91c59fb24, type: 3}
   m_PrefabInstance: {fileID: 786517429719977968}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5856338972480128474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6606675284968639018, guid: 0334647913dbf2b49bf2d8f91c59fb24, type: 3}
-  m_PrefabInstance: {fileID: 786517429719977968}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!1001 &853525141285857628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6175,50 +6156,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 139042342128860084, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
   m_PrefabInstance: {fileID: 1517725726150679332}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1910967775364995449 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1122826293331067485, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
-  m_PrefabInstance: {fileID: 1517725726150679332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a14e146345be649b148a32bafcecfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
---- !u!114 &2115477690600387736 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 597751978458689468, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
-  m_PrefabInstance: {fileID: 1517725726150679332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a14e146345be649b148a32bafcecfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
---- !u!114 &2615240113323769816 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3556498484564403452, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
-  m_PrefabInstance: {fileID: 1517725726150679332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a14e146345be649b148a32bafcecfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
---- !u!114 &3881940259077522667 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2364222234344841167, guid: ac0e8ef66965b414b8acc62a2105a68f, type: 3}
-  m_PrefabInstance: {fileID: 1517725726150679332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a14e146345be649b148a32bafcecfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MagneticSensor
 --- !u!1001 &2104783411250500811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6276,17 +6213,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f859cccde4ceba44802a1f70483246d, type: 3}
---- !u!114 &2795767633170279029 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4321554062368489150, guid: 9f859cccde4ceba44802a1f70483246d, type: 3}
-  m_PrefabInstance: {fileID: 2104783411250500811}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &6001100438557434402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5655817796069668585, guid: 9f859cccde4ceba44802a1f70483246d, type: 3}
@@ -6358,17 +6284,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2693600386246508424, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
   m_PrefabInstance: {fileID: 3188240988326490385}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7850251559934777163 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4670050822478112346, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
-  m_PrefabInstance: {fileID: 3188240988326490385}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!1001 &3260445155473219903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6534,17 +6449,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
---- !u!114 &8281445198756079632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6904852827460831535, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
-  m_PrefabInstance: {fileID: 3260445155473219903}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &8928711901907935219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6257265368362499788, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
@@ -6611,17 +6515,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
---- !u!114 &945258535149801994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4159901713371521196, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
-  m_PrefabInstance: {fileID: 3793380194758095526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &4062507230630769211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 919904191566905501, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
@@ -6693,17 +6586,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4760933432099063231, guid: 66042504858bdd94aa4a17f9e4abd38a, type: 3}
   m_PrefabInstance: {fileID: 5895401116630181709}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3615092191067031561 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7204579787333447492, guid: 66042504858bdd94aa4a17f9e4abd38a, type: 3}
-  m_PrefabInstance: {fileID: 5895401116630181709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!1001 &6126682576802462488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6765,17 +6647,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3a31f470d0ad1e43b75bccb582c09da, type: 3}
---- !u!114 &3290461212510527492 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8695404548422277916, guid: c3a31f470d0ad1e43b75bccb582c09da, type: 3}
-  m_PrefabInstance: {fileID: 6126682576802462488}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &5149000051830338226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1329323937199425962, guid: c3a31f470d0ad1e43b75bccb582c09da, type: 3}
@@ -7064,6 +6935,10 @@ PrefabInstance:
     - target: {fileID: 2505150059137425048, guid: f8ef41a9da37844418eba58950cc0a58, type: 3}
       propertyPath: _poseObserver._toolCenterPointWorld._value.e23
       value: 3.1829958
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626935089538745511, guid: f8ef41a9da37844418eba58950cc0a58, type: 3}
+      propertyPath: detectableLayer.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 2626935089538745511, guid: f8ef41a9da37844418eba58950cc0a58, type: 3}
       propertyPath: onChangedDetected.m_PersistentCalls.m_Calls.Array.size
@@ -7410,17 +7285,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5, z: 0.1}
   m_Center: {x: 0, y: -0.06, z: 0.03}
---- !u!114 &9032831777430847495 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2626935089538745511, guid: f8ef41a9da37844418eba58950cc0a58, type: 3}
-  m_PrefabInstance: {fileID: 6426547811731834016}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!1001 &7157701398231333297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7586,17 +7450,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
---- !u!114 &7505176471612164744 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 825000147023115065, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
-  m_PrefabInstance: {fileID: 7157701398231333297}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &7567585795051359570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 743151457535079651, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
@@ -7663,17 +7516,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 430a91356a5b5eb44b8406fb8adf266c, type: 3}
---- !u!114 &4363152165461081371 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6856225083374902764, guid: 430a91356a5b5eb44b8406fb8adf266c, type: 3}
-  m_PrefabInstance: {fileID: 7181890811211522295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &7632094091997092872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 739037324259605759, guid: 430a91356a5b5eb44b8406fb8adf266c, type: 3}
@@ -7844,17 +7686,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f9a84c84f9995547bfbd5ba5a39f739, type: 3}
---- !u!114 &4676950587631640085 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4021333376411714662, guid: 4f9a84c84f9995547bfbd5ba5a39f739, type: 3}
-  m_PrefabInstance: {fileID: 8586526800793295475}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ce4df3bbd72344da5662546316cd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OpticalSensor
 --- !u!4 &7840591802036773787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2010320749836515816, guid: 4f9a84c84f9995547bfbd5ba5a39f739, type: 3}
@@ -8026,7 +7857,7 @@ PrefabInstance:
       objectReference: {fileID: 8274083821057238812}
     - target: {fileID: 9133644582487972412, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: m_Name
-      value: AGV
+      value: AGV1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

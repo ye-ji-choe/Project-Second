@@ -229,4 +229,23 @@ public class AGVController : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // 닿은 오브젝트의 태그가 "Part"인지 확인 (유니티 에디터에서 부품에 Part 태그 설정 필요)
+        if (other.CompareTag("Part"))
+        {
+            // 부품을 AGV의 자식으로 설정
+            other.transform.SetParent(this.transform);
+
+            // 물리 연산 때문에 이동 중 덜덜 떨리거나 떨어지는 것을 방지
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+            }
+
+            Debug.Log("[AGV] 부품을 성공적으로 실었습니다!");
+        }
+    }
 }

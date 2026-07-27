@@ -230,6 +230,14 @@ MonoBehaviour:
     address: D0
     description: "\uBAA9\uC801\uC9C0 \uC124\uBE44 \uBC88\uD638"
     comment: 
+  currentPositionAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uD604\uC7AC \uC704\uCE58 \uBC88\uD638"
+    comment: 
   OnChangedBusy:
     m_PersistentCalls:
       m_Calls:

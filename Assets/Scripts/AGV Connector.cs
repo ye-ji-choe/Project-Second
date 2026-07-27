@@ -16,12 +16,15 @@ public class AGVConnector : MXObject
     public DeviceAddress startOperationAddress = new DeviceAddress("기동 시작");
     public DeviceAddress destinationAddress = new DeviceAddress("목적지 설비 번호");
 
+    // [핵심 추가] PLC로 현재 위치 번호를 쏴주는 어드레스
+    public DeviceAddress currentPositionAddress = new DeviceAddress("현재 위치 번호");
+
     public UnityEvent<bool> OnChangedBusy;
 
     private bool haveToExecute;
     private int destinationNum = -1;
 
-    // [핵심 추가] AGV가 현재 도착해서 머물고 있는 정거장 번호를 기억
+    // AGV가 현재 도착해서 머물고 있는 정거장 번호를 기억
     private int currentStationNum = -1;
 
     private bool completedArrival;
@@ -43,8 +46,20 @@ public class AGVConnector : MXObject
         }
     }
 
+    // [핵심 추가] 현재 위치를 PLC로 전송하는 편의 함수
+    private void SetCurrentPositionToPLC(int positionNum)
+    {
+        if (currentPositionAddress.useDevice)
+            MXRequester.Get.AddSetDeviceRequest(currentPositionAddress.address, (short)positionNum);
+    }
+
     private void Start()
     {
+        // [강력 디버그 추가] 시작 시 유니티가 인식하는 통신 주소 상태 강제 출력
+        Debug.Log($"[{gameObject.name} AGVConnector] Start() 실행됨. " +
+                  $"목적지 주소: {destinationAddress.address} (체크됨: {destinationAddress.useDevice}), " +
+                  $"기동 주소: {startOperationAddress.address} (체크됨: {startOperationAddress.useDevice})");
+
         if (plcReadyAddress.useDevice)
             MXRequester.Get.AddDeviceAddress(plcReadyAddress.address, PLCReady);
 
@@ -53,6 +68,9 @@ public class AGVConnector : MXObject
 
         if (destinationAddress.useDevice)
             MXRequester.Get.AddDeviceAddress(destinationAddress.address, SetDestination);
+
+        // [추가] 초기 시작 시 현재 위치를 0(없음/이동중)으로 초기화
+        SetCurrentPositionToPLC(0);
     }
 
     private void PLCReady(short data)
@@ -122,6 +140,9 @@ public class AGVConnector : MXObject
         {
             haveToExecute = false;
 
+            // [추가] 기동을 시작하므로 현재 위치를 0으로 PLC에 전송
+            SetCurrentPositionToPLC(0);
+
             Debug.Log($"[AGVConnector] AGV Positioning 명령 하달 (최종 목적지: {destinationNum})");
             agv.Positioning(destinationNum);
             IsBusy = true;
@@ -149,6 +170,9 @@ public class AGVConnector : MXObject
         // [추가] 무사히 도착하면 현재 도착한 번호를 메모리에 기록해둠 (중복 기동 방지용)
         currentStationNum = destinationNum;
 
-        Debug.Log($"[AGVConnector] {destinationNum}번 도착 완료. 도착 신호 전송 및 Busy 해제");
+        // [추가] 도착 완료 시 현재 도착한 위치 번호를 PLC로 전송
+        SetCurrentPositionToPLC(currentStationNum);
+
+        Debug.Log($"[AGVConnector] {destinationNum}번 도착 완료. 신호 전송 및 현재위치 갱신");
     }
 }

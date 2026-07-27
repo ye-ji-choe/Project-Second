@@ -24,7 +24,9 @@ public class Placer : MonoBehaviour
         if(triggerList.Count > 0)
         {
             triggerList[0].transform.SetPositionAndRotation(PlacePosition.position, PlacePosition.rotation);
+   
         }
+
     }
 
 }

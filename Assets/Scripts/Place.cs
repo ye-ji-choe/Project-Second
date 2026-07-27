@@ -23,6 +23,7 @@ public class Place : StateMachineBehaviour
         {
             Debug.Log("Placing object");
             animator.GetComponent<HumanController>().placer?.place();
+            animator.GetComponent<HumanController>().placer2?.place();
             hasPlaced = true;
         }
         

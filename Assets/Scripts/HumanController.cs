@@ -7,6 +7,7 @@ public class HumanController : MonoBehaviour
     [Tooltip("제어할 사람의 Animator를 연결하세요.")]
     public Animator humanAnimator;
     public Placer placer; // Placer 스크립트 참조
+    public Placer placer2; // Placer 스크립트 참조
 
     // AGV 센서에 감지되었을 때 호출할 함수
     public void OnSensorTriggered(bool isDetected)

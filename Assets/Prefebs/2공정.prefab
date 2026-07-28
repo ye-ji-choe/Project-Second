@@ -9418,16 +9418,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RobotSequenceTask
   robotController: {fileID: 4414261108960377044}
   _targets:
-  - position: {x: -786.3, y: 945.4, z: 1328.9}
-    rotation: {x: 89.98, y: 0.001, z: 0}
-  - position: {x: 26.7, y: 945.4, z: 2039.6}
-    rotation: {x: 90, y: 0.001, z: 0}
-  - position: {x: 812, y: 945.4, z: 1375.7}
-    rotation: {x: 90, y: 0.001, z: 0}
-  - position: {x: -376.4, y: 485.4, z: 1428.9}
-    rotation: {x: -0.002, y: 90.004, z: 180.003}
-  - position: {x: 316.8, y: 485.4, z: 1428.9}
-    rotation: {x: -0.001, y: 90.005, z: 180}
+  - position: {x: 703, y: 1056.5, z: 1078}
+    rotation: {x: 87.446, y: 55.26, z: 54.406}
+  - position: {x: 716.2, y: 1080.3, z: 1995.7}
+    rotation: {x: 87.444, y: 55.283, z: 54.429}
+  - position: {x: 588.6, y: 1075.7, z: 1997.6}
+    rotation: {x: 87.444, y: 55.292, z: 54.438}
+  - position: {x: 575.5, y: 1052.1, z: 1089.3}
+    rotation: {x: 87.439, y: 55.383, z: 54.528}
+  - position: {x: 458.4, y: 1047.8, z: 1091.1}
+    rotation: {x: 87.438, y: 55.378, z: 54.524}
+  - position: {x: 471.4, y: 1071.2, z: 1991.9}
+    rotation: {x: 87.438, y: 55.371, z: 54.516}
+  - position: {x: 313, y: 1065.4, z: 1994.3}
+    rotation: {x: 87.438, y: 55.468, z: 54.611}
+  - position: {x: 299.9, y: 1042, z: 1089.1}
+    rotation: {x: 87.434, y: 55.501, z: 54.647}
+  - position: {x: 166, y: 1037.1, z: 1091.1}
+    rotation: {x: 87.431, y: 55.484, z: 54.629}
+  - position: {x: 179.2, y: 1060.8, z: 2005.6}
+    rotation: {x: 87.434, y: 55.513, z: 54.659}
+  - position: {x: 37.6, y: 1055.7, z: 2007.8}
+    rotation: {x: 87.434, y: 55.513, z: 54.659}
+  - position: {x: 24.3, y: 1031.7, z: 1084.4}
+    rotation: {x: 87.429, y: 55.482, z: 54.628}
+  - position: {x: -150.4, y: 1025.3, z: 1087.1}
+    rotation: {x: 87.428, y: 55.515, z: 54.666}
+  - position: {x: -137.4, y: 1048.8, z: 1990.9}
+    rotation: {x: 87.432, y: 55.451, z: 54.6}
+  - position: {x: -303.9, y: 1042.7, z: 1993.5}
+    rotation: {x: 87.429, y: 55.37, z: 54.516}
+  - position: {x: -316.8, y: 1019.4, z: 1099.5}
+    rotation: {x: 87.429, y: 55.37, z: 54.516}
+  - position: {x: -436.8, y: 1015, z: 1101.3}
+    rotation: {x: 87.429, y: 55.464, z: 54.609}
+  - position: {x: -424, y: 1038.1, z: 1989.9}
+    rotation: {x: 87.428, y: 55.485, z: 54.627}
+  - position: {x: -545.4, y: 1033.7, z: 1991.8}
+    rotation: {x: 87.428, y: 55.554, z: 54.696}
+  - position: {x: -558.6, y: 1010, z: 1080.6}
+    rotation: {x: 87.428, y: 55.615, z: 54.759}
   connector: {fileID: 3887605304281860698}
   defaultSpeed: 2
 --- !u!114 &4414261108960377044

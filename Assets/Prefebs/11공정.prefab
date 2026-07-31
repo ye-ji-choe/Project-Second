@@ -505,6 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanController
   humanAnimator: {fileID: 5771060774351699067}
   placer: {fileID: 0}
+  placer2: {fileID: 0}
 --- !u!136 &5104511375395444956
 CapsuleCollider:
   m_ObjectHideFlags: 0

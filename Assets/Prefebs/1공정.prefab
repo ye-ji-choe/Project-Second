@@ -160,6 +160,9 @@ MonoBehaviour:
   triggerList: []
   multiplier: 1
   currentVelocity: {x: 0, y: 0, z: 0}
+  useSnap: 0
+  grabPosition: {x: 0, y: 0, z: 0}
+  grabRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &8727193796081608263
 GameObject:
   m_ObjectHideFlags: 0

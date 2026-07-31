@@ -4,122 +4,112 @@ using System;
 
 public class GlueRobotConnector : MXObject
 {
-    public GlueRobotController controller; // 하우징 공정 로봇을 제어할 가상의 컨트롤러
-
-    [Header("PLC Addresses (로봇2_제2공정_접착제 도포)")]
-    // --- Unity가 PLC로 보내는 신호 (Read Only for PLC) ---
-    public DeviceAddress busyAddress = new DeviceAddress("BUSY 신호"); // X80
-    public DeviceAddress robotReadyAddress = new DeviceAddress("ROBOT READY"); // X81
-    public DeviceAddress cycleCompleteAddress = new DeviceAddress("사이클 작업 완료"); // X84
-    public DeviceAddress homePositionAddress = new DeviceAddress("Home Position"); // X88
-    public DeviceAddress areaSensorAddress = new DeviceAddress("Area Sensor"); // X89
-
-    // --- PLC가 Unity로 보내는 신호 (Write Only for PLC) ---
-    public DeviceAddress startOperationAddress = new DeviceAddress("기동 시작"); // Y100
-    public DeviceAddress motorOnAddress = new DeviceAddress("Motor ON"); // Y101
-    public DeviceAddress motorOffAddress = new DeviceAddress("Motor OFF"); // Y102
+    // ==========================================
+    // 1. 로봇 시퀀스 연결 (사진과 동일한 구조)
+    // ==========================================
+    [Header("로봇 시퀀스 연결")]
+    // 💡 타입을 'Task'로 변경했습니다. 이제 작성하신 글루 로봇 시퀀스가 정상적으로 드래그 됩니다!
+    public GlueRobotSequenceTask robotTask;
 
     public float feedbackTime = 0.3f;
 
-    private bool haveToExecute = false;
-    private bool completedCycle = false;
-    private float remainFeedbackTime;
+    // ==========================================
+    // 2. PLC -> Unity (RX) 수신부 
+    // ==========================================
+    [Header("PLC Addresses (RX: PLC -> 로봇)")]
+    public DeviceAddress startSignalAddress = new DeviceAddress("기동 신호 (M2110)");
+    public DeviceAddress taskValueAddress = new DeviceAddress("목적지 번호 (D0)");
+
+    [Header("PLC Addresses (TX: 로봇 -> PLC)")]
+    public DeviceAddress busyAddress = new DeviceAddress("BUSY 신호 (M81)");
+    public DeviceAddress cycleCompleteAddress = new DeviceAddress("사이클 완료 (M1094)");
+
+    private bool haveToExecute;
+    private int currentTaskValue;
+    private bool completedCycle;
+    private float remainCompletedTime;
+
+    private bool isStartSignalOn = false;
+
+    private bool isBusy;
+    public bool IsBusy
+    {
+        get => isBusy;
+        set
+        {
+            if (isBusy == value) return;
+            isBusy = value;
+            if (busyAddress.useDevice)
+                MXRequester.Get.AddSetDeviceRequest(busyAddress.address, (short)(value ? 1 : 0));
+        }
+    }
 
     private void Start()
     {
-        // PLC로부터 읽어올 데이터 구독 (기동 시작, 모터 ON/OFF)
-        if (startOperationAddress.useDevice)
-            MXRequester.Get.AddDeviceAddress(startOperationAddress.address, StartOperation);
+        if (startSignalAddress.useDevice)
+            MXRequester.Get.AddDeviceAddress(startSignalAddress.address, OnStartSignalReceived);
 
-        if (motorOnAddress.useDevice)
-            MXRequester.Get.AddDeviceAddress(motorOnAddress.address, MotorOn);
+        if (taskValueAddress.useDevice)
+            MXRequester.Get.AddDeviceAddress(taskValueAddress.address, OnTaskValueReceived);
+    }
 
-        if (motorOffAddress.useDevice)
-            MXRequester.Get.AddDeviceAddress(motorOffAddress.address, MotorOff);
+    private void OnStartSignalReceived(short data)
+    {
+        bool previousSignal = isStartSignalOn;
+        isStartSignalOn = (data != 0);
+
+        if (!previousSignal && isStartSignalOn)
+        {
+            if (!IsBusy)
+            {
+                Debug.Log("[RobotConnector] 기동 신호 상승 에지 확인. 기동 준비!");
+                haveToExecute = true;
+            }
+            else
+            {
+                Debug.LogWarning("[RobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
+            }
+        }
+    }
+
+    private void OnTaskValueReceived(short data)
+    {
+        currentTaskValue = data;
     }
 
     private void Update()
     {
-        // 기동 시작(Y100) 신호 처리
-        if (haveToExecute)
+        if (haveToExecute && currentTaskValue == 1)
         {
-            if (controller != null)
-            {
-                // 컨트롤러에 로봇 사이클 시작 명령
-                controller.StartCycle();
-            }
+            Debug.Log("[RobotConnector] 시퀀스 Task 시작 및 Busy ON");
 
-            // 작업 시작과 동시에 BUSY 신호(X80) ON
-            if (busyAddress.useDevice)
-                MXRequester.Get.AddSetDeviceRequest(busyAddress.address, 1);
+            // [수정 핵심] 변수만 켜주는 것이 아니라 Task 자체를 처음부터 재실행(빌드) 시킵니다.
+            // ⚠️ 주의: 사용하시는 프레임워크에 따라 Play(), Restart(), Execute(), StartTask() 중 하나일 수 있습니다.
+            // 빨간줄이 뜬다면 해당 Task 클래스에서 '실행'을 담당하는 함수 이름으로 바꿔주세요.
+            robotTask.Play();
 
+            IsBusy = true;
             haveToExecute = false;
         }
 
-        // 사이클 완료(X84) 신호를 보낸 후 일정 시간이 지나면 신호 OFF
-        if (completedCycle && remainFeedbackTime < Time.time)
+        if (completedCycle && remainCompletedTime < Time.time)
         {
-            completedCycle = false;
             if (cycleCompleteAddress.useDevice)
                 MXRequester.Get.AddSetDeviceRequest(cycleCompleteAddress.address, 0);
+
+            completedCycle = false;
         }
     }
 
-    // --- PLC에서 Unity로 들어오는 신호 처리 (Read) ---
-    private void StartOperation(short data)
-    {
-        // Y100: 기동 시작
-        haveToExecute = data != 0;
-    }
-
-    private void MotorOn(short data)
-    {
-        // Y101: Motor ON
-        if (data != 0 && controller != null)
-            controller.SetMotorState(true);
-    }
-
-    private void MotorOff(short data)
-    {
-        // Y102: Motor OFF
-        if (data != 0 && controller != null)
-            controller.SetMotorState(false);
-    }
-
-    // --- Unity에서 PLC로 보내는 신호 처리 (Write) ---
-
-    /// <summary>
-    /// 로봇의 하우징 공정 사이클이 완료되었을 때 컨트롤러에서 호출해주는 함수
-    /// </summary>
     public void OnCycleCompleted()
     {
-        // 사이클 작업 완료 신호(X84) ON
+        completedCycle = true;
+        remainCompletedTime = Time.time + feedbackTime;
+
         if (cycleCompleteAddress.useDevice)
             MXRequester.Get.AddSetDeviceRequest(cycleCompleteAddress.address, 1);
 
-        // BUSY 신호(X80) OFF
-        if (busyAddress.useDevice)
-            MXRequester.Get.AddSetDeviceRequest(busyAddress.address, 0);
-
-        completedCycle = true;
-        remainFeedbackTime = Time.time + feedbackTime;
-    }
-
-    /// <summary>
-    /// 로봇의 현재 상태(Ready, Home, Sensor 등)를 갱신할 때 사용하는 함수
-    /// </summary>
-    public void UpdateRobotStatus(bool isReady, bool isHome, bool isSensorTriggered)
-    {
-        // ROBOT READY 신호(X81)
-        if (robotReadyAddress.useDevice)
-            MXRequester.Get.AddSetDeviceRequest(robotReadyAddress.address, (short)(isReady ? 1 : 0));
-
-        // Home Position 신호(X88)
-        if (homePositionAddress.useDevice)
-            MXRequester.Get.AddSetDeviceRequest(homePositionAddress.address, (short)(isHome ? 1 : 0));
-
-        // Area Sensor 신호(X89)
-        if (areaSensorAddress.useDevice)
-            MXRequester.Get.AddSetDeviceRequest(areaSensorAddress.address, (short)(isSensorTriggered ? 1 : 0));
+        IsBusy = false;
+        Debug.Log("[RobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 시작.");
     }
 }

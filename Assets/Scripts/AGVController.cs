@@ -18,10 +18,13 @@ public class AGVController : MonoBehaviour
     public Vector3 partLoadPosition = new Vector3(0f, 0f, 0.38f);
     public Vector3 partLoadRotation = new Vector3(0f, -90f, -90f);
 
+    // 💡 1공정 판과 12공정 판을 구분하기 위한 스위치
+    private bool isFirstPartLoaded = false;
+
     // ==========================================
     // 2공정: 배터리(Battery) 2개 세팅
     // ==========================================
-    [Header("3공정: Battery(배터리) 세팅")]
+    [Header("3공정: BATTERY(배터리) 세팅")]
     public Vector3[] batterySlotPositions = new Vector3[2];
     public Vector3[] batterySlotRotations = new Vector3[2];
     private int currentBatteryCount = 0;
@@ -42,11 +45,18 @@ public class AGVController : MonoBehaviour
     private int currentStrCount = 0;
 
     // ==========================================
-    // 5공정: BMS 세팅 (마지막 공정 추가!)
+    // 5공정: BMS 세팅 
     // ==========================================
     [Header("11공정: BMS 세팅")]
-    public Vector3 bmsLoadPosition = new Vector3(0f, 0f, 0.6f); // 필요에 따라 높이 맞게 수정
+    public Vector3 bmsLoadPosition = new Vector3(0f, 0f, 0.6f);
     public Vector3 bmsLoadRotation = new Vector3(0f, 0f, 0f);
+
+    // ==========================================
+    // 마지막 공정: 12공정 Part 덮기 (새로 추가됨!)
+    // ==========================================
+    [Header("12공정: 마지막 Part 세팅")]
+    public Vector3 finalPartLoadPosition = new Vector3(0f, 0f, 0.7f); // 맨 위에 덮히도록 높이 조절
+    public Vector3 finalPartLoadRotation = new Vector3(0f, -90f, -90f);
 
 
     [System.Serializable]
@@ -204,26 +214,45 @@ public class AGVController : MonoBehaviour
     }
 
     // ==========================================
-    // 각 공정별 적재 처리 로직 (1~5공정 완벽 통합)
+    // 각 공정별 적재 처리 로직 (1~12공정 완벽 통합)
     // ==========================================
     private void ProcessItem(GameObject item)
     {
-        // 1공정: 판 (Part)
+        // 💡 1공정 & 12공정 처리: 동일한 "Part" 태그를 사용할 때 스위치(isFirstPartLoaded)로 구분!
         if (item.CompareTag("Part"))
         {
-            item.transform.SetParent(this.transform);
-            item.transform.localPosition = partLoadPosition;
-            item.transform.localRotation = Quaternion.Euler(partLoadRotation);
+            if (!isFirstPartLoaded)
+            {
+                // [1공정 처리]
+                item.transform.SetParent(this.transform);
+                item.transform.localPosition = partLoadPosition;
+                item.transform.localRotation = Quaternion.Euler(partLoadRotation);
 
-            Rigidbody rb = item.GetComponent<Rigidbody>();
-            if (rb != null) rb.isKinematic = true;
+                Rigidbody rb = item.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
 
-            item.tag = "Untagged";
-            Debug.Log($"[AGV] 1공정 판({item.name}) 탑재 완료!");
+                item.tag = "Untagged"; // 적재 완료된 부품은 태그 해제
+                isFirstPartLoaded = true; // 1공정 완료 스위치 ON
+
+                Debug.Log($"[AGV] 1공정 판({item.name}) 탑재 완료!");
+            }
+            else
+            {
+                // [12공정 처리] 이미 1공정 판이 들어온 적 있다면 마지막 판으로 간주!
+                item.transform.SetParent(this.transform);
+                item.transform.localPosition = finalPartLoadPosition;
+                item.transform.localRotation = Quaternion.Euler(finalPartLoadRotation);
+
+                Rigidbody rb = item.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
+
+                item.tag = "Untagged";
+                Debug.Log($"[AGV] 12공정 Part({item.name}) 탑재 완료! 덮개 조립 끝!");
+            }
         }
 
         // 3공정: 배터리 (Battery)
-        else if (item.CompareTag("Battery"))
+        else if (item.CompareTag("BATTERY"))
         {
             if (currentBatteryCount < batterySlotPositions.Length)
             {
@@ -255,7 +284,7 @@ public class AGVController : MonoBehaviour
             if (rb != null) rb.isKinematic = true;
 
             item.tag = "Untagged";
-            Debug.Log($"[AGV] 3공정 CCS({item.name}) 탑재 완료!");
+            Debug.Log($"[AGV] 7공정 CCS({item.name}) 탑재 완료!");
         }
 
         // 9공정: STR
@@ -272,7 +301,7 @@ public class AGVController : MonoBehaviour
 
                 item.tag = "Untagged";
                 currentStrCount++;
-                Debug.Log($"[AGV] 4공정 STR {currentStrCount}번째 탑재 완료!");
+                Debug.Log($"[AGV] 9공정 STR {currentStrCount}번째 탑재 완료!");
             }
             else
             {
@@ -280,7 +309,7 @@ public class AGVController : MonoBehaviour
             }
         }
 
-        // 11공정: BMS (마지막!)
+        // 11공정: BMS
         else if (item.CompareTag("BMS"))
         {
             item.transform.SetParent(this.transform);
@@ -291,7 +320,7 @@ public class AGVController : MonoBehaviour
             if (rb != null) rb.isKinematic = true;
 
             item.tag = "Untagged";
-            Debug.Log($"[AGV] 5공정 BMS({item.name}) 탑재 완료! 모든 공정 완료!");
+            Debug.Log($"[AGV] 11공정 BMS({item.name}) 탑재 완료!");
         }
     }
 }

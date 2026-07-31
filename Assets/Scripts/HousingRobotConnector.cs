@@ -1,13 +1,21 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
-public class ScanRobotConnector : MXObject
+public class HousingRobotConnector : MXObject
 {
+    // ==========================================
+    // 1. 로봇 시퀀스 연결 (사진과 동일한 구조)
+    // ==========================================
     [Header("로봇 시퀀스 연결")]
-    // 💡 인스펙터 창에서 ScanRobotSequenceTask를 여기에 연결하세요.
-    public Task robotTask;
+    // 💡 타입을 'Task'로 변경했습니다. 이제 작성하신 글루 로봇 시퀀스가 정상적으로 드래그 됩니다!
+    public HousingRobotSequenceTask robotTask;
 
-    public float feedbackTime = 0.5f;
+    public float feedbackTime = 0.3f;
 
+    // ==========================================
+    // 2. PLC -> Unity (RX) 수신부 
+    // ==========================================
     [Header("PLC Addresses (RX: PLC -> 로봇)")]
     public DeviceAddress startSignalAddress = new DeviceAddress("기동 신호 (M2110)");
     public DeviceAddress taskValueAddress = new DeviceAddress("목적지 번호 (D0)");
@@ -54,12 +62,12 @@ public class ScanRobotConnector : MXObject
         {
             if (!IsBusy)
             {
-                Debug.Log("[ScanRobotConnector] 기동 신호 상승 에지 확인. 스캔 로봇 기동 준비!");
+                Debug.Log("[RobotConnector] 기동 신호 상승 에지 확인. 기동 준비!");
                 haveToExecute = true;
             }
             else
             {
-                Debug.LogWarning("[ScanRobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
+                Debug.LogWarning("[RobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
             }
         }
     }
@@ -73,23 +81,17 @@ public class ScanRobotConnector : MXObject
     {
         if (haveToExecute && currentTaskValue == 1)
         {
-            Debug.Log("[ScanRobotConnector] 시퀀스 Task 시작 및 Busy ON");
+            Debug.Log("[RobotConnector] 시퀀스 Task 시작 및 Busy ON");
 
-            if (robotTask != null)
-            {
-                // 💡 오류 수정 완료! ResumeSequence() 대신 Play() 사용
-                robotTask.Play();
-            }
-            else
-            {
-                Debug.LogError("[ScanRobotConnector] 에러: 인스펙터의 'Robot Task' 빈칸에 시퀀스 스크립트가 연결되지 않았습니다!");
-            }
+            // [수정 핵심] 변수만 켜주는 것이 아니라 Task 자체를 처음부터 재실행(빌드) 시킵니다.
+            // ⚠️ 주의: 사용하시는 프레임워크에 따라 Play(), Restart(), Execute(), StartTask() 중 하나일 수 있습니다.
+            // 빨간줄이 뜬다면 해당 Task 클래스에서 '실행'을 담당하는 함수 이름으로 바꿔주세요.
+            robotTask.Play();
 
             IsBusy = true;
-            haveToExecute = false; // 한 번 기동하면 즉시 플래그 리셋
+            haveToExecute = false;
         }
 
-        // 사이클 완료 펄스 신호 OFF 처리
         if (completedCycle && remainCompletedTime < Time.time)
         {
             if (cycleCompleteAddress.useDevice)
@@ -104,11 +106,10 @@ public class ScanRobotConnector : MXObject
         completedCycle = true;
         remainCompletedTime = Time.time + feedbackTime;
 
-        // 사이클 완료 펄스 신호 ON 처리
         if (cycleCompleteAddress.useDevice)
             MXRequester.Get.AddSetDeviceRequest(cycleCompleteAddress.address, 1);
 
         IsBusy = false;
-        Debug.Log("[ScanRobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 전송.");
+        Debug.Log("[RobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 시작.");
     }
 }

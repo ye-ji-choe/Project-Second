@@ -991,7 +991,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScanRobotConnector
   robotTask: {fileID: 5981091450455386054}
   feedbackTime: 0.5
-  passProbability: 80
   startSignalAddress:
     useDevice: 1
     useDoubleWord: 0
@@ -1023,22 +1022,6 @@ MonoBehaviour:
     label: 
     address: M1164
     description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
-    comment: 
-  passAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: M1166
-    description: "PASS \uC2E0\uD638 (M1095)"
-    comment: 
-  ngAddress:
-    useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: M1167
-    description: "NG \uC2E0\uD638 (M1096)"
     comment: 
 --- !u!114 &5981091450455386054
 MonoBehaviour:

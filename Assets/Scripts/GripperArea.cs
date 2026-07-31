@@ -34,8 +34,13 @@ public class GripperArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 1. 닿은 것이 부품(Part)이고, 방금 막 놓은 상태가 아닐 때만 잡는다.
-        if (other.CompareTag("Part") && !isJustDropped)
+        // 💡 [수정] 디버깅용 로그: 그리퍼 센서에 무언가 닿을 때마다 콘솔에 출력합니다.
+        // 배터리를 들고 내려갔을 때 "AGV"가 감지되는지 이 로그를 통해 확인하세요!
+        Debug.Log($"[GripperArea] 충돌 감지됨: {other.name} (태그: {other.tag})");
+
+        // 1. 닿은 것이 부품(Part)이거나 배터리(BATTERY)이고, 방금 막 놓은 상태가 아닐 때만 잡는다.
+        // 💡 [수정] Part와 BATTERY 코드가 똑같아서 하나로 합쳐서 깔끔하게 정리했습니다.
+        if ((other.CompareTag("Part") || other.CompareTag("BATTERY")) && !isJustDropped)
         {
             if (!triggerList.Contains(other))
             {

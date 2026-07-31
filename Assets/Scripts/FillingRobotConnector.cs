@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class ScanRobotConnector : MXObject
+public class FillingRobotConnector : MXObject
 {
     [Header("로봇 시퀀스 연결")]
-    // 💡 인스펙터 창에서 ScanRobotSequenceTask를 여기에 연결하세요.
-    public Task robotTask;
+    // 💡 인스펙터 연결 오류(드래그 앤 드롭 불가)를 방지하기 위해 Task로 선언했습니다.
+    // 방금 작성하신 'FillingRobotSequenceTask'를 여기에 끌어다 넣으시면 됩니다!
+    public FillingRobotSequenceTask robotTask;
 
     public float feedbackTime = 0.5f;
 
@@ -54,12 +55,12 @@ public class ScanRobotConnector : MXObject
         {
             if (!IsBusy)
             {
-                Debug.Log("[ScanRobotConnector] 기동 신호 상승 에지 확인. 스캔 로봇 기동 준비!");
+                Debug.Log("[FillingRobotConnector] 기동 신호 상승 에지 확인. 충진(Filling) 작업 기동 준비!");
                 haveToExecute = true;
             }
             else
             {
-                Debug.LogWarning("[ScanRobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
+                Debug.LogWarning("[FillingRobotConnector] 기동 신호가 들어왔으나 로봇이 이미 Busy 상태입니다.");
             }
         }
     }
@@ -73,20 +74,20 @@ public class ScanRobotConnector : MXObject
     {
         if (haveToExecute && currentTaskValue == 1)
         {
-            Debug.Log("[ScanRobotConnector] 시퀀스 Task 시작 및 Busy ON");
+            Debug.Log("[FillingRobotConnector] 시퀀스 Task 시작 및 Busy ON");
 
+            // 연결된 시퀀스 Task 실행 (null 체크 추가하여 안전성 확보)
             if (robotTask != null)
             {
-                // 💡 오류 수정 완료! ResumeSequence() 대신 Play() 사용
                 robotTask.Play();
             }
             else
             {
-                Debug.LogError("[ScanRobotConnector] 에러: 인스펙터의 'Robot Task' 빈칸에 시퀀스 스크립트가 연결되지 않았습니다!");
+                Debug.LogError("[FillingRobotConnector] 에러: 인스펙터의 'Robot Task' 빈칸에 시퀀스 스크립트가 연결되지 않았습니다!");
             }
 
             IsBusy = true;
-            haveToExecute = false; // 한 번 기동하면 즉시 플래그 리셋
+            haveToExecute = false;
         }
 
         // 사이클 완료 펄스 신호 OFF 처리
@@ -109,6 +110,6 @@ public class ScanRobotConnector : MXObject
             MXRequester.Get.AddSetDeviceRequest(cycleCompleteAddress.address, 1);
 
         IsBusy = false;
-        Debug.Log("[ScanRobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 전송.");
+        Debug.Log("[FillingRobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 전송.");
     }
 }

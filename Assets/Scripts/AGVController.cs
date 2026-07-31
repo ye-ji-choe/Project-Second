@@ -11,16 +11,53 @@ public class AGVController : MonoBehaviour
     public float rotationSpeed = 120.0f;
     public float rotationOffset = 90.0f;
 
-    // [수정 1] PLC ID와 목적지 Transform을 연결하는 구조체 선언
+    // ==========================================
+    // 1공정: 판(Plate) 세팅
+    // ==========================================
+    [Header("1공정: Part(판) 세팅")]
+    public Vector3 partLoadPosition = new Vector3(0f, 0f, 0.38f);
+    public Vector3 partLoadRotation = new Vector3(0f, -90f, -90f);
+
+    // ==========================================
+    // 2공정: 배터리(Battery) 2개 세팅
+    // ==========================================
+    [Header("3공정: Battery(배터리) 세팅")]
+    public Vector3[] batterySlotPositions = new Vector3[2];
+    public Vector3[] batterySlotRotations = new Vector3[2];
+    private int currentBatteryCount = 0;
+
+    // ==========================================
+    // 3공정: CCS 세팅
+    // ==========================================
+    [Header("7공정: CCS 세팅")]
+    public Vector3 ccsLoadPosition = new Vector3(0f, 0f, 0.45f);
+    public Vector3 ccsLoadRotation = new Vector3(0f, 0f, -180f);
+
+    // ==========================================
+    // 4공정: STR 2개 세팅 
+    // ==========================================
+    [Header("9공정: STR 세팅")]
+    public Vector3[] strSlotPositions = new Vector3[2];
+    public Vector3[] strSlotRotations = new Vector3[2];
+    private int currentStrCount = 0;
+
+    // ==========================================
+    // 5공정: BMS 세팅 (마지막 공정 추가!)
+    // ==========================================
+    [Header("11공정: BMS 세팅")]
+    public Vector3 bmsLoadPosition = new Vector3(0f, 0f, 0.6f); // 필요에 따라 높이 맞게 수정
+    public Vector3 bmsLoadRotation = new Vector3(0f, 0f, 0f);
+
+
     [System.Serializable]
     public struct StationMapping
     {
-        public int plcId;               // 예: 100, 200, 601, 610 등
-        public Transform stationTransform; // 해당 ID의 목적지 좌표
+        public int plcId;
+        public Transform stationTransform;
     }
 
     [Header("Stations Mapping")]
-    public StationMapping[] stationMappings; // 기존 Transform[] stations 대체
+    public StationMapping[] stationMappings;
 
     [System.Serializable]
     public struct Waypoint
@@ -39,12 +76,10 @@ public class AGVController : MonoBehaviour
     private bool isMoving = false;
     private int currentWaypointIndex = 0;
     private List<Waypoint> currentPath = new List<Waypoint>();
-
     private Quaternion uprightTilt;
 
     private void Awake()
     {
-        // 씬 시작 시, 모델이 바닥에 똑바로 서 있는 상태의 X, Z 기울기 저장
         uprightTilt = Quaternion.Euler(transform.eulerAngles.x, 0, transform.eulerAngles.z);
     }
 
@@ -52,7 +87,6 @@ public class AGVController : MonoBehaviour
     {
         Debug.Log($"[AGV] 수신된 원본 PLC 명령: {plcCommand}");
 
-        // [수정 2] 배열 인덱스 대신, plcCommand와 일치하는 plcId를 가진 매핑 데이터를 검색
         Transform targetStation = null;
         foreach (var mapping in stationMappings)
         {
@@ -71,15 +105,10 @@ public class AGVController : MonoBehaviour
 
         currentPath.Clear();
 
-        // ==========================================
-        // [수정 3] 기존 인덱스 2번 기준이었던 동적 생성 로직을 PLC ID '200' 기준으로 변경
-        // ==========================================
         if (plcCommand == 200)
         {
-            Debug.Log("[AGV] 200번 설비 이동 시퀀스 작동 (동적 경로 생성)");
-
             Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
+            Vector3 forwardDir = -transform.right;
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
@@ -93,96 +122,35 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 602)
+        else if (plcCommand == 602 || plcCommand == 612 || plcCommand == 622 || plcCommand == 632)
         {
-            Debug.Log("[AGV] 602번 설비 이동 시퀀스 작동 (동적 경로 생성)");
-
             Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
+            Vector3 forwardDir = -transform.right;
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 4f);
-
-
             currentPath.Add(new Waypoint(reversePoint, true));
-
         }
-        else if (plcCommand == 612)
-        {
-            Debug.Log("[AGV] 602번 설비 이동 시퀀스 작동 (동적 경로 생성)");
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 4f);
-
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-
-        }
-        else if (plcCommand == 622)
-        {
-            Debug.Log("[AGV] 602번 설비 이동 시퀀스 작동 (동적 경로 생성)");
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 4f);
-
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-
-        }
-        else if (plcCommand == 632)
-        {
-            Debug.Log("[AGV] 602번 설비 이동 시퀀스 작동 (동적 경로 생성)");
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right; // AGV의 정면 (-X축)
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 4f);
-
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-
-        }
-        // 동적 경로가 아닌 경우, 딕셔너리에 정의된 사전 경로 검사 (Key값도 plcCommand 기준)
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
         {
-            Debug.Log($"[AGV] {plcCommand}번 설비 사전 정의된 접근 경로 적용");
             foreach (Waypoint wp in waypoints)
             {
                 currentPath.Add(wp);
             }
         }
-        else
-        {
-            Debug.Log($"[AGV] {plcCommand}번 설비는 경유지 없이 최종 목적지로 직행합니다.");
-        }
 
-        // 최종 목적지 추가
         currentPath.Add(new Waypoint(targetStation.position, false));
-
         currentWaypointIndex = 0;
         isMoving = true;
     }
 
     private void Update()
     {
-        // Update 문 내부의 이동 및 회전 로직은 변경할 필요가 없습니다.
         if (isMoving && currentPath.Count > 0)
         {
             Waypoint currentWaypoint = currentPath[currentWaypointIndex];
             Vector3 currentTargetPos = currentWaypoint.position;
             Vector3 targetPos = new Vector3(currentTargetPos.x, transform.position.y, currentTargetPos.z);
-
             Vector3 dirToTarget = (targetPos - transform.position).normalized;
 
             if (dirToTarget != Vector3.zero)
@@ -215,16 +183,11 @@ public class AGVController : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
             {
                 currentWaypointIndex++;
-
                 if (currentWaypointIndex >= currentPath.Count)
                 {
                     isMoving = false;
                     Debug.Log("[AGV] 최종 목적지 도착 완료!");
-
-                    if (connector != null)
-                    {
-                        connector.OnArrivalCompleted();
-                    }
+                    if (connector != null) connector.OnArrivalCompleted();
                 }
             }
         }
@@ -232,20 +195,103 @@ public class AGVController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 닿은 오브젝트의 태그가 "Part"인지 확인 (유니티 에디터에서 부품에 Part 태그 설정 필요)
-        if (other.CompareTag("Part"))
+        ProcessItem(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ProcessItem(collision.gameObject);
+    }
+
+    // ==========================================
+    // 각 공정별 적재 처리 로직 (1~5공정 완벽 통합)
+    // ==========================================
+    private void ProcessItem(GameObject item)
+    {
+        // 1공정: 판 (Part)
+        if (item.CompareTag("Part"))
         {
-            // 부품을 AGV의 자식으로 설정
-            other.transform.SetParent(this.transform);
+            item.transform.SetParent(this.transform);
+            item.transform.localPosition = partLoadPosition;
+            item.transform.localRotation = Quaternion.Euler(partLoadRotation);
 
-            // 물리 연산 때문에 이동 중 덜덜 떨리거나 떨어지는 것을 방지
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            if (rb != null)
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb != null) rb.isKinematic = true;
+
+            item.tag = "Untagged";
+            Debug.Log($"[AGV] 1공정 판({item.name}) 탑재 완료!");
+        }
+
+        // 3공정: 배터리 (Battery)
+        else if (item.CompareTag("Battery"))
+        {
+            if (currentBatteryCount < batterySlotPositions.Length)
             {
-                rb.isKinematic = true;
-            }
+                item.transform.SetParent(this.transform);
+                item.transform.localPosition = batterySlotPositions[currentBatteryCount];
+                item.transform.localRotation = Quaternion.Euler(batterySlotRotations[currentBatteryCount]);
 
-            Debug.Log("[AGV] 부품을 성공적으로 실었습니다!");
+                Rigidbody rb = item.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
+
+                item.tag = "Untagged";
+                currentBatteryCount++;
+                Debug.Log($"[AGV] 2공정 배터리 {currentBatteryCount}번째 탑재 완료!");
+            }
+            else
+            {
+                Debug.LogWarning("[AGV] 배터리 슬롯 2개가 이미 꽉 찼습니다!");
+            }
+        }
+
+        // 7공정: CCS
+        else if (item.CompareTag("CCS"))
+        {
+            item.transform.SetParent(this.transform);
+            item.transform.localPosition = ccsLoadPosition;
+            item.transform.localRotation = Quaternion.Euler(ccsLoadRotation);
+
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb != null) rb.isKinematic = true;
+
+            item.tag = "Untagged";
+            Debug.Log($"[AGV] 3공정 CCS({item.name}) 탑재 완료!");
+        }
+
+        // 9공정: STR
+        else if (item.CompareTag("STR"))
+        {
+            if (currentStrCount < strSlotPositions.Length)
+            {
+                item.transform.SetParent(this.transform);
+                item.transform.localPosition = strSlotPositions[currentStrCount];
+                item.transform.localRotation = Quaternion.Euler(strSlotRotations[currentStrCount]);
+
+                Rigidbody rb = item.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
+
+                item.tag = "Untagged";
+                currentStrCount++;
+                Debug.Log($"[AGV] 4공정 STR {currentStrCount}번째 탑재 완료!");
+            }
+            else
+            {
+                Debug.LogWarning("[AGV] STR 슬롯 2개가 이미 꽉 찼습니다!");
+            }
+        }
+
+        // 11공정: BMS (마지막!)
+        else if (item.CompareTag("BMS"))
+        {
+            item.transform.SetParent(this.transform);
+            item.transform.localPosition = bmsLoadPosition;
+            item.transform.localRotation = Quaternion.Euler(bmsLoadRotation);
+
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb != null) rb.isKinematic = true;
+
+            item.tag = "Untagged";
+            Debug.Log($"[AGV] 5공정 BMS({item.name}) 탑재 완료! 모든 공정 완료!");
         }
     }
 }

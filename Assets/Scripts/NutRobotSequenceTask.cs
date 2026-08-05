@@ -42,47 +42,47 @@ public class NutRobotSequenceTask : Task
         // ================= [ 2번 -> 4번 작업 ] =================
         this.Log("작업 위치 2번 이동 (볼트 픽업)");
         this.LIN(_targets[2], defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
 
         this.Log("작업 위치 4번 이동 (두 번째 볼트 체결)");
         this.LIN(_targets[4], defaultSpeed);
-        this.Offset(_targets[4], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[4], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[4], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[4], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[4], new Vector3(0, -300f, 0), defaultSpeed);
 
         // ================= [ 2번 -> 5번 작업 ] =================
         this.Log("작업 위치 2번 이동 (볼트 픽업)");
         this.LIN(_targets[2], defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
 
         this.Log("작업 위치 5번 이동 (세 번째 볼트 체결)");
         this.LIN(_targets[5], defaultSpeed);
-        this.Offset(_targets[5], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[5], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[5], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[5], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[5], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[5], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[5], new Vector3(0, -300f, 0), defaultSpeed);
 
         // ================= [ 2번 -> 6번 작업 ] =================
         this.Log("작업 위치 2번 이동 (볼트 픽업)");
         this.LIN(_targets[2], defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[2], new Vector3(0, -300f, 0), defaultSpeed);
 
         this.Log("작업 위치 6번 이동 (네 번째 볼트 체결)");
         this.LIN(_targets[6], defaultSpeed);
-        this.Offset(_targets[6], new Vector3(0, -300f, -600f), defaultSpeed);
-        this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
-        this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
+        this.Offset(_targets[6], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[6], new Vector3(0, -300f, 0), defaultSpeed);
+        this.Offset(_targets[6], new Vector3(0, 0f, 0), defaultSpeed);
+        this.Offset(_targets[6], new Vector3(0, -300f, 0), defaultSpeed);
 
         // ================= [ 0번: 원점 복귀 ] =================
         this.Log("작업 완료. Home 포인트로 복귀 시작");

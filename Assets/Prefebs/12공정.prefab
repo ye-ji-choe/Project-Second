@@ -967,6 +967,10 @@ PrefabInstance:
       propertyPath: _position._value
       value: 31.424
       objectReference: {fileID: 0}
+    - target: {fileID: 8306186982221718826, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      propertyPath: robotController
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1260855665337479529, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
@@ -1803,6 +1807,10 @@ PrefabInstance:
     - target: {fileID: 8303807180784095764, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
       value: 100.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306186982221718826, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
+      propertyPath: robotController
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

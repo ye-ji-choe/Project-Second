@@ -525,34 +525,13 @@ MonoBehaviour:
     address: X1F
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
-  laserSensorAddresses:
-  - useDevice: 1
+  laserSensorAddress:
+    useDevice: 1
     useDoubleWord: 0
     isLocked: 0
     label: 
     address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 1 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 2 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 3 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 4 \uC778\uC2DD"
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
     useDevice: 1
@@ -577,11 +556,7 @@ MonoBehaviour:
   connector: {fileID: 8163664299838751370}
   doorAnimator: {fileID: 8811791881878723453}
   magneticSensor: {fileID: 2433003130457165461}
-  laserSensors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!1 &564836695352114680
 GameObject:
@@ -828,34 +803,13 @@ MonoBehaviour:
     address: X1E
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
-  laserSensorAddresses:
-  - useDevice: 1
+  laserSensorAddress:
+    useDevice: 1
     useDoubleWord: 0
     isLocked: 0
     label: 
     address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 1 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 2 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 3 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 4 \uC778\uC2DD"
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
     useDevice: 1
@@ -880,11 +834,7 @@ MonoBehaviour:
   connector: {fileID: 7903166142081330383}
   doorAnimator: {fileID: 6963844455673146298}
   magneticSensor: {fileID: 6601002405902205815}
-  laserSensors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!1 &766798239070667911
 GameObject:
@@ -1134,34 +1084,13 @@ MonoBehaviour:
     address: X1C
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
-  laserSensorAddresses:
-  - useDevice: 1
+  laserSensorAddress:
+    useDevice: 1
     useDoubleWord: 0
-    isLocked: 1
+    isLocked: 0
     label: 
-    address: X45
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 1 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X46
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 2 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X47
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 3 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 1
-    label: 
-    address: X48
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 4 \uC778\uC2DD"
+    address: 
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
     useDevice: 1
@@ -1186,11 +1115,7 @@ MonoBehaviour:
   connector: {fileID: 6452571171884171484}
   doorAnimator: {fileID: 2602131391131665650}
   magneticSensor: {fileID: 726286919568150767}
-  laserSensors:
-  - {fileID: 3727728178914574925}
-  - {fileID: 3634183015625756117}
-  - {fileID: 8948497601181379373}
-  - {fileID: 1004352466465504680}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!1 &1326366726490246255
 GameObject:
@@ -3306,34 +3231,13 @@ MonoBehaviour:
     address: X1D
     description: "\uB9C8\uADF8\uB124\uD2F1 \uC13C\uC11C \uC778\uC2DD (AGV \uC55E)"
     comment: 
-  laserSensorAddresses:
-  - useDevice: 1
+  laserSensorAddress:
+    useDevice: 1
     useDoubleWord: 0
     isLocked: 0
     label: 
     address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 1 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 2 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 3 \uC778\uC2DD"
-    comment: 
-  - useDevice: 1
-    useDoubleWord: 0
-    isLocked: 0
-    label: 
-    address: 
-    description: "\uB808\uC774\uC800 \uC13C\uC11C 4 \uC778\uC2DD"
+    description: "\uB808\uC774\uC800 \uC13C\uC11C \uC778\uC2DD (AGV \uC548)"
     comment: 
   chamberCompleteAddress:
     useDevice: 1
@@ -3358,11 +3262,7 @@ MonoBehaviour:
   connector: {fileID: 3119681727254444120}
   doorAnimator: {fileID: 7077145918983979504}
   magneticSensor: {fileID: 4542448712112219058}
-  laserSensors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  laserSensor: {fileID: 0}
   doorAnimDuration: 2
 --- !u!1 &9123476200332669219
 GameObject:

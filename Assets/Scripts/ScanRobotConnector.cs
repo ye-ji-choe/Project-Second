@@ -16,6 +16,12 @@ public class ScanRobotConnector : MXObject
     public DeviceAddress busyAddress = new DeviceAddress("BUSY 신호 (M81)");
     public DeviceAddress cycleCompleteAddress = new DeviceAddress("사이클 완료 (M1094)");
 
+    // ==========================================
+    // ▼ 판정 결과 전송용 어드레스 추가 ▼
+    // ==========================================
+    public DeviceAddress passAddress = new DeviceAddress("스캔 패스 (M1166)");
+    public DeviceAddress ngAddress = new DeviceAddress("스캔 NG (M1167)");
+
     private bool haveToExecute;
     private int currentTaskValue;
     private bool completedCycle;
@@ -75,9 +81,12 @@ public class ScanRobotConnector : MXObject
         {
             Debug.Log("[ScanRobotConnector] 시퀀스 Task 시작 및 Busy ON");
 
+            // 💡 새 사이클 기동 시 이전 판정 결과(PASS/NG) 초기화 (Clear)
+            SendPassSignal(0);
+            SendNGSignal(0);
+
             if (robotTask != null)
             {
-                // 💡 오류 수정 완료! ResumeSequence() 대신 Play() 사용
                 robotTask.Play();
             }
             else
@@ -110,5 +119,27 @@ public class ScanRobotConnector : MXObject
 
         IsBusy = false;
         Debug.Log("[ScanRobotConnector] 로봇 사이클 완료. Busy OFF 및 완료 펄스 전송.");
+    }
+
+    // ==========================================
+    // ▼ 판정 신호 송신용 메서드 추가 ▼
+    // ==========================================
+
+    /// <summary>
+    /// 스캔 PASS 신호 전송 (Task에서 호출)
+    /// </summary>
+    public void SendPassSignal(short value)
+    {
+        if (passAddress.useDevice)
+            MXRequester.Get.AddSetDeviceRequest(passAddress.address, value);
+    }
+
+    /// <summary>
+    /// 스캔 NG 신호 전송 (Task에서 호출)
+    /// </summary>
+    public void SendNGSignal(short value)
+    {
+        if (ngAddress.useDevice)
+            MXRequester.Get.AddSetDeviceRequest(ngAddress.address, value);
     }
 }

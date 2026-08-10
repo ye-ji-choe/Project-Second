@@ -122,20 +122,82 @@ public class AGVController : MonoBehaviour
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 2.2f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 2.2f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
+        else if (plcCommand == 300)
+        {
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        else if (plcCommand == 400)
+        {
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        else if (plcCommand == 499)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2.5f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+
+        }
+        else if (plcCommand == 500)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 rightPoint = currentPos + (rightDir * 1f);
+
+            currentPath.Add(new Waypoint(rightPoint, false));
+
+        }
         else if (plcCommand == 501)
         {
 
-            float offsetDistance = 3f;
+            float offsetDistance = 2.5f;
 
             // 진입 방향 설정 (기존 코드의 AGV 직진 축인 -right 기준 적용)
             Vector3 forwardDir = -transform.right;
@@ -156,7 +218,8 @@ public class AGVController : MonoBehaviour
             Vector3 forwardDir = -transform.right;
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
-            Vector3 reversePoint = currentPos - (forwardDir * 4f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
+
             currentPath.Add(new Waypoint(reversePoint, true));
         }
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
@@ -166,19 +229,163 @@ public class AGVController : MonoBehaviour
                 currentPath.Add(wp);
             }
         }
+        else if (plcCommand == 610)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+
+        }
         else if (plcCommand == 700)
         {
 
-            float offsetDistance = 3f;
-
-            // 진입 방향 설정 (기존 코드의 AGV 직진 축인 -right 기준 적용)
+            Vector3 currentPos = transform.position;
             Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
 
-            // 501 최종 목적지(targetStation.position)에서 진입 방향의 반대쪽(뒤)으로 떨어진 위치 계산
-            Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
-            // 1. 목적지 뒤 300 지점을 먼저 경유하도록 리스트에 추가 (정방향으로 접근하므로 역방향 이동 flag는 false)
-            currentPath.Add(new Waypoint(preApproachPoint, false));
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 800)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 900)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 1000)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 1100)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 1200)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 1400)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+
+        }
+        else if (plcCommand == 1300)
+        {
+
+            Vector3 currentPos = transform.position;
+            Vector3 forwardDir = -transform.right;
+            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+            Vector3 leftDir = -rightDir;
+
+            Vector3 reversePoint = currentPos - (forwardDir * 2f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
 
         }
 

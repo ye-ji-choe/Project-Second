@@ -8240,11 +8240,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5222427346153516982, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
   m_PrefabInstance: {fileID: 2156850184553793883}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6555420629320610857 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5122602151939194226, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
-  m_PrefabInstance: {fileID: 2156850184553793883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6951477925672960257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9049481556282067034, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
@@ -15596,7 +15591,7 @@ PrefabInstance:
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: stationMappings.Array.data[4].stationTransform
       value: 
-      objectReference: {fileID: 6555420629320610857}
+      objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: stationMappings.Array.data[5].stationTransform
       value: 

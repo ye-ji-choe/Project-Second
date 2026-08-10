@@ -8,11 +8,21 @@ public class ChamberConnector : MXObject
 
     public DeviceAddress doorOpenCommand = new DeviceAddress("도어 오픈 명령 (M2020)");
     public DeviceAddress doorCloseCommand = new DeviceAddress("도어 클로즈 명령 (M2026)");
+
+    // 마그네틱 센서는 1개로 단일 할당
     public DeviceAddress magSensorAddress = new DeviceAddress("마그네틱 센서 인식 (AGV 앞)");
-    public DeviceAddress laserSensorAddress = new DeviceAddress("레이저 센서 인식 (AGV 안)");
+
+    // 레이저 센서는 4개 배열로 할당
+    public DeviceAddress[] laserSensorAddresses = new DeviceAddress[4]
+    {
+        new DeviceAddress("레이저 센서 1 인식"),
+        new DeviceAddress("레이저 센서 2 인식"),
+        new DeviceAddress("레이저 센서 3 인식"),
+        new DeviceAddress("레이저 센서 4 인식")
+    };
+
     public DeviceAddress chamberCompleteAddress = new DeviceAddress("챔버 완료 (M1010)");
 
-    // 상태 플래그를 public 속성으로 변경하여 Controller가 Update문에서 읽어갈 수 있게 함
     public bool HaveToOpenDoor { get; private set; } = false;
     public bool HaveToCloseDoor { get; private set; } = false;
 
@@ -27,7 +37,6 @@ public class ChamberConnector : MXObject
 
     private void OnReceiveDoorOpen(short data)
     {
-        // 통신 콜백에서는 플래그(bool) 상태만 변경합니다.
         HaveToOpenDoor = (data != 0);
     }
 
@@ -36,16 +45,28 @@ public class ChamberConnector : MXObject
         HaveToCloseDoor = (data != 0);
     }
 
+    /// <summary>
+    /// 단일 마그네틱 센서 신호 전송
+    /// </summary>
     public void SendMagneticSensorSignal(short value)
     {
         if (magSensorAddress.useDevice)
             MXRequester.Get.AddSetDeviceRequest(magSensorAddress.address, value);
     }
 
-    public void SendLaserSensorSignal(short value)
+    /// <summary>
+    /// 다중 레이저 센서 신호 전송
+    /// </summary>
+    public void SendLaserSensorSignal(int index, short value)
     {
-        if (laserSensorAddress.useDevice)
-            MXRequester.Get.AddSetDeviceRequest(laserSensorAddress.address, value);
+        if (index < 0 || index >= laserSensorAddresses.Length)
+        {
+            Debug.LogWarning($"[ChamberConnector] 유효하지 않은 레이저 센서 인덱스입니다: {index}");
+            return;
+        }
+
+        if (laserSensorAddresses[index].useDevice)
+            MXRequester.Get.AddSetDeviceRequest(laserSensorAddresses[index].address, value);
     }
 
     public void SendChamberCompleteSignal(short value)

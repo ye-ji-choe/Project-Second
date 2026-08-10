@@ -132,7 +132,25 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 602 || plcCommand == 612 || plcCommand == 622 || plcCommand == 632)
+        else if (plcCommand == 501)
+        {
+
+            float offsetDistance = 3f;
+
+            // 진입 방향 설정 (기존 코드의 AGV 직진 축인 -right 기준 적용)
+            Vector3 forwardDir = -transform.right;
+
+            // 501 최종 목적지(targetStation.position)에서 진입 방향의 반대쪽(뒤)으로 떨어진 위치 계산
+            Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
+
+            // 1. 목적지 뒤 300 지점을 먼저 경유하도록 리스트에 추가 (정방향으로 접근하므로 역방향 이동 flag는 false)
+            currentPath.Add(new Waypoint(preApproachPoint, false));
+
+            // 참고: 이 분기가 끝난 뒤, 메서드 맨 아래의 
+            // currentPath.Add(new Waypoint(targetStation.position, false)); 가 실행되므로
+            // [대기 지점 진입] -> [최종 501 목적지 도킹] 순서로 자연스럽게 이동합니다.
+        }
+        else if (plcCommand == 502 || plcCommand == 512 || plcCommand == 522 || plcCommand == 532)
         {
             Vector3 currentPos = transform.position;
             Vector3 forwardDir = -transform.right;
@@ -148,11 +166,27 @@ public class AGVController : MonoBehaviour
                 currentPath.Add(wp);
             }
         }
+        else if (plcCommand == 700)
+        {
+
+            float offsetDistance = 3f;
+
+            // 진입 방향 설정 (기존 코드의 AGV 직진 축인 -right 기준 적용)
+            Vector3 forwardDir = -transform.right;
+
+            // 501 최종 목적지(targetStation.position)에서 진입 방향의 반대쪽(뒤)으로 떨어진 위치 계산
+            Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
+
+            // 1. 목적지 뒤 300 지점을 먼저 경유하도록 리스트에 추가 (정방향으로 접근하므로 역방향 이동 flag는 false)
+            currentPath.Add(new Waypoint(preApproachPoint, false));
+
+        }
 
         currentPath.Add(new Waypoint(targetStation.position, false));
         currentWaypointIndex = 0;
         isMoving = true;
     }
+
 
     private void Update()
     {

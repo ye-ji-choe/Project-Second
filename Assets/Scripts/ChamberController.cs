@@ -1,54 +1,66 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChamberController : MonoBehaviour
 {
-    public ChamberConnector connector; // 인스펙터 연결 필수
-    public Animator doorAnimator;      // 챔버 도어 모델 할당 필수
+    public ChamberConnector connector;
+    public Animator doorAnimator;
 
-    [Header("Sensors (인스펙터에서 할당)")]
-    // 두 센서가 같은 MagneticSensor 스크립트를 쓴다고 가정 (이름이 다르다면 타입을 변경하세요)
+    [Header("Sensors (마그네틱 1개, 레이저 4개 할당)")]
     public MagneticSensor magneticSensor;
-    public OpticalSensor laserSensor;
+    public OpticalSensor[] laserSensors = new OpticalSensor[4];
 
     [Header("Animation Settings")]
     public float doorAnimDuration = 2.0f;
 
     private bool isDoorOpen = false;
 
+    // 레이저 센서 배열 이벤트 구독 해제를 위한 캐싱
+    private UnityAction<bool>[] laserActions = new UnityAction<bool>[4];
+
     private void Awake()
     {
-        // 1. 마그네틱 센서 이벤트 연결
+        // 1. 단일 마그네틱 센서 이벤트 연결
         if (magneticSensor != null)
         {
             magneticSensor.onChangedDetected.AddListener(OnMagneticSensorStateChanged);
         }
         else
         {
-            Debug.LogError("에러: 마그네틱 센서가 인스펙터에 할당되지 않았습니다.");
+            Debug.LogWarning("[ChamberController] 마그네틱 센서가 인스펙터에 할당되지 않았습니다.");
         }
 
-        // 2. 레이저 센서 이벤트 연결 (추가된 부분)
-        if (laserSensor != null)
+        // 2. 레이저 센서 배열 4개 이벤트 연결
+        for (int i = 0; i < laserSensors.Length; i++)
         {
-            laserSensor.onChangedDetected.AddListener(OnLaserSensorStateChanged);
-        }
-        else
-        {
-            Debug.LogError("에러: 레이저 센서가 인스펙터에 할당되지 않았습니다.");
+            if (laserSensors[i] != null)
+            {
+                int index = i; // 클로저 이슈 방지를 위한 캡처
+                laserActions[i] = (isDetected) => OnLaserSensorStateChanged(index, isDetected);
+                laserSensors[i].onChangedDetected.AddListener(laserActions[i]);
+            }
+            else
+            {
+                Debug.LogWarning($"[ChamberController] 레이저 센서 [{i}]가 인스펙터에 할당되지 않았습니다.");
+            }
         }
     }
 
     private void OnDestroy()
     {
-        // 스크립트 파괴 시 메모리 누수 방지를 위해 이벤트 연결 해제
+        // 메모리 누수 방지를 위한 해제 작업
         if (magneticSensor != null)
         {
             magneticSensor.onChangedDetected.RemoveListener(OnMagneticSensorStateChanged);
         }
-        if (laserSensor != null)
+
+        for (int i = 0; i < laserSensors.Length; i++)
         {
-            laserSensor.onChangedDetected.RemoveListener(OnLaserSensorStateChanged);
+            if (laserSensors[i] != null && laserActions[i] != null)
+            {
+                laserSensors[i].onChangedDetected.RemoveListener(laserActions[i]);
+            }
         }
     }
 
@@ -89,7 +101,7 @@ public class ChamberController : MonoBehaviour
     }
 
     // ==================================================
-    // 마그네틱 센서 감지 콜백
+    // 단일 마그네틱 센서 감지 콜백
     // ==================================================
     private void OnMagneticSensorStateChanged(bool isDetected)
     {
@@ -106,19 +118,19 @@ public class ChamberController : MonoBehaviour
     }
 
     // ==================================================
-    // 레이저 센서 감지 콜백 (추가된 부분)
+    // 다중 레이저 센서 감지 콜백
     // ==================================================
-    private void OnLaserSensorStateChanged(bool isDetected)
+    private void OnLaserSensorStateChanged(int index, bool isDetected)
     {
         if (isDetected)
         {
-            Debug.Log("레이저 센서 ON -> PLC로 1 전송");
-            connector.SendLaserSensorSignal(1);
+            Debug.Log($"레이저 센서 [{index}] ON -> PLC로 1 전송");
+            connector.SendLaserSensorSignal(index, 1);
         }
         else
         {
-            Debug.Log("레이저 센서 OFF -> PLC로 0 전송");
-            connector.SendLaserSensorSignal(0);
+            Debug.Log($"레이저 센서 [{index}] OFF -> PLC로 0 전송");
+            connector.SendLaserSensorSignal(index, 0);
         }
     }
 }

@@ -122,7 +122,7 @@ public class AGVController : MonoBehaviour
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
-            Vector3 reversePoint = currentPos - (forwardDir * 2f);
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 3f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
             Vector3 leftPoint = forwardPoint + (leftDir * 3f);
@@ -139,9 +139,9 @@ public class AGVController : MonoBehaviour
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
             Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
@@ -229,7 +229,7 @@ public class AGVController : MonoBehaviour
                 currentPath.Add(wp);
             }
         }
-        else if (plcCommand == 610)
+        else if (plcCommand == 710)
         {
 
             Vector3 currentPos = transform.position;
@@ -240,25 +240,6 @@ public class AGVController : MonoBehaviour
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
-
-        }
-        else if (plcCommand == 700)
-        {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-            currentPath.Add(new Waypoint(rightPoint, false));
-            currentPath.Add(new Waypoint(forwardPoint, false));
-            currentPath.Add(new Waypoint(leftPoint, false));
 
         }
         else if (plcCommand == 800)
@@ -270,9 +251,9 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
@@ -289,9 +270,9 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
@@ -308,9 +289,9 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2.5f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2.5f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
@@ -327,9 +308,9 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
@@ -365,8 +346,8 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
             Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
@@ -383,7 +364,7 @@ public class AGVController : MonoBehaviour
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
-            Vector3 reversePoint = currentPos - (forwardDir * 2f);
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
 

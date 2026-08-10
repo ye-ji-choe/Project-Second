@@ -47,6 +47,7 @@ namespace Preliy.Flange.Editor
         private void OnSceneGUI(SceneView sceneView)
         {
             if (Application.isPlaying) return;
+            
             if (_controller.gameObject.activeInHierarchy && EditorPrefs.GetBool("ControllerShowHandles")) Handle();
         }
 

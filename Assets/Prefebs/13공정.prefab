@@ -1027,6 +1027,22 @@ MonoBehaviour:
     address: M1164
     description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
     comment: 
+  passAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC2A4\uCE94 \uD328\uC2A4 (M1166)"
+    comment: 
+  ngAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 0
+    label: 
+    address: 
+    description: "\uC2A4\uCE94 NG (M1167)"
+    comment: 
 --- !u!114 &5981091450455386054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,6 +1069,7 @@ MonoBehaviour:
     rotation: {x: 90, y: 0.001, z: 0}
   connector: {fileID: 1184828927070247095}
   defaultSpeed: 2
+  passProbability: 80
 --- !u!114 &1736653400403542883 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1708455447957109849, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}

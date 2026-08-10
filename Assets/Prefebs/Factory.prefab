@@ -7221,7 +7221,9 @@ PrefabInstance:
       propertyPath: _position._value
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5673840301352354378, guid: 0334647913dbf2b49bf2d8f91c59fb24, type: 3}
+    - {fileID: 9000992726323026448, guid: 0334647913dbf2b49bf2d8f91c59fb24, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7497,16 +7499,116 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: 0.7071068
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3385614862980330836, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+    - {fileID: 2065017282626940174, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+    - {fileID: 3995799404977380388, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+    - {fileID: 4874413001135653238, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6774076846168766733, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4927305710226851248}
+    - targetCorrespondingSourceObject: {fileID: 6774076846168766733, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1936432685727879327}
   m_SourcePrefab: {fileID: 100100000, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+--- !u!114 &3245780270733030552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4173758707954390350, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+  m_PrefabInstance: {fileID: 1506305211618288086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396758880133159131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6b50e3ae48f544790606badc4f04c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Preliy.Flange::Preliy.Flange.Controller
 --- !u!4 &3568803484398526046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2693600386246508424, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
   m_PrefabInstance: {fileID: 1506305211618288086}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5396758880133159131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6774076846168766733, guid: 9de50e306354f3840bfb94b373290af2, type: 3}
+  m_PrefabInstance: {fileID: 1506305211618288086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4927305710226851248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396758880133159131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20aca3459d3a2254d8e311c24a862b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShoulderGlueRobotConnector
+  robotTask: {fileID: 1936432685727879327}
+  feedbackTime: 0.5
+  startSignalAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M2150
+    description: "\uAE30\uB3D9 \uC2E0\uD638 (M2110)"
+    comment: 
+  taskValueAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: D1500
+    description: "\uBAA9\uC801\uC9C0 \uBC88\uD638 (D0)"
+    comment: 
+  busyAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1130
+    description: "BUSY \uC2E0\uD638 (M81)"
+    comment: 
+  cycleCompleteAddress:
+    useDevice: 1
+    useDoubleWord: 0
+    isLocked: 1
+    label: 
+    address: M1134
+    description: "\uC0AC\uC774\uD074 \uC644\uB8CC (M1094)"
+    comment: 
+--- !u!114 &1936432685727879327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396758880133159131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff8f904ed9cd0b429d721030caac9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShoulderGlueRobotSequenceTask
+  robotController: {fileID: 3245780270733030552}
+  _targets:
+  - position: {x: 127.2, y: 1477.4, z: 1217.9}
+    rotation: {x: 90, y: 0, z: 0}
+  - position: {x: 582.5, y: 1039.2, z: 1911.5}
+    rotation: {x: 90, y: 360, z: 0}
+  - position: {x: -17.6, y: 1630, z: 1348.3}
+    rotation: {x: 90, y: 360, z: 0}
+  - position: {x: -47.3, y: 1374.8, z: 1564.5}
+    rotation: {x: 90, y: 360, z: 0}
+  - position: {x: -751.8, y: 1039, z: 1924}
+    rotation: {x: 90, y: 360, z: 0}
+  - position: {x: -740.5, y: 1066.6, z: 938.6}
+    rotation: {x: 90, y: 360, z: 0}
+  connector: {fileID: 4927305710226851248}
+  defaultSpeed: 2
 --- !u!1001 &1758888107231193173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7891,7 +7993,9 @@ PrefabInstance:
       propertyPath: _worldTransform.e23
       value: 0.6750001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 774778785821145981, guid: 080c95992c593ef41950e948fc857967, type: 3}
+    - {fileID: 4077136122866328359, guid: 080c95992c593ef41950e948fc857967, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9676,6 +9780,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1908780860085365772, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
     - {fileID: 5173051699735677029, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
+    - {fileID: 7017496274365170261, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
+    - {fileID: 5996352889156868623, guid: 6476d6a28a866154c89ff86f7e0c175a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -11018,6 +11124,10 @@ PrefabInstance:
     - {fileID: 5059069657927386761, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
     - {fileID: 2736071278953093923, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
     - {fileID: 7585474277733898917, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
+    - {fileID: 8434925088591335454, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
+    - {fileID: 5141610135041902660, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
+    - {fileID: 1522689076553059743, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
+    - {fileID: 2843417494359430597, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 919904191566905501, guid: bc407d5b05459844cb74b55ff7e32c42, type: 3}
@@ -14239,6 +14349,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3761742877170635141, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
     - {fileID: 4072450387740360225, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+    - {fileID: 1728301908005942767, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+    - {fileID: 2713522048238235061, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -14332,7 +14444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34aab0d5ee739848971dce28358f108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MagneticRobotSequenceTask
-  robotController: {fileID: 0}
+  robotController: {fileID: 7214064942662036445}
   _targets:
   - position: {x: 45.2, y: 1288.2, z: 1198.6}
     rotation: {x: 0, y: 270, z: 180}
@@ -14340,17 +14452,17 @@ MonoBehaviour:
     rotation: {x: 0, y: 270, z: 180}
   - position: {x: 266.4, y: 1153.2, z: 1242.2}
     rotation: {x: 0, y: 270, z: 180}
-  - position: {x: -953, y: 1063.7, z: 94.2}
+  - position: {x: -953, y: 1063.7, z: -320.6}
     rotation: {x: 0, y: 270, z: 180}
   - position: {x: 262.8, y: 530, z: 1778}
     rotation: {x: 0, y: 270, z: 180}
-  - position: {x: -1685.3, y: 1070.9, z: 118.2}
+  - position: {x: -1685.3, y: 1070.9, z: -320.6}
     rotation: {x: 0, y: 270, z: 180}
   - position: {x: -423, y: 530, z: 1739.8}
     rotation: {x: 0, y: 270, z: 180}
-  - position: {x: 663.9, y: 1066.6, z: -1003.9}
+  - position: {x: 663.9, y: 1066.6, z: -1426.6}
     rotation: {x: 0, y: 270, z: 180}
-  - position: {x: 1400.4, y: 1059.9, z: -1010.7}
+  - position: {x: 1400.4, y: 1059.9, z: -1426.6}
     rotation: {x: 0, y: 270, z: 180}
   connector: {fileID: 3601552266961431606}
   defaultSpeed: 5
@@ -14818,6 +14930,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 963.0001, y: 65.00018, z: 669.0003}
   m_Center: {x: 0.00023779376, y: 35.49988, z: -336.00064}
+--- !u!114 &7214064942662036445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+  m_PrefabInstance: {fileID: 7157701398231333297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312771295254675463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6b50e3ae48f544790606badc4f04c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Preliy.Flange::Preliy.Flange.Controller
 --- !u!4 &7567585795051359570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 743151457535079651, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}

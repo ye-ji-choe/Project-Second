@@ -1,64 +1,68 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoverSpawner : MonoBehaviour
 {
-    public List<Collider> triggerList = new List<Collider>();   //영역 안에 존재하는 콜라이더 리스트
-    public GameObject[] prefabs;               //주기적으로 생성할 게임오브젝트
-    public Transform spawnPosition;         //생성 위치
-    public float startSpawnTime = 3f;       //활성화시 처음 생성되기까지 걸리는 시간.
-    public float spawnInterval = 2.5f;      //생성 인터벌
-    public int maxCount = 0;              //최대 생성 카운트, 0이면 무한
-    private float nextSpawnTime;            //다음 생성 타임
-    private int currentCount;
+    [Header("Spawner Settings")]
+    public List<Collider> triggerList = new List<Collider>(); // 영역 안에 있는 콜라이더 리스트
+    public GameObject[] prefabs;        // 생성할 커버 프리팹 배열
+    public Transform spawnPosition;     // 커버가 생성될 위치
+    public float spawnDelay = 5f;       // 커버가 없어진 후 대기하는 시간 (5초)
 
-    private void Start()
-    {
-        nextSpawnTime = Time.time + startSpawnTime;
-    }
+    private Coroutine spawnCoroutine;   // 5초 대기를 관리할 코루틴 변수
 
-
-    private void Update()
-    {
-        //최대 카운트가 0보다 큰데, 현재 생성갯수가 최대생성갯수보다 같거나 클때
-        if (maxCount > 0 && currentCount >= maxCount)
-            return;
-
-        if (triggerList.Count == 0 && nextSpawnTime < Time.time)
-        {
-            nextSpawnTime = Time.time + spawnInterval;
-            //Instantiate함수 => 동적으로 지정된 게임오브젝트를 씬에 생성하는 함수.
-            GameObject nextCover =
-                Instantiate<GameObject>(
-                    prefabs[Random.Range(0, prefabs.Length)], spawnPosition.position, spawnPosition.rotation, spawnPosition);
-
-            currentCount++;
-        }
-    }
+    // Update 함수는 아예 사용하지 않습니다. (불필요한 시간 계산 방지)
 
     private void OnTriggerEnter(Collider other)
     {
-        if (triggerList.Contains(other))
-            return;
+        if (!triggerList.Contains(other))
+        {
+            triggerList.Add(other);
+        }
 
-        triggerList.Add(other);
+        // 영역 안에 무언가 들어왔다면, 진행 중이던 5초 대기(스폰)를 즉시 취소합니다.
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!triggerList.Contains(other))
-            return;
+        if (triggerList.Contains(other))
+        {
+            triggerList.Remove(other);
+        }
 
-        triggerList.Remove(other);
+        // 커버가 밖으로 나가서 영역이 '완전히 비워진 바로 그 순간' 5초 대기 시작
+        if (triggerList.Count == 0)
+        {
+            // 혹시 기존에 돌고 있던 대기가 있다면 끄고 새로 시작
+            if (spawnCoroutine != null)
+            {
+                StopCoroutine(spawnCoroutine);
+            }
+            spawnCoroutine = StartCoroutine(WaitAndSpawn());
+        }
     }
 
-    public void Clear()
+    // 5초 대기 후 생성하는 코루틴
+    private IEnumerator WaitAndSpawn()
     {
-        int count = transform.childCount;
-        for (int i = 0; i < count; ++i)
+        // 커버가 없어진 시점부터 5초 동안 가만히 대기합니다.
+        yield return new WaitForSeconds(spawnDelay);
+
+        // 5초가 지났는데도 여전히 영역이 비어있다면 커버 생성
+        if (triggerList.Count == 0 && prefabs.Length > 0 && spawnPosition != null)
         {
-            GameObject go = transform.GetChild(i).gameObject;
-            go.transform.position = -Vector3.one * 100f;
+            Instantiate(
+                prefabs[Random.Range(0, prefabs.Length)],
+                spawnPosition.position,
+                spawnPosition.rotation,
+                spawnPosition
+            );
         }
     }
 }

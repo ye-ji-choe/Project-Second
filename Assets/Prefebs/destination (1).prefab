@@ -382,7 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5933338559563341597}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-1"
+  m_Name: "\uBAA9\uC801\uC9C05 \uD22C\uC785"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -397,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 3071166761311375528}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.5, y: 0, z: -0.34}
+  m_LocalPosition: {x: -21.8, y: 0, z: -0.34}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -521,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 5794085310615977387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.06, y: 0, z: -1.36}
+  m_LocalPosition: {x: -17.06, y: 0, z: -0.34}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3365914795557141487}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05 \uB300\uAE30\uC704\uCE58 (1)"
+  m_Name: "\uBAA9\uC801\uC9C05 \uBC30\uCD9C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,7 +794,7 @@ Transform:
   m_GameObject: {fileID: 8651664905746331240}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.15, y: 0, z: 0.72}
+  m_LocalPosition: {x: -24.21, y: 0, z: 0.29}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

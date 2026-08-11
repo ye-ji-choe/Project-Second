@@ -175,29 +175,29 @@ public class AGVController : MonoBehaviour
             Vector3 leftDir = -rightDir;
 
             Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
-            Vector3 rightPoint = reversePoint + (rightDir * 2.5f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
 
         }
-        else if (plcCommand == 500 || plcCommand == 510 || plcCommand == 520 || plcCommand == 530)
-        {
+        //else if (plcCommand == 500 || plcCommand == 510 || plcCommand == 520 || plcCommand == 530)
+        //{
 
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
+        //    Vector3 currentPos = transform.position;
+        //    Vector3 forwardDir = -transform.right;
+        //    Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+        //    Vector3 leftDir = -rightDir;
 
-            Vector3 rightPoint = currentPos + (rightDir * 1f);
+        //    Vector3 rightPoint = currentPos + (rightDir * 1f);
 
-            currentPath.Add(new Waypoint(rightPoint, false));
+        //    currentPath.Add(new Waypoint(rightPoint, false));
 
-        }
+        //}
         else if (plcCommand == 501 || plcCommand == 511 || plcCommand == 521 || plcCommand == 531)
         {
 
-            float offsetDistance = 2.5f;
+            float offsetDistance = 2f;
 
             Vector3 forwardDir = -transform.right;
             Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
@@ -339,7 +339,7 @@ public class AGVController : MonoBehaviour
 
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
             Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));

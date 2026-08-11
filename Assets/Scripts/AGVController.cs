@@ -12,13 +12,33 @@ public class AGVController : MonoBehaviour
     public float rotationOffset = 90.0f;
 
     // ==========================================
+    // PLC 상태 추적
+    // ==========================================
+    [Header("PLC Status")]
+    [Tooltip("현재(또는 목적지) 스테이션 번호를 저장하여 커넥터로 전달합니다.")]
+    public int currentStationId = 0;
+
+    // ==========================================
+    // 충돌 방지 및 경로 탐색 센서 설정
+    // ==========================================
+    [Header("Sensor & Collision Avoidance")]
+    [Tooltip("감지할 앞차의 레이어를 선택하세요 (예: BATTERY)")]
+    public LayerMask obstacleLayer;
+    public float sensorDistance = 2.0f;
+    public float sensorHeightOffset = 0.5f;
+
+    [Tooltip("전면 4개의 레이저 센서 가로 오프셋 간격")]
+    public float[] laserSensorOffsets = new float[4] { -0.4f, -0.15f, 0.15f, 0.4f };
+
+    [Tooltip("하단 1개의 마그네틱 센서 활성화 상태")]
+    public bool isMagneticSensorActive = true;
+
+    // ==========================================
     // 1공정: 판(Plate) 세팅
     // ==========================================
     [Header("1공정: Part(판) 세팅")]
     public Vector3 partLoadPosition = new Vector3(0f, 0f, 0.38f);
     public Vector3 partLoadRotation = new Vector3(0f, -90f, -90f);
-
-    // 💡 1공정 판과 12공정 판을 구분하기 위한 스위치
     private bool isFirstPartLoaded = false;
 
     // ==========================================
@@ -52,12 +72,11 @@ public class AGVController : MonoBehaviour
     public Vector3 bmsLoadRotation = new Vector3(0f, 0f, 0f);
 
     // ==========================================
-    // 마지막 공정: 12공정 Part 덮기 (새로 추가됨!)
+    // 마지막 공정: 12공정 Part 덮기 
     // ==========================================
     [Header("12공정: 마지막 Part 세팅")]
-    public Vector3 finalPartLoadPosition = new Vector3(0f, 0f, 0.7f); // 맨 위에 덮히도록 높이 조절
+    public Vector3 finalPartLoadPosition = new Vector3(0f, 0f, 0.7f);
     public Vector3 finalPartLoadRotation = new Vector3(0f, -90f, -90f);
-
 
     [System.Serializable]
     public struct StationMapping
@@ -97,6 +116,9 @@ public class AGVController : MonoBehaviour
     {
         Debug.Log($"[AGV] 수신된 원본 PLC 명령: {plcCommand}");
 
+        // 출발 시 PLC가 지시한 목적지 번호(예: 400)를 저장해 둡니다.
+        currentStationId = plcCommand;
+
         Transform targetStation = null;
         foreach (var mapping in stationMappings)
         {
@@ -115,30 +137,30 @@ public class AGVController : MonoBehaviour
 
         currentPath.Clear();
 
-        if (plcCommand == 200)
-        {
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
+        Vector3 currentPos = transform.position;
+        Vector3 forwardDir = -transform.right;
+        Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
+        Vector3 leftDir = -rightDir;
 
+        if (plcCommand == 200 || plcCommand == 400 || plcCommand == 1200)
+        {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 3f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
             Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            if (plcCommand == 1200)
+            {
+                forwardPoint = rightPoint + (forwardDir * 6f);
+            }
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 300)
+        else if (plcCommand == 300 || plcCommand == 900)
         {
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 2f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
@@ -149,69 +171,27 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 400)
-        {
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-            currentPath.Add(new Waypoint(rightPoint, false));
-            currentPath.Add(new Waypoint(forwardPoint, false));
-            currentPath.Add(new Waypoint(leftPoint, false));
-        }
         else if (plcCommand == 499)
         {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
             Vector3 rightPoint = reversePoint + (rightDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
-
         }
-        //else if (plcCommand == 500 || plcCommand == 510 || plcCommand == 520 || plcCommand == 530)
-        //{
-
-        //    Vector3 currentPos = transform.position;
-        //    Vector3 forwardDir = -transform.right;
-        //    Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-        //    Vector3 leftDir = -rightDir;
-
-        //    Vector3 rightPoint = currentPos + (rightDir * 1f);
-
-        //    currentPath.Add(new Waypoint(rightPoint, false));
-
-        //}
-        else if (plcCommand == 501 || plcCommand == 511 || plcCommand == 521 || plcCommand == 531)
+        else if (plcCommand == 501 || plcCommand == 521)
         {
-
-            float offsetDistance = 2f;
-
-            Vector3 forwardDir = -transform.right;
-            Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
-
-            currentPath.Add(new Waypoint(preApproachPoint, false));
+            Vector3 leftPoint = currentPos + (leftDir * 6.2f);
+            currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 502 || plcCommand == 512 || plcCommand == 522 || plcCommand == 532)
+        else if (plcCommand == 511 || plcCommand == 531)
         {
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-            Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
-
+            Vector3 leftPoint = currentPos + (leftDir * 4f);
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        else if (plcCommand == 502 || plcCommand == 512)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 1f);
             currentPath.Add(new Waypoint(reversePoint, true));
         }
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
@@ -221,27 +201,13 @@ public class AGVController : MonoBehaviour
                 currentPath.Add(wp);
             }
         }
-        else if (plcCommand == 710)
+        else if (plcCommand == 710 || plcCommand == 1300)
         {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
-
             currentPath.Add(new Waypoint(reversePoint, true));
-
         }
-        else if (plcCommand == 800)
+        else if (plcCommand == 800 || plcCommand == 1100)
         {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
@@ -251,35 +217,9 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
-
-        }
-        else if (plcCommand == 900)
-        {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 2f);
-            Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-            currentPath.Add(new Waypoint(rightPoint, false));
-            currentPath.Add(new Waypoint(forwardPoint, false));
-            currentPath.Add(new Waypoint(leftPoint, false));
-
         }
         else if (plcCommand == 1000)
         {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 2.5f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
@@ -289,54 +229,9 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
-
-        }
-        else if (plcCommand == 1100)
-        {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-            currentPath.Add(new Waypoint(rightPoint, false));
-            currentPath.Add(new Waypoint(forwardPoint, false));
-            currentPath.Add(new Waypoint(leftPoint, false));
-
-        }
-        else if (plcCommand == 1200)
-        {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
-            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-            currentPath.Add(new Waypoint(rightPoint, false));
-            currentPath.Add(new Waypoint(forwardPoint, false));
-            currentPath.Add(new Waypoint(leftPoint, false));
-
         }
         else if (plcCommand == 1400)
         {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
@@ -346,20 +241,6 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
-
-        }
-        else if (plcCommand == 1300)
-        {
-
-            Vector3 currentPos = transform.position;
-            Vector3 forwardDir = -transform.right;
-            Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
-            Vector3 leftDir = -rightDir;
-
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-
-            currentPath.Add(new Waypoint(reversePoint, true));
-
         }
 
         currentPath.Add(new Waypoint(targetStation.position, false));
@@ -367,12 +248,40 @@ public class AGVController : MonoBehaviour
         isMoving = true;
     }
 
-
     private void Update()
     {
         if (isMoving && currentPath.Count > 0)
         {
             Waypoint currentWaypoint = currentPath[currentWaypointIndex];
+
+            // ==========================================
+            // 4채널 레이저 양방향(전/후진) 감지 로직
+            // ==========================================
+            Vector3 detectDir = currentWaypoint.isReverse ? transform.right : -transform.right;
+            Vector3 lateralDir = transform.forward; // AGV의 가로 방향
+            bool isObstacleAhead = false;
+
+            for (int i = 0; i < laserSensorOffsets.Length; i++)
+            {
+                Vector3 sensorStartPos = transform.position + (Vector3.up * sensorHeightOffset) + (lateralDir * laserSensorOffsets[i]);
+
+                if (Physics.Raycast(sensorStartPos, detectDir, out RaycastHit hit, sensorDistance, obstacleLayer))
+                {
+                    if (!hit.transform.IsChildOf(this.transform))
+                    {
+                        isObstacleAhead = true;
+                        // Debug.DrawRay(sensorStartPos, detectDir * sensorDistance, Color.red);
+                        break; 
+                    }
+                }
+            }
+
+            if (isObstacleAhead)
+            {
+                return;
+            }
+            // ==========================================
+
             Vector3 currentTargetPos = currentWaypoint.position;
             Vector3 targetPos = new Vector3(currentTargetPos.x, transform.position.y, currentTargetPos.z);
             Vector3 dirToTarget = (targetPos - transform.position).normalized;
@@ -404,13 +313,22 @@ public class AGVController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             }
 
+            // 목적지 도달 확인
             if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
             {
                 currentWaypointIndex++;
-                if (currentWaypointIndex >= currentPath.Count)
+
+                // [마그네틱 센서 연동 및 PLC 데이터 전송 준비]
+                if (isMagneticSensorActive && currentWaypointIndex >= currentPath.Count)
                 {
                     isMoving = false;
-                    Debug.Log("[AGV] 최종 목적지 도착 완료!");
+                    Debug.Log($"[AGV] {currentStationId}번 노드 마그네틱 센서 인식 완료 - 최종 목적지 도착!");
+                    if (connector != null) connector.OnArrivalCompleted();
+                }
+                else if (currentWaypointIndex >= currentPath.Count)
+                {
+                    isMoving = false;
+                    Debug.Log($"[AGV] {currentStationId}번 노드 도착 완료!");
                     if (connector != null) connector.OnArrivalCompleted();
                 }
             }
@@ -428,16 +346,14 @@ public class AGVController : MonoBehaviour
     }
 
     // ==========================================
-    // 각 공정별 적재 처리 로직 (1~12공정 완벽 통합)
+    // 각 공정별 적재 처리 로직
     // ==========================================
     private void ProcessItem(GameObject item)
     {
-        // 💡 1공정 & 12공정 처리: 동일한 "Part" 태그를 사용할 때 스위치(isFirstPartLoaded)로 구분!
         if (item.CompareTag("Part"))
         {
             if (!isFirstPartLoaded)
             {
-                // [1공정 처리]
                 item.transform.SetParent(this.transform);
                 item.transform.localPosition = partLoadPosition;
                 item.transform.localRotation = Quaternion.Euler(partLoadRotation);
@@ -445,14 +361,13 @@ public class AGVController : MonoBehaviour
                 Rigidbody rb = item.GetComponent<Rigidbody>();
                 if (rb != null) rb.isKinematic = true;
 
-                item.tag = "Untagged"; // 적재 완료된 부품은 태그 해제
-                isFirstPartLoaded = true; // 1공정 완료 스위치 ON
+                item.tag = "Untagged";
+                isFirstPartLoaded = true;
 
                 Debug.Log($"[AGV] 1공정 판({item.name}) 탑재 완료!");
             }
             else
             {
-                // [12공정 처리] 이미 1공정 판이 들어온 적 있다면 마지막 판으로 간주!
                 item.transform.SetParent(this.transform);
                 item.transform.localPosition = finalPartLoadPosition;
                 item.transform.localRotation = Quaternion.Euler(finalPartLoadRotation);
@@ -464,8 +379,6 @@ public class AGVController : MonoBehaviour
                 Debug.Log($"[AGV] 12공정 Part({item.name}) 탑재 완료! 덮개 조립 끝!");
             }
         }
-
-        // 3공정: 배터리 (Battery)
         else if (item.CompareTag("BATTERY"))
         {
             if (currentBatteryCount < batterySlotPositions.Length)
@@ -486,8 +399,6 @@ public class AGVController : MonoBehaviour
                 Debug.LogWarning("[AGV] 배터리 슬롯 2개가 이미 꽉 찼습니다!");
             }
         }
-
-        // 7공정: CCS
         else if (item.CompareTag("CCS"))
         {
             item.transform.SetParent(this.transform);
@@ -500,8 +411,6 @@ public class AGVController : MonoBehaviour
             item.tag = "Untagged";
             Debug.Log($"[AGV] 7공정 CCS({item.name}) 탑재 완료!");
         }
-
-        // 9공정: STR
         else if (item.CompareTag("STR"))
         {
             if (currentStrCount < strSlotPositions.Length)
@@ -522,8 +431,6 @@ public class AGVController : MonoBehaviour
                 Debug.LogWarning("[AGV] STR 슬롯 2개가 이미 꽉 찼습니다!");
             }
         }
-
-        // 11공정: BMS
         else if (item.CompareTag("BMS"))
         {
             item.transform.SetParent(this.transform);

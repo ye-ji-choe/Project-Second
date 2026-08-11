@@ -181,12 +181,12 @@ public class AGVController : MonoBehaviour
         }
         else if (plcCommand == 501 || plcCommand == 521)
         {
-            Vector3 leftPoint = currentPos + (leftDir * 6f);
+            Vector3 leftPoint = currentPos + (leftDir * 6.2f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
         else if (plcCommand == 511 || plcCommand == 531)
         {
-            Vector3 leftPoint = currentPos + (leftDir * 3f);
+            Vector3 leftPoint = currentPos + (leftDir * 4f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
         else if (plcCommand == 502 || plcCommand == 512)

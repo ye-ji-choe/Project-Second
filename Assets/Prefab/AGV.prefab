@@ -270,6 +270,37 @@ MonoBehaviour:
   stopDistance: 0.0001
   rotationSpeed: 30
   rotationOffset: 90
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  sensorDistance: 2
+  sensorHeightOffset: 0.5
+  laserSensorOffsets:
+  - -0.4
+  - -0.15
+  - 0.15
+  - 0.4
+  isMagneticSensorActive: 1
+  partLoadPosition: {x: 0, y: 0, z: 0.38}
+  partLoadRotation: {x: 0, y: -90, z: -90}
+  batterySlotPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  batterySlotRotations:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  ccsLoadPosition: {x: 0, y: 0, z: 0.45}
+  ccsLoadRotation: {x: 0, y: 0, z: -180}
+  strSlotPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  strSlotRotations:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  bmsLoadPosition: {x: 0, y: 0, z: 0.6}
+  bmsLoadRotation: {x: 0, y: 0, z: 0}
+  finalPartLoadPosition: {x: 0, y: 0, z: 0.7}
+  finalPartLoadRotation: {x: 0, y: -90, z: -90}
   stationMappings:
   - plcId: 100
     stationTransform: {fileID: 0}

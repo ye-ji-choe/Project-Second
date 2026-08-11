@@ -166,6 +166,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 4373716552234122370}
   spawnPosition: {fileID: 5784596421180299908}
+  targetParent: {fileID: 3887662715748345350}
+  targetTag: BATTERY
   spawnDelay: 15
 --- !u!65 &3583901625791729441
 BoxCollider:
@@ -237,6 +239,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7288005414781766599}
   spawnPosition: {fileID: 4123602327313699250}
+  targetParent: {fileID: 271296369136081531}
+  targetTag: BATTERY
   spawnDelay: 15
 --- !u!65 &6668124284271859290
 BoxCollider:
@@ -308,6 +312,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7288005414781766599}
   spawnPosition: {fileID: 5535891771948485263}
+  targetParent: {fileID: 3887662715748345350}
+  targetTag: BATTERY
   spawnDelay: 15
 --- !u!65 &1326242889639605283
 BoxCollider:
@@ -379,6 +385,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7288005414781766599}
   spawnPosition: {fileID: 6293201534599655484}
+  targetParent: {fileID: 271296369136081531}
+  targetTag: BATTERY
   spawnDelay: 15
 --- !u!65 &1509435271384352886
 BoxCollider:

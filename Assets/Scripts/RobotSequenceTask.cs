@@ -51,19 +51,19 @@ public class RobotSequenceTask : Task
             this.LIN(_targets[2], defaultSpeed);
 
             this.Log("2번 잡는 곳(4) 픽업 작업");
-            this.Offset(_targets[4], new Vector3(0, -200f, -600f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, -600f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0f), defaultSpeed);
 
             this.Log("놓는 곳(5) 이동");
             this.LIN(_targets[5], defaultSpeed);
 
             this.Log("놓는 곳(5) 배치 작업");
-            this.Offset(_targets[5], new Vector3(0, -200f, -600f), defaultSpeed);
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -400f, -600f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
         }
 
         // ================= [ 작업 종료 후 원점 복귀 ] =================

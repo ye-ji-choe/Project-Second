@@ -34,25 +34,25 @@ public class VcumRobotSequenceTask : Task
             this.Log("작업 위치 2번 이동 (1번 커버 픽업)");
             this.LIN(_targets[2], defaultSpeed);
             this.Log("Z축 상승/하강 작업");
-            this.Offset(_targets[2], new Vector3(0, -100f, -600f), defaultSpeed);
-            this.Offset(_targets[2], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[2], new Vector3(0, -400f, 0f), defaultSpeed);
+            this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[2], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[2], new Vector3(0, -400f, 0), defaultSpeed);
 
             // -------- 4번: AGV 위 배치 --------
             this.Log("작업 위치 4번 이동 (AGV 위 커버 배치)");
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 상승/하강 작업");
-            this.Offset(_targets[4], new Vector3(0, -100f, -600f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
         }
         else
         {
-            // ================= [ 2번 AGV 작업: 1 -> 3 -> 4 ] =================
+            // ================= [ 2번 AGV 작업: 1 -> 3 -> 1(경유) -> 4 ] =================
             this.Log("경유지점 1번 이동");
             this.LIN(_targets[1], defaultSpeed);
 
@@ -60,21 +60,27 @@ public class VcumRobotSequenceTask : Task
             this.Log("작업 위치 3번 이동 (2번 커버 픽업)");
             this.LIN(_targets[3], defaultSpeed);
             this.Log("Z축 상승/하강 작업");
-            this.Offset(_targets[3], new Vector3(0, -100f, -600f), defaultSpeed);
-            this.Offset(_targets[3], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[3], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -400f, 0), defaultSpeed);
+
+            // ★ 추가된 부분: 픽업 후 로봇 팔의 동선이 꼬이지 않도록 경유지로 먼저 회피 ★
+            this.Log("안전 궤적 확보를 위해 경유지점 1번 복귀");
+            this.LIN(_targets[1], defaultSpeed);
 
             // -------- 4번: AGV 위 배치 --------
             this.Log("작업 위치 4번 이동 (AGV 위 커버 배치)");
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 상승/하강 작업");
-            this.Offset(_targets[4], new Vector3(0, -100f, -600f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 300f, 0), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -100f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
         }
 
         // ================= [ 0번: 원점 복귀 ] =================

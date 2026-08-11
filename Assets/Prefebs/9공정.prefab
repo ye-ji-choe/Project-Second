@@ -210,6 +210,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 5812061446608463219}
   spawnPosition: {fileID: 3944028364563054284}
+  targetParent: {fileID: 6682793240859584249}
+  targetTag: STR
   spawnDelay: 5
 --- !u!1 &6231043351475350827
 GameObject:
@@ -398,6 +400,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1268730806766480371}
   spawnPosition: {fileID: 4883723011315905533}
+  targetParent: {fileID: 6682793240859584249}
+  targetTag: STR
   spawnDelay: 5
 --- !u!1001 &819274576500458313
 PrefabInstance:

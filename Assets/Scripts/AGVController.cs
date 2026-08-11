@@ -263,7 +263,7 @@ public class AGVController : MonoBehaviour
 
             Vector3 reversePoint = currentPos - (forwardDir * 2f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
             Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));

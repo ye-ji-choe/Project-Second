@@ -166,6 +166,8 @@ MonoBehaviour:
   prefabs:
   - {fileID: 701160541456062251}
   spawnPosition: {fileID: 2123495323384036864}
+  targetParent: {fileID: 3953814901340745554}
+  targetTag: BMS
   spawnDelay: 5
 --- !u!65 &1515680550385133665
 BoxCollider:

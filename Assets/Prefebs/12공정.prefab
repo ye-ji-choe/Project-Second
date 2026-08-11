@@ -116,13 +116,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883091758037674394}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -0.531, y: -0.359, z: -0.601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5199878406680455309}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
 --- !u!65 &4267620892636948777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.7, z: 0.1}
+  m_Size: {x: 1, y: 0.1, z: 1.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9046880134318647644
 MonoBehaviour:
@@ -159,6 +159,8 @@ MonoBehaviour:
   triggerList: []
   prefabs: []
   spawnPosition: {fileID: 2839878747826235433}
+  targetParent: {fileID: 5199878406680455309}
+  targetTag: Part
   spawnDelay: 5
 --- !u!1 &2028066861796795574
 GameObject:
@@ -186,13 +188,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028066861796795574}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: -0.531, y: -0.359, z: 0.788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5199878406680455309}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
 --- !u!65 &4186295932172480537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -212,7 +214,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.7, z: 0.1}
+  m_Size: {x: 1, y: 0.1, z: 1.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5127100291865234957
 MonoBehaviour:
@@ -229,6 +231,8 @@ MonoBehaviour:
   triggerList: []
   prefabs: []
   spawnPosition: {fileID: 9185715730961143225}
+  targetParent: {fileID: 5199878406680455309}
+  targetTag: Part
   spawnDelay: 5
 --- !u!1 &8380210097072226065
 GameObject:
@@ -901,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343337439555720780, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: 9.259
+      value: 30.863
       objectReference: {fileID: 0}
     - target: {fileID: 2946406160695342589, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -953,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f31a08294192b824b8538c98281e98f2, type: 2}
     - target: {fileID: 4216435756749319761, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: -99.21
+      value: -25.204
       objectReference: {fileID: 0}
     - target: {fileID: 4753266017045666425, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1017,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6141695645067097683, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: 3.383
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6483281720944422884, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1065,7 +1069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7174870301168810934, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: 43.994
+      value: 9.788
       objectReference: {fileID: 0}
     - target: {fileID: 7518040419640074708, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1097,7 +1101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7897867568411687319, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: -21.025
+      value: -25.203
       objectReference: {fileID: 0}
     - target: {fileID: 8070556602231435195, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1105,7 +1109,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f31a08294192b824b8538c98281e98f2, type: 2}
     - target: {fileID: 8303807180784095764, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: _position._value
-      value: 31.424
+      value: 49.349
       objectReference: {fileID: 0}
     - target: {fileID: 8306186982221718826, guid: 873f0bd74fc6f9447be6091e36f18c04, type: 3}
       propertyPath: robotController
@@ -1242,12 +1246,12 @@ MonoBehaviour:
     _controller: {fileID: 3305195455539421283}
     _jointState:
       _robJoint:
-        _r1: -99.21
-        _r2: 9.259
-        _r3: 43.994
-        _r4: 3.383
-        _r5: 31.424
-        _r6: -21.025
+        _r1: -25.204
+        _r2: 30.863
+        _r3: 9.788
+        _r4: -0.001
+        _r5: 49.349
+        _r6: -25.203
       _extJoint:
         _e1: 9e+9
         _e2: 9e+9
@@ -1273,72 +1277,72 @@ MonoBehaviour:
   _poseObserver:
     _flange:
       _value:
-        e00: 0.15660468
-        e01: 0.097217195
-        e02: -0.9828651
-        e03: 1.0697546
-        e10: 0.000010258868
-        e11: -0.99514407
-        e12: -0.09843012
-        e13: 0.5288368
-        e20: -0.98766136
-        e21: 0.0154045345
-        e22: -0.1558452
-        e23: -0.16799974
+        e00: 1
+        e01: 0.000012037613
+        e02: -0.0000062467057
+        e03: 0.64121956
+        e10: 0.000012032656
+        e11: -1
+        e12: 0.000005662906
+        e13: 0.6033941
+        e20: -0.000006273671
+        e21: -0.000005647392
+        e22: -1
+        e23: 1.3624086
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointBase:
       _value:
-        e00: 0.15660468
-        e01: 0.097217195
-        e02: -0.9828651
-        e03: 1.0697546
-        e10: 0.000010258868
-        e11: -0.99514407
-        e12: -0.09843012
-        e13: 0.5288368
-        e20: -0.98766136
-        e21: 0.0154045345
-        e22: -0.1558452
-        e23: -0.16799974
+        e00: 1
+        e01: 0.000012037613
+        e02: -0.0000062467057
+        e03: 0.64121956
+        e10: 0.000012032656
+        e11: -1
+        e12: 0.000005662906
+        e13: 0.6033941
+        e20: -0.000006273671
+        e21: -0.000005647392
+        e22: -1
+        e23: 1.3624086
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointWorld:
       _value:
-        e00: -0.15660468
-        e01: -0.097217195
-        e02: 0.9828651
-        e03: 13.430245
-        e10: 0.000010258868
-        e11: -0.99514407
-        e12: -0.09843012
-        e13: 0.5288368
-        e20: 0.98766136
-        e21: -0.0154045345
-        e22: 0.1558452
-        e23: 19.543
+        e00: -1
+        e01: -0.000012037613
+        e02: 0.0000062467057
+        e03: 17.266087
+        e10: 0.000012032656
+        e11: -1
+        e12: 0.000005662906
+        e13: 0.6033941
+        e20: 0.000006273671
+        e21: 0.000005647392
+        e22: 1
+        e23: 14.012591
         e30: 0
         e31: 0
         e32: 0
         e33: 1
     _toolCenterPointFrame:
       _value:
-        e00: 0.15660468
-        e01: 0.097217195
-        e02: -0.9828651
-        e03: 1.0697546
-        e10: 0.000010258868
-        e11: -0.99514407
-        e12: -0.09843012
-        e13: 0.5288368
-        e20: -0.98766136
-        e21: 0.0154045345
-        e22: -0.1558452
-        e23: -0.16799927
+        e00: 1
+        e01: 0.000012037613
+        e02: -0.0000062467057
+        e03: 0.6412201
+        e10: 0.000012032656
+        e11: -1
+        e12: 0.000005662906
+        e13: 0.6033941
+        e20: -0.000006273671
+        e21: -0.000005647392
+        e22: -1
+        e23: 1.3624086
         e30: 0
         e31: 0
         e32: 0

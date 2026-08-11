@@ -181,7 +181,7 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
 
         }
-        else if (plcCommand == 500)
+        else if (plcCommand == 500 || plcCommand == 510 || plcCommand == 520 || plcCommand == 530)
         {
 
             Vector3 currentPos = transform.position;
@@ -194,23 +194,15 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
 
         }
-        else if (plcCommand == 501)
+        else if (plcCommand == 501 || plcCommand == 511 || plcCommand == 521 || plcCommand == 531)
         {
 
             float offsetDistance = 2.5f;
 
-            // 진입 방향 설정 (기존 코드의 AGV 직진 축인 -right 기준 적용)
             Vector3 forwardDir = -transform.right;
-
-            // 501 최종 목적지(targetStation.position)에서 진입 방향의 반대쪽(뒤)으로 떨어진 위치 계산
             Vector3 preApproachPoint = targetStation.position + (forwardDir * offsetDistance);
 
-            // 1. 목적지 뒤 300 지점을 먼저 경유하도록 리스트에 추가 (정방향으로 접근하므로 역방향 이동 flag는 false)
             currentPath.Add(new Waypoint(preApproachPoint, false));
-
-            // 참고: 이 분기가 끝난 뒤, 메서드 맨 아래의 
-            // currentPath.Add(new Waypoint(targetStation.position, false)); 가 실행되므로
-            // [대기 지점 진입] -> [최종 501 목적지 도킹] 순서로 자연스럽게 이동합니다.
         }
         else if (plcCommand == 502 || plcCommand == 512 || plcCommand == 522 || plcCommand == 532)
         {
@@ -269,7 +261,7 @@ public class AGVController : MonoBehaviour
             Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
             Vector3 leftDir = -rightDir;
 
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
             Vector3 leftPoint = forwardPoint + (leftDir * 2f);

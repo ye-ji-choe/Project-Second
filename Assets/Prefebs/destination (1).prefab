@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2444650536520567276}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-3-1"
+  m_Name: "\uBAA9\uC801\uC9C0521"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7533836425945872378}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-1-1"
+  m_Name: "\uBAA9\uC801\uC9C0501"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5307019501170632979}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-4-1"
+  m_Name: "\uBAA9\uC801\uC9C0531"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3705559765583181310}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-1_re"
+  m_Name: "\uBAA9\uC801\uC9C0502"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 858505232463540976}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.21, y: 0, z: 0.72000027}
+  m_LocalPosition: {x: -23.44, y: 0, z: -3.836}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -506,7 +506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9171198150858768110}
   m_Layer: 0
-  m_Name: "\uBAA9\uC801\uC9C05-2-1"
+  m_Name: "\uBAA9\uC801\uC9C0511"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

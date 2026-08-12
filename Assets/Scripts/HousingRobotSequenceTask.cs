@@ -32,20 +32,20 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 3번 이동 (1번 배터리 픽업)");
             this.LIN(_targets[3], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[3], new Vector3(0, -500f, -500f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Log("Z축 50mm 하강 작업");
-            this.Offset(_targets[3], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
-            this.Offset(_targets[3], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -400f, 0f), defaultSpeed);
 
             this.Log("작업 위치 4번 이동 (1번 배터리 배치)");
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[4], new Vector3(0, -300f, -500f), defaultSpeed);
-            this.Log("Z축 50mm 하강 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
+            this.Log("Z축 50mm 하강 작업");
+            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
@@ -58,13 +58,13 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 5번 이동 (2번 배터리 픽업)");
             this.LIN(_targets[5], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[5], new Vector3(0, -500f, -500f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Log("Z축 50mm 하강 작업");
-            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
-            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
 
             // 💡 만약 이전 공정처럼 5번에서 6번으로 이동할 때 구조물에 걸려 충돌이 발생한다면
             // 이곳에 this.LIN(_targets[1], defaultSpeed); 를 추가하여 경유지를 거쳐가도록 하세요.
@@ -72,9 +72,9 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 6번 이동 (2번 배터리 배치)");
             this.LIN(_targets[6], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[6], new Vector3(0, -300f, -500f), defaultSpeed);
-            this.Log("Z축 50mm 하강 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
+            this.Log("Z축 50mm 하강 작업");
+            this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
@@ -90,20 +90,20 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 7번 이동 (3번 배터리 픽업)");
             this.LIN(_targets[7], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[7], new Vector3(0, -500f, -500f), defaultSpeed);
+            this.Offset(_targets[7], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Log("Z축 50mm 하강 작업");
-            this.Offset(_targets[7], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[7], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[7], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
-            this.Offset(_targets[7], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Offset(_targets[7], new Vector3(0, -400f, 0f), defaultSpeed);
 
             this.Log("작업 위치 4번 이동 (3번 배터리 배치)");
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[4], new Vector3(0, -300f, -500f), defaultSpeed);
-            this.Log("Z축 50mm 하강 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
+            this.Log("Z축 50mm 하강 작업");
+            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
@@ -116,9 +116,9 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 8번 이동 (4번 배터리 픽업)");
             this.LIN(_targets[8], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[8], new Vector3(0, -500f, -500f), defaultSpeed);
-            this.Log("Z축 50mm 하강 작업");
             this.Offset(_targets[8], new Vector3(0, -500f, 0f), defaultSpeed);
+            this.Log("Z축 50mm 하강 작업");
+            this.Offset(_targets[8], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[8], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");
@@ -130,9 +130,9 @@ public class HousingRobotSequenceTask : Task
             this.Log("작업 위치 6번 이동 (4번 배터리 배치)");
             this.LIN(_targets[6], defaultSpeed);
             this.Log("Z축 50mm 상승 작업");
-            this.Offset(_targets[6], new Vector3(0, -300f, -500f), defaultSpeed);
-            this.Log("Z축 50mm 하강 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
+            this.Log("Z축 50mm 하강 작업");
+            this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 하강 작업");
             this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 50mm 상승 작업");

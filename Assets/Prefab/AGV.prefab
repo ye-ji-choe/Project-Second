@@ -105,9 +105,10 @@ GameObject:
   - component: {fileID: 5092800492673883700}
   - component: {fileID: 232678909798196509}
   - component: {fileID: 6977079990057299306}
+  - component: {fileID: 5105889065097572642}
   m_Layer: 10
   m_Name: AGV
-  m_TagString: Untagged
+  m_TagString: AGV
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,8 +148,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 2.5, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0.2}
 --- !u!54 &5092800492673883700
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M1180
+    address: M1220
     description: "BUSY \uC2E0\uD638"
     comment: 
   homePositionAddress:
@@ -211,7 +212,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M1187
+    address: M1227
     description: "\uB3C4\uCC29 \uC644\uB8CC"
     comment: 
   startOperationAddress:
@@ -219,7 +220,7 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: M2220
+    address: M2250
     description: "\uAE30\uB3D9 \uC2DC\uC791"
     comment: 
   destinationAddress:
@@ -227,15 +228,15 @@ MonoBehaviour:
     useDoubleWord: 0
     isLocked: 1
     label: 
-    address: D0
+    address: D4
     description: "\uBAA9\uC801\uC9C0 \uC124\uBE44 \uBC88\uD638"
     comment: 
   currentPositionAddress:
     useDevice: 1
     useDoubleWord: 0
-    isLocked: 0
+    isLocked: 1
     label: 
-    address: 
+    address: D14
     description: "\uD604\uC7AC \uC704\uCE58 \uBC88\uD638"
     comment: 
   OnChangedBusy:
@@ -270,6 +271,7 @@ MonoBehaviour:
   stopDistance: 0.0001
   rotationSpeed: 30
   rotationOffset: 90
+  currentStationId: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -284,23 +286,23 @@ MonoBehaviour:
   partLoadPosition: {x: 0, y: 0, z: 0.38}
   partLoadRotation: {x: 0, y: -90, z: -90}
   batterySlotPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0.38, y: 0, z: 0.38}
+  - {x: -0.29, y: 0, z: 0.38}
   batterySlotRotations:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 90, z: 90}
+  - {x: 0, y: 90, z: 90}
   ccsLoadPosition: {x: 0, y: 0, z: 0.45}
-  ccsLoadRotation: {x: 0, y: 0, z: -180}
+  ccsLoadRotation: {x: 0, y: 0, z: 0}
   strSlotPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0.366, z: 0.377}
+  - {x: 0, y: -0.366, z: 0.417}
   strSlotRotations:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  bmsLoadPosition: {x: 0, y: 0, z: 0.6}
-  bmsLoadRotation: {x: 0, y: 0, z: 0}
-  finalPartLoadPosition: {x: 0, y: 0, z: 0.7}
-  finalPartLoadRotation: {x: 0, y: -90, z: -90}
+  - {x: -90, y: 0, z: -180}
+  - {x: 90, y: 0, z: 180}
+  bmsLoadPosition: {x: 0.725, y: 0, z: 0.45}
+  bmsLoadRotation: {x: 0, y: 0, z: 90}
+  finalPartLoadPosition: {x: 0, y: 0, z: 0.38}
+  finalPartLoadRotation: {x: 0, y: 90, z: 90}
   stationMappings:
   - plcId: 100
     stationTransform: {fileID: 0}
@@ -312,31 +314,23 @@ MonoBehaviour:
     stationTransform: {fileID: 0}
   - plcId: 500
     stationTransform: {fileID: 0}
+  - plcId: 510
+    stationTransform: {fileID: 0}
+  - plcId: 520
+    stationTransform: {fileID: 0}
+  - plcId: 530
+    stationTransform: {fileID: 0}
+  - plcId: 501
+    stationTransform: {fileID: 0}
+  - plcId: 511
+    stationTransform: {fileID: 0}
+  - plcId: 521
+    stationTransform: {fileID: 0}
+  - plcId: 531
+    stationTransform: {fileID: 0}
+  - plcId: 499
+    stationTransform: {fileID: 0}
   - plcId: 600
-    stationTransform: {fileID: 0}
-  - plcId: 610
-    stationTransform: {fileID: 0}
-  - plcId: 620
-    stationTransform: {fileID: 0}
-  - plcId: 630
-    stationTransform: {fileID: 0}
-  - plcId: 601
-    stationTransform: {fileID: 0}
-  - plcId: 611
-    stationTransform: {fileID: 0}
-  - plcId: 621
-    stationTransform: {fileID: 0}
-  - plcId: 631
-    stationTransform: {fileID: 0}
-  - plcId: 602
-    stationTransform: {fileID: 0}
-  - plcId: 612
-    stationTransform: {fileID: 0}
-  - plcId: 622
-    stationTransform: {fileID: 0}
-  - plcId: 632
-    stationTransform: {fileID: 0}
-  - plcId: 599
     stationTransform: {fileID: 0}
   - plcId: 700
     stationTransform: {fileID: 0}
@@ -350,11 +344,40 @@ MonoBehaviour:
     stationTransform: {fileID: 0}
   - plcId: 1200
     stationTransform: {fileID: 0}
-  - plcId: 1300
-    stationTransform: {fileID: 0}
-  - plcId: 650
-    stationTransform: {fileID: 0}
-  - plcId: 1500
+  - plcId: 550
     stationTransform: {fileID: 0}
   - plcId: 1400
     stationTransform: {fileID: 0}
+  - plcId: 1300
+    stationTransform: {fileID: 0}
+  - plcId: 502
+    stationTransform: {fileID: 0}
+  - plcId: 512
+    stationTransform: {fileID: 0}
+  - plcId: 522
+    stationTransform: {fileID: 0}
+  - plcId: 532
+    stationTransform: {fileID: 0}
+  - plcId: 710
+    stationTransform: {fileID: 0}
+--- !u!65 &5105889065097572642
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133644582487972412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0.42}

@@ -38,13 +38,13 @@ public class VcumRobotSequenceTask : Task
             this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[2], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[2], new Vector3(-300f, -400f, 0), defaultSpeed);
 
             // -------- 4번: AGV 위 배치 --------
             this.Log("작업 위치 4번 이동 (AGV 위 커버 배치)");
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 상승/하강 작업");
-            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(-300f, -400f, 0), defaultSpeed);
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);

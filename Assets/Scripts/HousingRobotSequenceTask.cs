@@ -44,9 +44,9 @@ public class HousingRobotSequenceTask : Task
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 30mm 상승 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 하강 작업");
-            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 상승 작업");
+            this.Log("Z축 60mm 하강 작업");
+            this.Offset(_targets[4], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Log("Z축 60mm 상승 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
 
             this.Log("경유지점 1번 복귀");
@@ -69,9 +69,9 @@ public class HousingRobotSequenceTask : Task
             this.LIN(_targets[6], defaultSpeed);
             this.Log("Z축 30mm 상승 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 하강 작업");
-            this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 상승 작업");
+            this.Log("Z축 60mm 하강 작업");
+            this.Offset(_targets[6], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Log("Z축 60mm 상승 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
         }
         else
@@ -96,9 +96,9 @@ public class HousingRobotSequenceTask : Task
             this.LIN(_targets[4], defaultSpeed);
             this.Log("Z축 30mm 상승 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 하강 작업");
-            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 상승 작업");
+            this.Log("Z축 60mm 하강 작업");
+            this.Offset(_targets[4], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Log("Z축 60mm 상승 작업");
             this.Offset(_targets[4], new Vector3(0, -300f, 0f), defaultSpeed);
 
             this.Log("경유지점 2번 복귀");
@@ -123,9 +123,9 @@ public class HousingRobotSequenceTask : Task
             this.LIN(_targets[6], defaultSpeed);
             this.Log("Z축 30mm 상승 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 하강 작업");
-            this.Offset(_targets[6], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Log("Z축 30mm 상승 작업");
+            this.Log("Z축 60mm 하강 작업");
+            this.Offset(_targets[6], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Log("Z축 60mm 상승 작업");
             this.Offset(_targets[6], new Vector3(0, -300f, 0f), defaultSpeed);
         }
 

@@ -57,7 +57,6 @@ public class CoverSpawner : MonoBehaviour
                 spawnPosition.rotation,
                 parentTransform
             );
-            Debug.LogWarning($"{spawnedCover.transform.position == spawnPosition.position}");
 
             spawnedCover.SetActive(true);
 

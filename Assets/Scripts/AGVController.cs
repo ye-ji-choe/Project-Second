@@ -196,7 +196,12 @@ public class AGVController : MonoBehaviour
             Vector3 leftPoint = currentPos + (leftDir * 3.5f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        
+        else if (plcCommand == 502)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            currentPath.Add(new Waypoint(reversePoint, true));
+        }
+
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
         {
             foreach (Waypoint wp in waypoints)

@@ -142,28 +142,35 @@ public class AGVController : MonoBehaviour
         Vector3 rightDir = Vector3.Cross(Vector3.up, forwardDir).normalized;
         Vector3 leftDir = -rightDir;
 
-        if (plcCommand == 200 || plcCommand == 400 || plcCommand == 1200)
+        if (plcCommand == 200)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 3f);
             Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
             Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
-            if (plcCommand == 1200)
-            {
-                forwardPoint = rightPoint + (forwardDir * 6f);
-            }
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        if (plcCommand == 400)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 7f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 300 || plcCommand == 900)
+        else if (plcCommand == 300)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 2f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
-            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 4.5f);
             Vector3 leftPoint = forwardPoint + (leftDir * 2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
@@ -181,19 +188,15 @@ public class AGVController : MonoBehaviour
         }
         else if (plcCommand == 501 || plcCommand == 521)
         {
-            Vector3 leftPoint = currentPos + (leftDir * 6.2f);
+            Vector3 leftPoint = currentPos + (leftDir * 6.1f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
         else if (plcCommand == 511 || plcCommand == 531)
         {
-            Vector3 leftPoint = currentPos + (leftDir * 4f);
+            Vector3 leftPoint = currentPos + (leftDir * 3.5f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
-        else if (plcCommand == 502 || plcCommand == 512)
-        {
-            Vector3 reversePoint = currentPos - (forwardDir * 1f);
-            currentPath.Add(new Waypoint(reversePoint, true));
-        }
+        
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
         {
             foreach (Waypoint wp in waypoints)
@@ -201,12 +204,12 @@ public class AGVController : MonoBehaviour
                 currentPath.Add(wp);
             }
         }
-        else if (plcCommand == 710 || plcCommand == 1300)
+        else if (plcCommand == 710)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             currentPath.Add(new Waypoint(reversePoint, true));
         }
-        else if (plcCommand == 800 || plcCommand == 1100)
+        else if (plcCommand == 800)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             Vector3 rightPoint = reversePoint + (rightDir * 2f);
@@ -218,6 +221,19 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
         }
+        else if (plcCommand == 900)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 2f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 5f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+
         else if (plcCommand == 1000)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
@@ -229,6 +245,35 @@ public class AGVController : MonoBehaviour
             currentPath.Add(new Waypoint(rightPoint, false));
             currentPath.Add(new Waypoint(forwardPoint, false));
             currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        else if (plcCommand == 1100)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 2f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 2f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        if (plcCommand == 1200)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 forwardPoint = rightPoint + (forwardDir * 6f);
+            Vector3 leftPoint = forwardPoint + (leftDir * 3f);
+
+            currentPath.Add(new Waypoint(reversePoint, true));
+            currentPath.Add(new Waypoint(rightPoint, false));
+            currentPath.Add(new Waypoint(forwardPoint, false));
+            currentPath.Add(new Waypoint(leftPoint, false));
+        }
+        else if (plcCommand == 1300)
+        {
+            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            currentPath.Add(new Waypoint(reversePoint, true));
         }
         else if (plcCommand == 1400)
         {

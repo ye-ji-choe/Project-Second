@@ -186,8 +186,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 5, y: 3.64, z: 0}
-  - {x: 5, y: 0, z: 0}
+  - {x: 6.3, y: 3.64, z: 0}
+  - {x: 6.3, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
   - {x: -1, y: 3.64, z: 0}
   m_Parameters:
@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 9326658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: 2.716999, y: 4.494, z: -0}
+  m_LocalPosition: {x: 3.005, y: 4.494, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6319,7 +6319,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 4, y: 1.75, z: 0}
+  - {x: 4, y: 0.8, z: 0}
   - {x: 4, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
@@ -8641,8 +8641,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Positions:
-  - {x: 5, y: 2.5, z: 0}
-  - {x: 5, y: 0, z: 0}
+  - {x: 4.02, y: 2.5, z: 0}
+  - {x: 4.02, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
   - {x: -1, y: 2.5, z: 0}
   m_Parameters:
@@ -8712,7 +8712,7 @@ Transform:
   m_GameObject: {fileID: 1265810919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: -3.3029995, y: 3.356, z: 0}
+  m_LocalPosition: {x: -4.283, y: 3.356, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15734,6 +15734,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 606583789571670820, guid: 2a34d50bcdec2e142b4ba369d899984d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 970451231}
     - target: {fileID: 3808883018666969151, guid: 2a34d50bcdec2e142b4ba369d899984d, type: 3}
       propertyPath: m_Name
       value: Factory
@@ -15778,6 +15782,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7174956568790033062, guid: 2a34d50bcdec2e142b4ba369d899984d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 970451231}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4680,6 +4680,10 @@ PrefabInstance:
       value: -11.246
       objectReference: {fileID: 0}
     - target: {fileID: 5234669566283923688, guid: 080c95992c593ef41950e948fc857967, type: 3}
+      propertyPath: defaultSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234669566283923688, guid: 080c95992c593ef41950e948fc857967, type: 3}
       propertyPath: _targets.Array.data[5].position.x
       value: 15
       objectReference: {fileID: 0}
@@ -10750,6 +10754,10 @@ PrefabInstance:
       value: 0.00001660421
       objectReference: {fileID: 0}
     - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+      propertyPath: _poseObserver._flange._value.e02
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
       propertyPath: _poseObserver._flange._value.e03
       value: 0.045210633
       objectReference: {fileID: 0}
@@ -10818,6 +10826,10 @@ PrefabInstance:
       value: 0.00001660421
       objectReference: {fileID: 0}
     - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+      propertyPath: _poseObserver._toolCenterPointBase._value.e02
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
       propertyPath: _poseObserver._toolCenterPointBase._value.e03
       value: 0.045210633
       objectReference: {fileID: 0}
@@ -10862,6 +10874,10 @@ PrefabInstance:
       value: 0.00001660421
       objectReference: {fileID: 0}
     - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+      propertyPath: _poseObserver._toolCenterPointFrame._value.e02
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
       propertyPath: _poseObserver._toolCenterPointFrame._value.e03
       value: 0.04521084
       objectReference: {fileID: 0}
@@ -10904,6 +10920,10 @@ PrefabInstance:
     - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
       propertyPath: _poseObserver._toolCenterPointWorld._value.e01
       value: 0.00001660421
+      objectReference: {fileID: 0}
+    - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
+      propertyPath: _poseObserver._toolCenterPointWorld._value.e02
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 524883384810148460, guid: c8977421c4d5af344b2048c65893c6ec, type: 3}
       propertyPath: _poseObserver._toolCenterPointWorld._value.e03

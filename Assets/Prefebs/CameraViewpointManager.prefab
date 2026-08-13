@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5943692269069821336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5257102572258125318}
+  - component: {fileID: 1483469321766037714}
+  - component: {fileID: 7548395121353264790}
+  m_Layer: 0
+  m_Name: CameraViewpointManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5257102572258125318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943692269069821336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.57651, y: -0.017, z: -2.19773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1483469321766037714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943692269069821336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2c12bfad874db45a75a5e681a36914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraViewpointManager
+  targetCamera: {fileID: 0}
+  smoothTransition: 1
+  transitionDuration: 0.6
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blendFieldOfView: 1
+  useUnscaledTime: 1
+  cameraControllers: []
+  reenableControllersAfterMove: 1
+  viewpoints:
+  - name: "\uD654\uBD84 \uC18C\uD658"
+    position: {x: 1.8135021, y: 1.3982831, z: -1.8949702}
+    eulerAngles: {x: 48.394424, y: 90.16743, z: 0.0724423}
+    fieldOfView: 60.000004
+    orthographic: 0
+    orthographicSize: 5
+    captured: 1
+  - name: "\uD759 \uD22C\uC785"
+    position: {x: 1.2643936, y: 1.1308438, z: -0.025178168}
+    eulerAngles: {x: 48.394424, y: 90.16742, z: 0.07243973}
+    fieldOfView: 60.000004
+    orthographic: 0
+    orthographicSize: 5
+    captured: 1
+  - name: "\uAD6C\uADFC \uD22C\uC785 \uACF5\uC815"
+    position: {x: -1.7516501, y: 1.3024875, z: 1.203083}
+    eulerAngles: {x: 3.7037146, y: 180.01344, z: 0.048223462}
+    fieldOfView: 60.000004
+    orthographic: 0
+    orthographicSize: 5
+    captured: 1
+  - name: "\uD654\uBD84_\uD53D\uC5C5_\uB300\uAE30+\uD654\uBD84\uC801\uC7AC"
+    position: {x: -4.1066184, y: 1.714668, z: -4.0440664}
+    eulerAngles: {x: 23.126999, y: 40.114613, z: 0.052330088}
+    fieldOfView: 60.000004
+    orthographic: 0
+    orthographicSize: 5
+    captured: 1
+  - name: "\uC804\uCCB4\uBDF0"
+    position: {x: -0.5516326, y: 3.9711905, z: -4.520257}
+    eulerAngles: {x: 45.300518, y: 359.92102, z: 0.068416655}
+    fieldOfView: 60.000004
+    orthographic: 0
+    orthographicSize: 5
+    captured: 1
+  enableNumberKeyShortcuts: 0
+  verboseLog: 0
+--- !u!114 &7548395121353264790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943692269069821336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d53a41a91949a4588f8a144a69caf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  manager: {fileID: 1483469321766037714}
+  autoMapSequential: 1
+  customMappings: []
+  useNumberRow: 1
+  useNumpad: 1
+  ignoreWhenModifierHeld: 1
+  ignoreWhileTypingInInputField: 1
+  useNextPrevKeys: 0
+  verboseLog: 0

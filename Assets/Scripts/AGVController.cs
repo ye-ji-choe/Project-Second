@@ -17,6 +17,9 @@ public class AGVController : MonoBehaviour
     [Header("PLC Status")]
     [Tooltip("현재(또는 목적지) 스테이션 번호를 저장하여 커넥터로 전달합니다.")]
     public int currentStationId = 0;
+    
+    // 직전 스테이션 ID를 기억하여 경로 분기에 사용합니다.
+    private int previousStationId = 0; 
 
     // ==========================================
     // 충돌 방지 및 경로 탐색 센서 설정
@@ -24,7 +27,10 @@ public class AGVController : MonoBehaviour
     [Header("Sensor & Collision Avoidance")]
     [Tooltip("감지할 앞차의 레이어를 선택하세요 (예: BATTERY)")]
     public LayerMask obstacleLayer;
-    public float sensorDistance = 2.0f;
+    
+    [Tooltip("전진 및 후진 시 레이저 센서 감지 거리")]
+    public float frontSensorDistance = 2.0f; // 전진 시 거리
+    public float rearSensorDistance = 1.0f;  // 후진 시 거리
     public float sensorHeightOffset = 0.5f;
 
     [Tooltip("전면 4개의 레이저 센서 가로 오프셋 간격")]
@@ -116,7 +122,10 @@ public class AGVController : MonoBehaviour
     {
         Debug.Log($"[AGV] 수신된 원본 PLC 명령: {plcCommand}");
 
-        // 출발 시 PLC가 지시한 목적지 번호(예: 400)를 저장해 둡니다.
+        // 새로운 목적지로 가기 전, 현재 위치(목적지)를 이전 스테이션으로 백업
+        previousStationId = currentStationId;
+
+        // 현재 수신한 목적지 번호 저장
         currentStationId = plcCommand;
 
         Transform targetStation = null;
@@ -193,13 +202,38 @@ public class AGVController : MonoBehaviour
         }
         else if (plcCommand == 511 || plcCommand == 531)
         {
-            Vector3 leftPoint = currentPos + (leftDir * 3.5f);
+            Vector3 leftPoint = currentPos + (leftDir * 2.8f);
             currentPath.Add(new Waypoint(leftPoint, false));
         }
         else if (plcCommand == 502)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 3f);
             currentPath.Add(new Waypoint(reversePoint, true));
+        }
+        else if (plcCommand == 502)
+        {
+            if (previousStationId == 501 || previousStationId == 511)
+            {
+                // 501 -> 502로 갈 때의 경로 설정
+                Vector3 reversePoint = currentPos - (forwardDir * 6f);
+                Vector3 rightPoint = reversePoint + (rightDir * 2f); // 예시 좌표
+
+                currentPath.Add(new Waypoint(reversePoint, true));
+                currentPath.Add(new Waypoint(rightPoint, false));
+
+                Debug.Log("[AGV] 501번에서 502번으로 이동 경로 생성");
+            }
+            else if (previousStationId == 521 || previousStationId == 531)
+            {
+                // 521 -> 502로 갈 때의 경로 설정
+                Vector3 reversePoint = currentPos - (forwardDir * 2f);
+                Vector3 leftPoint = reversePoint + (leftDir * 2f); // 예시 좌표
+
+                currentPath.Add(new Waypoint(reversePoint, true));
+                currentPath.Add(new Waypoint(leftPoint, false));
+
+                Debug.Log("[AGV] 521번에서 502번으로 이동 경로 생성");
+            }
         }
 
         else if (approachPaths.TryGetValue(plcCommand, out Waypoint[] waypoints))
@@ -308,6 +342,10 @@ public class AGVController : MonoBehaviour
             // 4채널 레이저 양방향(전/후진) 감지 로직
             // ==========================================
             Vector3 detectDir = currentWaypoint.isReverse ? transform.right : -transform.right;
+
+            // 👇 현재 방향(isReverse)에 따라 사용할 센서 거리를 결정합니다.
+            float currentSensorDistance = currentWaypoint.isReverse ? rearSensorDistance : frontSensorDistance;
+
             Vector3 lateralDir = transform.forward; // AGV의 가로 방향
             bool isObstacleAhead = false;
 
@@ -315,13 +353,14 @@ public class AGVController : MonoBehaviour
             {
                 Vector3 sensorStartPos = transform.position + (Vector3.up * sensorHeightOffset) + (lateralDir * laserSensorOffsets[i]);
 
-                if (Physics.Raycast(sensorStartPos, detectDir, out RaycastHit hit, sensorDistance, obstacleLayer))
+                // 👇 기존 sensorDistance 대신 currentSensorDistance를 적용합니다.
+                if (Physics.Raycast(sensorStartPos, detectDir, out RaycastHit hit, currentSensorDistance, obstacleLayer))
                 {
                     if (!hit.transform.IsChildOf(this.transform))
                     {
                         isObstacleAhead = true;
-                        // Debug.DrawRay(sensorStartPos, detectDir * sensorDistance, Color.red);
-                        break; 
+                        // Debug.DrawRay(sensorStartPos, detectDir * currentSensorDistance, Color.red);
+                        break;
                     }
                 }
             }

@@ -210,22 +210,18 @@ public class AGVController : MonoBehaviour
             if (previousStationId == 501 || previousStationId == 511)
             {
                 // 501 -> 502로 갈 때의 경로 설정
-                Vector3 reversePoint = currentPos - (forwardDir * 7f);
-                Vector3 rightPoint = reversePoint + (rightDir * 2f); // 예시 좌표
+                Vector3 reversePoint = currentPos - (forwardDir * 4.1f);
 
                 currentPath.Add(new Waypoint(reversePoint, true));
-                currentPath.Add(new Waypoint(rightPoint, false));
 
                 Debug.Log("[AGV] 501번에서 502번으로 이동 경로 생성");
             }
             else if (previousStationId == 521 || previousStationId == 531)
             {
                 // 521 -> 502로 갈 때의 경로 설정
-                Vector3 reversePoint = currentPos - (forwardDir * 2f);
-                Vector3 leftPoint = reversePoint + (leftDir * 2f); // 예시 좌표
+                Vector3 reversePoint = currentPos - (forwardDir * 2.3f);
 
                 currentPath.Add(new Waypoint(reversePoint, true));
-                currentPath.Add(new Waypoint(leftPoint, false));
 
                 Debug.Log("[AGV] 521번에서 502번으로 이동 경로 생성");
             }

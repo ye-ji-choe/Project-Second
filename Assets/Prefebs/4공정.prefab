@@ -685,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 1676956952930814486, guid: 07b67bd3a5bbec34c90ed282bd4ed3c6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2284df6ee9941c440a93cccb662c93fd, type: 2}
+      objectReference: {fileID: -6130396503871700389, guid: 337719a4b457318459c5cdaab0c47a23, type: 3}
     - target: {fileID: 1741257730840560978, guid: 07b67bd3a5bbec34c90ed282bd4ed3c6, type: 3}
       propertyPath: m_Name
       value: press22222

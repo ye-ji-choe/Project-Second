@@ -41,7 +41,7 @@ public class VcumRobotSequenceTask : Task
             this.Log("Z축 상승/하강 작업");
             this.Offset(_targets[4], new Vector3(0f, -400f, 0), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
-            this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 20f, 0f), defaultSpeed);
             this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
         }
         else
@@ -64,7 +64,7 @@ public class VcumRobotSequenceTask : Task
             // -------- 4번: AGV 위 배치 --------
             this.Log("Z축 상승/하강 작업");
             this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, 300f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 20f, 0f), defaultSpeed);
             this.Log("Y축 하강/상승 작업");
             this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
         }

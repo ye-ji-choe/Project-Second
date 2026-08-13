@@ -9,7 +9,7 @@ public class RobotSequenceTask : Task
     [Header("커넥터 연결")]
     public RobotConnector connector;
 
-    public float defaultSpeed = 2f;
+    public float defaultSpeed = 4f;
 
     // 현재 진입한 AGV가 1번인지 2번인지 추적하기 위한 변수 (true = 1번, false = 2번)
     private bool isFirstAGVTurn = true;
@@ -30,19 +30,15 @@ public class RobotSequenceTask : Task
             this.LIN(_targets[1], defaultSpeed);
 
             this.Log("1번 잡는 곳(3) 픽업 작업");
-            this.Offset(_targets[3], new Vector3(0, -500f, -400f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -500f, 0f), defaultSpeed);
             this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[3], new Vector3(0, -300f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -500f, 0f), defaultSpeed);
 
-            this.Log("놓는 곳(5) 이동");
-            this.LIN(_targets[5], defaultSpeed);
-            this.Log("Y축 20mm 상승 작업");
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
 
             this.Log("놓는 곳(5) 배치 작업");
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
             this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
         }
         else
         {
@@ -51,19 +47,14 @@ public class RobotSequenceTask : Task
             this.LIN(_targets[2], defaultSpeed);
 
             this.Log("2번 잡는 곳(4) 픽업 작업");
-            this.Offset(_targets[4], new Vector3(0, -500f, -400f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -500f, 000f), defaultSpeed);
             this.Offset(_targets[4], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[4], new Vector3(0, -200f, 0f), defaultSpeed);
-
-            this.Log("놓는 곳(5) 이동");
-            this.LIN(_targets[5], defaultSpeed);
-            this.Log("Y축 20mm 상승 작업");
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -500f, 0f), defaultSpeed);
 
             this.Log("놓는 곳(5) 배치 작업");
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
             this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
-            this.Offset(_targets[5], new Vector3(0, -200f, 0f), defaultSpeed);
+            this.Offset(_targets[5], new Vector3(0, -500f, 0f), defaultSpeed);
         }
 
         // ================= [ 작업 종료 후 원점 복귀 ] =================

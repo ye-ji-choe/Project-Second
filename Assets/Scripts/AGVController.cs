@@ -190,7 +190,7 @@ public class AGVController : MonoBehaviour
         else if (plcCommand == 499)
         {
             Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
-            Vector3 rightPoint = reversePoint + (rightDir * 3f);
+            Vector3 rightPoint = reversePoint + (rightDir * 3.2f);
 
             currentPath.Add(new Waypoint(reversePoint, true));
             currentPath.Add(new Waypoint(rightPoint, false));
@@ -207,15 +207,10 @@ public class AGVController : MonoBehaviour
         }
         else if (plcCommand == 502)
         {
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
-            currentPath.Add(new Waypoint(reversePoint, true));
-        }
-        else if (plcCommand == 502)
-        {
             if (previousStationId == 501 || previousStationId == 511)
             {
                 // 501 -> 502로 갈 때의 경로 설정
-                Vector3 reversePoint = currentPos - (forwardDir * 6f);
+                Vector3 reversePoint = currentPos - (forwardDir * 7f);
                 Vector3 rightPoint = reversePoint + (rightDir * 2f); // 예시 좌표
 
                 currentPath.Add(new Waypoint(reversePoint, true));

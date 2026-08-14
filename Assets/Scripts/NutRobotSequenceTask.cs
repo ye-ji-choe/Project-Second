@@ -34,7 +34,7 @@ public class NutRobotSequenceTask : Task
         this.Offset(_targets[3], new Vector3(-300f, 0, 0), defaultSpeed);
         this.Offset(_targets[3], new Vector3(0, 0f, 0f), 1f);
         this.Offset(_targets[3], new Vector3(-300f, 0, 0), 1f);
-
+                
         // ================= [ 2번 -> 4번 작업 ] =================
         this.Log("작업 위치 2번 이동 (볼트 픽업)");
         this.Offset(_targets[2], new Vector3(-300f, 0, 0), defaultSpeed);

@@ -33,10 +33,10 @@ public class VcumRobotSequenceTask : Task
 
         // -------- 4번: AGV 위 배치 --------
         this.Log("Z축 상승/하강 작업 (배치 이동)");
-        this.Offset(_targets[3], new Vector3(0f, -100f, 0), defaultSpeed);
+        this.Offset(_targets[3], new Vector3(0f, -200f, 0), defaultSpeed);
         this.Log("Y축 하강/상승 작업 (배치 완료)");
         this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[3], new Vector3(0, -100f, 0), defaultSpeed);
+        this.Offset(_targets[3], new Vector3(0, -200f, 0), defaultSpeed);
 
         // ================= [ 0번: 원점 복귀 ] =================
         this.Log("해당 AGV 작업 완료. 대기를 위해 Home 포인트로 이동 시작");

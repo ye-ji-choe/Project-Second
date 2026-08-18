@@ -11,7 +11,7 @@ public class PressController : MonoBehaviour
     public float pRESSSSSSSSSSSSSSSSAnimDuration = 2.0f;
 
     [Tooltip("프레스 하강 후 유지(가압)하는 시간")]
-    public float pressHoldTime = 10.0f;
+    public float pressHoldTime = 5.0f;
 
     [Header("Process State")]
     public bool isPressing = false; // 현재 프레스 상태 모니터링용

@@ -190,7 +190,7 @@ public class AGVController : MonoBehaviour
         
         else if (plcCommand == 499)
         {
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
             Vector3 rightPoint = reversePoint + (rightDir * 3.3f);
 
             currentPath.Add(new Waypoint(reversePoint, true));

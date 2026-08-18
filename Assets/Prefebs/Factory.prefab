@@ -2408,7 +2408,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
@@ -6033,7 +6033,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -6972,11 +6972,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: rearSensorDistance
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: frontSensorDistance
-      value: 2.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: finalPartLoadPosition.z
@@ -9355,6 +9355,10 @@ PrefabInstance:
       propertyPath: _position._value
       value: 10.709
       objectReference: {fileID: 0}
+    - target: {fileID: 998520530924726724, guid: 080c95992c593ef41950e948fc857967, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1727582175217890811, guid: 080c95992c593ef41950e948fc857967, type: 3}
       propertyPath: spawnDelay
       value: 10
@@ -9437,6 +9441,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5644866385900469489, guid: 080c95992c593ef41950e948fc857967, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940801013757813397, guid: 080c95992c593ef41950e948fc857967, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6413166286573635611, guid: 080c95992c593ef41950e948fc857967, type: 3}
@@ -9915,11 +9923,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: rearSensorDistance
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: frontSensorDistance
-      value: 2.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: finalPartLoadPosition.z
@@ -10254,6 +10262,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6213216511884826847}
     m_Modifications:
+    - target: {fileID: 3365914795557141487, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.505
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705559765583181310, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.52
+      objectReference: {fileID: 0}
     - target: {fileID: 5222427346153516982, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.67974
@@ -10293,6 +10309,10 @@ PrefabInstance:
     - target: {fileID: 5222427346153516982, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933338559563341597, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.28
       objectReference: {fileID: 0}
     - target: {fileID: 7541249838052372234, guid: b4387ae716cee2c47b5ce0b90245d8f9, type: 3}
       propertyPath: m_Name
@@ -11218,6 +11238,10 @@ PrefabInstance:
       value: 10-2_UpperCover
       objectReference: {fileID: 0}
     - target: {fileID: 6071139825190468510, guid: dc0f4535b76ded94baf487d866863d2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071139825190468510, guid: dc0f4535b76ded94baf487d866863d2e, type: 3}
       propertyPath: m_TagString
       value: Part
       objectReference: {fileID: 0}
@@ -11436,11 +11460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: rearSensorDistance
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: frontSensorDistance
-      value: 2.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: finalPartLoadPosition.z
@@ -14069,10 +14093,8 @@ MonoBehaviour:
     rotation: {x: 0, y: 270, z: 180}
   - position: {x: 1086.6, y: 480, z: -274}
     rotation: {x: 0, y: 270, z: 180}
-  - position: {x: 1121.2, y: 1860, z: -344.7}
-    rotation: {x: 0, y: 270, z: 180}
   - position: {x: 641.2, y: 603.4, z: 1362.4}
-    rotation: {x: 0, y: 180, z: 180}
+    rotation: {x: 0, y: 270, z: 180}
   connector: {fileID: 1031256059192892439}
   defaultSpeed: 5
 --- !u!114 &1835958954315174597 stripped
@@ -15930,7 +15952,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -16151,7 +16173,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -19910,11 +19932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: rearSensorDistance
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: frontSensorDistance
-      value: 2.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6977079990057299306, guid: d2c2d79eecfa70f44b98360694854858, type: 3}
       propertyPath: finalPartLoadPosition.z

@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Linq;
 using System.Threading;
 using System.Collections.Generic;
@@ -81,10 +82,10 @@ public sealed class MXInterface : IDisposable
 
     public void Dispose()
     {
-        if (_worker != null) 
-        { 
-            _worker.Abort(); 
-            _worker = null; 
+        if (_worker != null)
+        {
+            _worker.Abort();
+            _worker = null;
         }
         GC.SuppressFinalize(this);
     }
@@ -148,26 +149,39 @@ public sealed class MXInterface : IDisposable
         {
             _resetEvent.WaitOne(1);
 
-            while (_setRequestQueue.TryDequeue(out SetDeviceRequest req))
+            // =========================================================
+            // 1. 큐에 누적된 다중 랜덤 쓰기 요청을 단 1회로 병합 호출
+            // =========================================================
+            if (_setRandomRequestQueue.Count > 0)
             {
-                int ret = _communicator.SetDevice2(req.deviceAddress, req.writeValue);
-                if (ret == 0 && req.callback != null)
-                {
-                    req.result = true;
-                    _mainThreadActions.Enqueue(() => req.callback(true));
-                }
-            }
+                StringBuilder mergedAddresses = new StringBuilder();
+                List<short> mergedValues = new List<short>();
+                List<Action<bool>> mergedCallbacks = new List<Action<bool>>();
+                int totalCount = 0;
 
-            while (_setRandomRequestQueue.TryDequeue(out SetRandomDeviceRequest rndReq))
-            {
-                int ret = _communicator.WriteDeviceRandom2(rndReq.deviceAddresses, rndReq.count, ref rndReq.writeValues[0]);
+                while (_setRandomRequestQueue.TryDequeue(out SetRandomDeviceRequest rndReq))
+                {
+                    if (totalCount > 0) mergedAddresses.Append("\n");
+
+                    mergedAddresses.Append(rndReq.deviceAddresses);
+                    mergedValues.AddRange(rndReq.writeValues);
+                    mergedCallbacks.AddRange(rndReq.callbacks);
+                    totalCount += rndReq.count;
+                }
+
+                short[] writeArray = mergedValues.ToArray();
+                int ret = _communicator.WriteDeviceRandom2(mergedAddresses.ToString(), totalCount, ref writeArray[0]);
                 bool isSuccess = (ret == 0);
+
                 _mainThreadActions.Enqueue(() =>
                 {
-                    foreach (var cb in rndReq.callbacks) cb?.Invoke(isSuccess);
+                    foreach (var cb in mergedCallbacks) cb?.Invoke(isSuccess);
                 });
             }
 
+            // =========================================================
+            // 3. 상시 읽기 통신 로직
+            // =========================================================
             if (_allReadCount > 0)
             {
                 int ret = _communicator.ReadDeviceRandom2(_allReadAddressesString, _allReadCount, out _readDataBuffer[0]);

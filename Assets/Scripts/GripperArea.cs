@@ -26,10 +26,6 @@ public class GripperArea : MonoBehaviour
     {
         currentVelocity = (transform.position - lastPosition) / Time.fixedDeltaTime;
         lastPosition = transform.position;
-    }
-
-    private void Update()
-    {
         // 쿨타임이 끝났고 센서에 물체가 있으면 다시 줍기
         if (currentGrabbedObject == null && !isJustDropped && triggerList.Count > 0)
         {

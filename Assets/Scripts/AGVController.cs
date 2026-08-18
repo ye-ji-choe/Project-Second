@@ -211,7 +211,7 @@ public class AGVController : MonoBehaviour
             if (previousStationId == 501 || previousStationId == 511)
             {
                 // 501 -> 502로 갈 때의 경로 설정
-                Vector3 reversePoint = currentPos - (forwardDir * 4.1f);
+                Vector3 reversePoint = currentPos - (forwardDir * 5.5f);
 
                 currentPath.Add(new Waypoint(reversePoint, true));
 

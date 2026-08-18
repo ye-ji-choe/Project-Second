@@ -303,7 +303,7 @@ public class AGVController : MonoBehaviour
         }
         else if (plcCommand == 1300)
         {
-            Vector3 reversePoint = currentPos - (forwardDir * 3f);
+            Vector3 reversePoint = currentPos - (forwardDir * 2.5f);
             currentPath.Add(new Waypoint(reversePoint, true));
         }
         else if (plcCommand == 1400)
@@ -416,11 +416,11 @@ public class AGVController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("AVG TriggerEnter");
-        ProcessItem(other.gameObject);
-    }
+   // private void OnTriggerEnter(Collider other)
+    //{
+        //Debug.Log("AVG TriggerEnter");
+        //ProcessItem(other.gameObject);
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {

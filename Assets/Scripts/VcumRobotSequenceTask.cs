@@ -3,40 +3,71 @@ using System.Collections.Generic;
 
 public class VcumRobotSequenceTask : Task
 {
-    [Header("티칭 포인트 설정 (0:원점, 1:경유, 2:픽업, 4:AGV배치)")]
+    [Header("티칭 포인트 설정 (0:원점, 1:경유, 2~3:픽업, 4:AGV배치)")]
     [SerializeField] private List<Target> _targets;
 
     [Header("커넥터 연결")]
+    // 💡 연결할 커넥터 스크립트 이름에 맞춰 타입을 수정해 주세요. (예: RobotConnector)
     public VcumRobotConnector connector;
 
     public float defaultSpeed = 2f;
 
+    // 현재 진입한 AGV가 1번인지 2번인지 추적 (true = 1번 AGV, false = 2번 AGV)
+    private bool isFirstAGVTurn = true;
+
     override protected void Program()
     {
-        this.Log("기동 조건 충족. AGV 커버 조립 VcumRobot 시퀀스 시작!");
+        this.Log($"기동 조건 충족. {(isFirstAGVTurn ? "1번" : "2번")} AGV 커버 조립 VcumRobot 시퀀스 시작!");
 
         // ================= [ 0번: 원점 출발 ] =================
         this.Log("Home 포인트로 이동 시작");
         this.LIN(_targets[0], defaultSpeed);
         this.Wait(500);
 
-        // ================= [ 메인 작업: 1 -> 2 -> 4 ] =================
-        this.Log("경유지점 1번 이동");
-        this.LIN(_targets[1], defaultSpeed);
+        if (isFirstAGVTurn)
+        {
+            // ================= [ 1번 AGV 작업: 1 -> 2 -> 4 ] =================
+            this.Log("경유지점 1번 이동");
+            this.LIN(_targets[1], defaultSpeed);
 
-        // -------- 2번: 커버 픽업 --------
-        this.Log("Z축 상승/하강 작업 (픽업 이동)");
-        this.Offset(_targets[2], new Vector3(0, -400f, 0f), defaultSpeed);
-        this.Log("Y축 하강/상승 작업 (픽업 완료)");
-        this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
-        this.Offset(_targets[2], new Vector3(-300f, -400f, 0), defaultSpeed);
+            // -------- 2번: 1번 커버 픽업 --------
+            this.Log("Z축 상승/하강 작업");
+            this.Offset(_targets[2], new Vector3(0, -400f, 0f), defaultSpeed);
+            this.Log("Y축 하강/상승 작업");
+            this.Offset(_targets[2], new Vector3(0, 0f, 0f), defaultSpeed);
+            this.Offset(_targets[2], new Vector3(-300f, -400f, 0), defaultSpeed);
 
-        // -------- 4번: AGV 위 배치 --------
-        this.Log("Z축 상승/하강 작업 (배치 이동)");
-        this.Offset(_targets[3], new Vector3(0f, -400f, 0), defaultSpeed);
-        this.Log("Y축 하강/상승 작업 (배치 완료)");
-        this.Offset(_targets[3], new Vector3(0, 20f, 0f), defaultSpeed);
-        this.Offset(_targets[3], new Vector3(0, -400f, 0), defaultSpeed);
+            // -------- 4번: AGV 위 배치 --------
+            this.Log("Z축 상승/하강 작업");
+            this.Offset(_targets[4], new Vector3(0f, -400f, 0), defaultSpeed);
+            this.Log("Y축 하강/상승 작업");
+            this.Offset(_targets[4], new Vector3(0, 20f, 0f), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+        }
+        else
+        {
+            // ================= [ 2번 AGV 작업: 1 -> 3 -> 1(경유) -> 4 ] =================
+            this.Log("경유지점 1번 이동");
+            this.LIN(_targets[1], defaultSpeed);
+
+            // -------- 3번: 2번 커버 픽업 --------
+            this.Log("Z축 상승/하강 작업");
+            this.Offset(_targets[3], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Log("Y축 하강/상승 작업");
+            this.Offset(_targets[3], new Vector3(0, 0f, 0f), defaultSpeed);
+            this.Offset(_targets[3], new Vector3(0, -400f, 0), defaultSpeed);
+
+            // ★ 추가된 부분: 픽업 후 로봇 팔의 동선이 꼬이지 않도록 경유지로 먼저 회피 ★
+            this.Log("안전 궤적 확보를 위해 경유지점 1번 복귀");
+            this.LIN(_targets[1], defaultSpeed);
+
+            // -------- 4번: AGV 위 배치 --------
+            this.Log("Z축 상승/하강 작업");
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+            this.Offset(_targets[4], new Vector3(0, 20f, 0f), defaultSpeed);
+            this.Log("Y축 하강/상승 작업");
+            this.Offset(_targets[4], new Vector3(0, -400f, 0), defaultSpeed);
+        }
 
         // ================= [ 0번: 원점 복귀 ] =================
         this.Log("해당 AGV 작업 완료. 대기를 위해 Home 포인트로 이동 시작");
@@ -47,12 +78,15 @@ public class VcumRobotSequenceTask : Task
 
         this.DoAction(() =>
         {
+            // 다음 번 기동 시에는 다른 AGV 작업을 수행하도록 상태 반전
+            isFirstAGVTurn = !isFirstAGVTurn;
+
             // 작업 완료 신호를 커넥터로 전달
             if (connector != null)
             {
                 connector.OnCycleCompleted();
             }
-            Debug.Log("[VcumRobot] 공통 작업 완료 및 원점 복귀. PLC로 완료 신호 전송.");
+            Debug.Log("[VcumRobot] 작업 완료 및 원점 복귀. PLC로 완료 신호 전송.");
         });
     }
 }

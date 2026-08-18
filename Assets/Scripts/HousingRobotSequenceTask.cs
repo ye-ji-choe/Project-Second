@@ -51,6 +51,8 @@ public class HousingRobotSequenceTask : Task
             this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
             this.Log("Z축 40mm 하강 작업");
             this.Offset(_targets[5], new Vector3(0, 0f, 0f), defaultSpeed);
+            this.Log("그랩 안정화 대기 (2초)");
+            this.Wait(1000);
             this.Log("Z축 40mm 상승 작업");
             this.Offset(_targets[5], new Vector3(0, -400f, 0f), defaultSpeed);
 

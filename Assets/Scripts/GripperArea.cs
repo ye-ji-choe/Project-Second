@@ -39,8 +39,16 @@ public class GripperArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // 태그 확인
         if (other.CompareTag("Part") || other.CompareTag("BATTERY"))
         {
+            // 💡 수정됨: Rigidbody가 없는 '가짜' 오브젝트는 리스트에 넣지 않고 사전 차단
+            if (other.attachedRigidbody == null)
+            {
+                Debug.LogWarning($"[경고] '{other.gameObject.name}' 오브젝트가 태그는 맞지만 Rigidbody가 없어 무시됩니다.");
+                return;
+            }
+
             if (!triggerList.Contains(other))
             {
                 triggerList.Add(other);
@@ -71,13 +79,13 @@ public class GripperArea : MonoBehaviour
 
     public void Grab()
     {
+        // 비활성화되거나 삭제된 오브젝트 리스트에서 정리
         triggerList.RemoveAll(item => item == null || !item.gameObject.activeInHierarchy);
 
-        if (triggerList.Count > 0)
+        // 💡 수정됨: triggerList[0]만 보지 않고, 리스트 전체를 순회하며 진짜 잡을 수 있는 객체를 탐색
+        for (int i = 0; i < triggerList.Count; i++)
         {
-            Collider targetCollider = triggerList[0];
-
-            // 💡 유저님의 원래 방식 복구! (attachedRigidbody 사용)
+            Collider targetCollider = triggerList[i];
             Rigidbody rb = targetCollider.attachedRigidbody;
 
             if (rb != null)
@@ -92,6 +100,8 @@ public class GripperArea : MonoBehaviour
                     currentGrabbedObject.transform.localPosition = grabPosition;
                     currentGrabbedObject.transform.localRotation = Quaternion.Euler(grabRotation);
                 }
+
+                return; // 하나를 성공적으로 잡았다면 즉시 함수를 종료하여 불필요한 연산 방지
             }
         }
     }
@@ -100,7 +110,6 @@ public class GripperArea : MonoBehaviour
     {
         if (currentGrabbedObject != null)
         {
-            // 💡 유저님의 원래 방식 복구! (정확히 그 몸통의 물리를 다시 켭니다)
             Rigidbody rb = currentGrabbedObject.GetComponent<Rigidbody>();
 
             currentGrabbedObject.transform.SetParent(null);
@@ -108,7 +117,7 @@ public class GripperArea : MonoBehaviour
             if (rb != null)
             {
                 rb.isKinematic = false; // 물리 켜기
-                rb.linearVelocity = currentVelocity; // 유저님이 원래 짜셨던 관성 코드
+                rb.linearVelocity = currentVelocity;
             }
 
             currentGrabbedObject = null; // 손 비우기

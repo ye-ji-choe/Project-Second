@@ -403,13 +403,13 @@ public class AGVController : MonoBehaviour
                 if (isMagneticSensorActive && currentWaypointIndex >= currentPath.Count)
                 {
                     isMoving = false;
-                    Debug.Log($"[AGV] {currentStationId}번 노드 마그네틱 센서 인식 완료 - 최종 목적지 도착!");
+                    Debug.Log($"[{gameObject.name}] {currentStationId}번 노드 마그네틱 센서 인식 완료 - 최종 목적지 도착!");
                     if (connector != null) connector.OnArrivalCompleted();
                 }
                 else if (currentWaypointIndex >= currentPath.Count)
                 {
                     isMoving = false;
-                    Debug.Log($"[AGV] {currentStationId}번 노드 도착 완료!");
+                    Debug.Log($"[{gameObject.name}] {currentStationId}번 노드 도착 완료!");
                     if (connector != null) connector.OnArrivalCompleted();
                 }
             }
@@ -418,11 +418,13 @@ public class AGVController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("AVG TriggerEnter");
         ProcessItem(other.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("AVG CollisionEnter");
         ProcessItem(collision.gameObject);
     }
 
@@ -445,7 +447,7 @@ public class AGVController : MonoBehaviour
                 item.tag = "Untagged";
                 isFirstPartLoaded = true;
 
-                Debug.Log($"[AGV] 1공정 판({item.name}) 탑재 완료!");
+                Debug.Log($"[{gameObject.name}] 1공정 판({item.name}) 탑재 완료!");
             }
             else
             {
@@ -457,7 +459,7 @@ public class AGVController : MonoBehaviour
                 if (rb != null) rb.isKinematic = true;
 
                 item.tag = "Untagged";
-                Debug.Log($"[AGV] 12공정 Part({item.name}) 탑재 완료! 덮개 조립 끝!");
+                Debug.Log($"[{gameObject.name}] 12공정 Part({item.name}) 탑재 완료! 덮개 조립 끝!");
             }
         }
         else if (item.CompareTag("BATTERY"))
@@ -473,11 +475,11 @@ public class AGVController : MonoBehaviour
 
                 item.tag = "Untagged";
                 currentBatteryCount++;
-                Debug.Log($"[AGV] 2공정 배터리 {currentBatteryCount}번째 탑재 완료!");
+                Debug.Log($"[{gameObject.name}] 2공정 배터리 {currentBatteryCount}번째 탑재 완료!");
             }
             else
             {
-                Debug.LogWarning("[AGV] 배터리 슬롯 2개가 이미 꽉 찼습니다!");
+                Debug.LogWarning($"[{gameObject.name}] 배터리 슬롯 2개가 이미 꽉 찼습니다!");
             }
         }
         else if (item.CompareTag("CCS"))
@@ -490,26 +492,25 @@ public class AGVController : MonoBehaviour
             if (rb != null) rb.isKinematic = true;
 
             item.tag = "Untagged";
-            Debug.Log($"[AGV] 7공정 CCS({item.name}) 탑재 완료!");
+            Debug.Log($"[{gameObject.name}] 7공정 CCS({item.name}) 탑재 완료!");
         }
         else if (item.CompareTag("STR"))
         {
             if (currentStrCount < strSlotPositions.Length)
             {
                 item.transform.SetParent(this.transform);
-                item.transform.localPosition = strSlotPositions[currentStrCount];
-                item.transform.localRotation = Quaternion.Euler(strSlotRotations[currentStrCount]);
+                item.transform.SetLocalPositionAndRotation(strSlotPositions[currentStrCount], Quaternion.Euler(strSlotRotations[currentStrCount]));
 
                 Rigidbody rb = item.GetComponent<Rigidbody>();
                 if (rb != null) rb.isKinematic = true;
 
                 item.tag = "Untagged";
                 currentStrCount++;
-                Debug.Log($"[AGV] 9공정 STR {currentStrCount}번째 탑재 완료!");
+                Debug.Log($"[{gameObject.name}] 9공정 STR {currentStrCount}번째 탑재 완료!");
             }
             else
             {
-                Debug.LogWarning("[AGV] STR 슬롯 2개가 이미 꽉 찼습니다!");
+                Debug.LogWarning($"[{gameObject.name}] STR 슬롯 2개가 이미 꽉 찼습니다!");
             }
         }
         else if (item.CompareTag("BMS"))
@@ -522,7 +523,7 @@ public class AGVController : MonoBehaviour
             if (rb != null) rb.isKinematic = true;
 
             item.tag = "Untagged";
-            Debug.Log($"[AGV] 11공정 BMS({item.name}) 탑재 완료!");
+            Debug.Log($"[{gameObject.name}] 11공정 BMS({item.name}) 탑재 완료!");
         }
     }
 }

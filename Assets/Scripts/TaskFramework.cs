@@ -183,7 +183,7 @@ public abstract class Task : MonoBehaviour
             // --- LIN: 직교 공간 직선 보간 (Cartesian Interpolation) ---
             while (timeElapsed < duration)
             {
-                timeElapsed += Time.deltaTime;
+                timeElapsed += Time.fixedDeltaTime;
                 float smoothT = Mathf.SmoothStep(0f, 1f, timeElapsed / duration);
 
                 // 매 프레임 X, Y, Z 좌표를 직선으로 보간
@@ -224,7 +224,7 @@ public abstract class Task : MonoBehaviour
 
             while (timeElapsed < duration)
             {
-                timeElapsed += Time.deltaTime;
+                timeElapsed += Time.fixedDeltaTime;
                 float smoothT = Mathf.SmoothStep(0f, 1f, timeElapsed / duration);
 
                 // 매 프레임 각 관절(모터)의 각도를 부드럽게 보간
@@ -236,7 +236,7 @@ public abstract class Task : MonoBehaviour
 
                 // IK(역기구학) 계산 없이 변경된 관절 각도를 로봇 컨트롤러에 직접 적용하여 곡선 궤적 형성
                 robotController.MechanicalGroup.SetJoints(currentJointTarget, true);
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
     }

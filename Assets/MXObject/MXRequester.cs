@@ -98,7 +98,7 @@ public class MXRequester : MonoBehaviour
     // 슬래시(/)를 역슬래시(\)로 자동 변환하여 포맷 통일
     private string NormalizeAddress(string address)
     {
-        if (string.IsNullOrEmpty(address)) 
+        if (string.IsNullOrEmpty(address))
             return string.Empty;
 
         return address.ToUpper();
@@ -191,15 +191,6 @@ public class MXRequester : MonoBehaviour
             Action FlushBatch = () =>
             {
                 if (batchList.Count == 0) return;
-                if (batchList.Count == 1)
-                {
-                    _mxComponent.AddSetDeviceRequest(new MXInterface.SetDeviceRequest()
-                    {
-                        deviceAddress = batchList[0].address,
-                        writeValue = batchList[0].value,
-                        callback = batchList[0].callback
-                    });
-                }
                 else
                 {
                     StringBuilder sb = new StringBuilder();
@@ -215,8 +206,7 @@ public class MXRequester : MonoBehaviour
                     }
 
                     _mxComponent.AddSetRandomDeviceRequest(new MXInterface.SetRandomDeviceRequest(
-                        sb.ToString(), batchList.Count, values, callbacks
-                    ));
+                        sb.ToString(), batchList.Count, values, callbacks));
                 }
                 batchList.Clear();
             };
@@ -244,12 +234,6 @@ public class MXRequester : MonoBehaviour
         }
 
         if (!_updated) return;
-
-        // 2. 단건 쓰기 콜백 처리
-        while (_setCallbackEnqueue.TryDequeue(out MXInterface.SetDeviceRequest receive))
-        {
-            receive.callback?.Invoke(receive.result);
-        }
 
         // 3. 수신 데이터 (Read) 워드/비트 정렬 후 UI 콜백 실행
         while (_valueChangedQueue.TryDequeue(out KeyValuePair<string, short> kvp))
@@ -284,10 +268,5 @@ public class MXRequester : MonoBehaviour
         }
 
         _updated = false;
-    }
-
-    internal void AddSetDeviceRequest(object address, short value)
-    {
-        throw new NotImplementedException();
     }
 }
